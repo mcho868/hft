@@ -1,0 +1,85 @@
+{
+  "session_id": "20250928_002822",
+  "optimization_type": "pre_validated_rag_configs",
+  "start_time": "2025-09-28T00:28:22.679645",
+  "end_time": "2025-09-28T11:57:30.239239",
+  "total_phases": 5,
+  "config": {
+    "phases": {
+      "generate_matrix": true,
+      "run_evaluation": true,
+      "clinical_judgement": true,
+      "performance_profiling": true,
+      "statistical_analysis": true
+    },
+    "evaluation": {
+      "batch_size": 8,
+      "max_workers": 2,
+      "resume": true
+    },
+    "output": {
+      "session_dir": null,
+      "verbose": true
+    },
+    "session_dir": "/Users/choemanseung/789/hft/optimized_evaluation_session_20250928_002822"
+  },
+  "detailed_log": [
+    {
+      "timestamp": "2025-09-28T00:28:22.679645",
+      "phase": "generate_optimized_matrix",
+      "status": "completed",
+      "duration_seconds": 0.03785514831542969,
+      "details": {
+        "total_combinations": 720,
+        "rag_configs": 6,
+        "adapters": 60,
+        "matrix_file": "/Users/choemanseung/789/hft/optimized_evaluation_session_20250928_002822/configurations/optimized_evaluation_matrix.json",
+        "optimization": "Reduced from 14,580 to 720 combinations"
+      }
+    },
+    {
+      "timestamp": "2025-09-28T11:57:30.236921",
+      "phase": "optimized_evaluation_pipeline",
+      "status": "completed",
+      "duration_seconds": 37747.55707478523,
+      "details": {
+        "results_summary": {
+          "total_results": 720,
+          "completed": 720,
+          "failed": 0
+        },
+        "results_file": "/Users/choemanseung/789/hft/optimized_evaluation_session_20250928_002822/results/enhanced_evaluation_results.json"
+      }
+    },
+    {
+      "timestamp": "2025-09-28T11:57:30.237199",
+      "phase": "clinical_judgement",
+      "status": "completed",
+      "duration_seconds": 0.0002281665802001953,
+      "details": {
+        "appropriateness_file": "/Users/choemanseung/789/hft/optimized_evaluation_session_20250928_002822/results/clinical_appropriateness.json",
+        "enhanced": true
+      }
+    },
+    {
+      "timestamp": "2025-09-28T11:57:30.237339",
+      "phase": "performance_profiling",
+      "status": "completed",
+      "duration_seconds": 0.0001220703125,
+      "details": {
+        "profile_file": "/Users/choemanseung/789/hft/optimized_evaluation_session_20250928_002822/profiles/optimized_performance_profiles.json",
+        "integrated_rag_data": true
+      }
+    },
+    {
+      "timestamp": "2025-09-28T11:57:30.239239",
+      "phase": "enhanced_statistical_analysis",
+      "status": "completed",
+      "duration_seconds": 0.0018768310546875,
+      "details": {
+        "report_file": "/Users/choemanseung/789/hft/optimized_evaluation_session_20250928_002822/analysis/enhanced_analysis_report.json",
+        "rag_integrated": true
+      }
+    }
+  ]
+}

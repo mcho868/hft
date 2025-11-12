@@ -1,0 +1,501 @@
+[
+  {
+    "config": {
+      "model_name": "SmolLM2-135M_4bit",
+      "model_path": "/Users/choemanseung/789/hft/mlx_models/SmolLM2-135M-Instruct-MLX_4bit",
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_SmolLM2-135M_4bit_high_capacity_safe",
+      "rag_config": null,
+      "test_name": "SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_high_capacity_safe_NoRAG"
+    },
+    "timestamp": "2025-10-02T00:50:19.917420",
+    "triage_accuracy": 0.7043037974683545,
+    "f1_score": 0.6574672770153084,
+    "f2_score": 0.6842102561304392,
+    "confusion_matrix": [
+      [
+        43,
+        308,
+        0,
+        2
+      ],
+      [
+        141,
+        1348,
+        2,
+        13
+      ],
+      [
+        18,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "classification_report": {
+      "ED": {
+        "precision": 0.21287128712871287,
+        "recall": 0.12181303116147309,
+        "f1-score": 0.15495495495495495,
+        "support": 353.0
+      },
+      "GP": {
+        "precision": 0.7676537585421412,
+        "recall": 0.8962765957446809,
+        "f1-score": 0.8269938650306748,
+        "support": 1504.0
+      },
+      "HOME": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 118.0
+      },
+      "UNKNOWN": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "accuracy": 0.7043037974683545,
+      "macro avg": {
+        "precision": 0.24513126141771352,
+        "recall": 0.2545224067265385,
+        "f1-score": 0.24548720499640744,
+        "support": 1975.0
+      },
+      "weighted avg": {
+        "precision": 0.6226302871918057,
+        "recall": 0.7043037974683545,
+        "f1-score": 0.6574672770153084,
+        "support": 1975.0
+      }
+    },
+    "total_inference_time": 980.7649912834167,
+    "avg_inference_time_per_case": 0.49658986900426166,
+    "cases_evaluated": 1975,
+    "success_count": 1975,
+    "error_count": 0,
+    "error_details": [],
+    "unknown_triage_count": 15,
+    "total_failures": 15,
+    "rag_retrieval_time": 0.0,
+    "rag_context_length_avg": 0.0,
+    "llm_judge_metrics": {
+      "avg_next_step_quality": 58.40405063291139,
+      "avg_reasoning_quality": 57.5367088607595,
+      "avg_overall_quality": 58.05711392405063,
+      "std_overall_quality": 23.69197393926728,
+      "min_overall_quality": 0.0,
+      "max_overall_quality": 91.0,
+      "cases_with_llm_evaluation": 1975
+    }
+  },
+  {
+    "config": {
+      "model_name": "SmolLM2-135M_4bit",
+      "model_path": "/Users/choemanseung/789/hft/mlx_models/SmolLM2-135M-Instruct-MLX_4bit",
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_SmolLM2-135M_4bit_balanced_safe",
+      "rag_config": null,
+      "test_name": "SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_balanced_safe_NoRAG"
+    },
+    "timestamp": "2025-10-02T01:03:12.917587",
+    "triage_accuracy": 0.64,
+    "f1_score": 0.6152253028053595,
+    "f2_score": 0.6292738581167681,
+    "confusion_matrix": [
+      [
+        12,
+        294,
+        0,
+        47
+      ],
+      [
+        47,
+        1252,
+        0,
+        205
+      ],
+      [
+        6,
+        102,
+        0,
+        10
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "classification_report": {
+      "ED": {
+        "precision": 0.18461538461538463,
+        "recall": 0.0339943342776204,
+        "f1-score": 0.05741626794258373,
+        "support": 353.0
+      },
+      "GP": {
+        "precision": 0.7597087378640777,
+        "recall": 0.8324468085106383,
+        "f1-score": 0.7944162436548223,
+        "support": 1504.0
+      },
+      "HOME": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 118.0
+      },
+      "UNKNOWN": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "accuracy": 0.64,
+      "macro avg": {
+        "precision": 0.23608103061986557,
+        "recall": 0.2166102856970647,
+        "f1-score": 0.2129581278993515,
+        "support": 1975.0
+      },
+      "weighted avg": {
+        "precision": 0.6115297076034448,
+        "recall": 0.64,
+        "f1-score": 0.6152253028053595,
+        "support": 1975.0
+      }
+    },
+    "total_inference_time": 753.6780490875244,
+    "avg_inference_time_per_case": 0.3816091387784934,
+    "cases_evaluated": 1975,
+    "success_count": 1975,
+    "error_count": 0,
+    "error_details": [],
+    "unknown_triage_count": 262,
+    "total_failures": 262,
+    "rag_retrieval_time": 0.0,
+    "rag_context_length_avg": 0.0,
+    "llm_judge_metrics": {
+      "avg_next_step_quality": 53.96759493670886,
+      "avg_reasoning_quality": 52.09873417721519,
+      "avg_overall_quality": 53.220050632911395,
+      "std_overall_quality": 29.079108913226857,
+      "min_overall_quality": 0.0,
+      "max_overall_quality": 93.0,
+      "cases_with_llm_evaluation": 1975
+    }
+  },
+  {
+    "config": {
+      "model_name": "SmolLM2-135M_4bit",
+      "model_path": "/Users/choemanseung/789/hft/mlx_models/SmolLM2-135M-Instruct-MLX_4bit",
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_SmolLM2-135M_4bit_performance_safe",
+      "rag_config": null,
+      "test_name": "SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_performance_safe_NoRAG"
+    },
+    "timestamp": "2025-10-02T01:21:45.195112",
+    "triage_accuracy": 0.5311392405063291,
+    "f1_score": 0.5735364053637791,
+    "f2_score": 0.5364237013044949,
+    "confusion_matrix": [
+      [
+        248,
+        84,
+        0,
+        21
+      ],
+      [
+        548,
+        801,
+        1,
+        154
+      ],
+      [
+        63,
+        49,
+        0,
+        6
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "classification_report": {
+      "ED": {
+        "precision": 0.28870779976717115,
+        "recall": 0.7025495750708215,
+        "f1-score": 0.40924092409240925,
+        "support": 353.0
+      },
+      "GP": {
+        "precision": 0.8576017130620985,
+        "recall": 0.5325797872340425,
+        "f1-score": 0.6570959803117309,
+        "support": 1504.0
+      },
+      "HOME": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 118.0
+      },
+      "UNKNOWN": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "accuracy": 0.5311392405063291,
+      "macro avg": {
+        "precision": 0.28657737820731743,
+        "recall": 0.308782340576216,
+        "f1-score": 0.26658422610103505,
+        "support": 1975.0
+      },
+      "weighted avg": {
+        "precision": 0.7046819391206115,
+        "recall": 0.5311392405063291,
+        "f1-score": 0.5735364053637791,
+        "support": 1975.0
+      }
+    },
+    "total_inference_time": 1094.1406440734863,
+    "avg_inference_time_per_case": 0.5539952628220184,
+    "cases_evaluated": 1975,
+    "success_count": 1975,
+    "error_count": 0,
+    "error_details": [],
+    "unknown_triage_count": 181,
+    "total_failures": 181,
+    "rag_retrieval_time": 0.0,
+    "rag_context_length_avg": 0.0,
+    "llm_judge_metrics": {
+      "avg_next_step_quality": 41.702278481012655,
+      "avg_reasoning_quality": 44.832911392405066,
+      "avg_overall_quality": 42.954531645569624,
+      "std_overall_quality": 27.735005317658,
+      "min_overall_quality": 0.0,
+      "max_overall_quality": 93.0,
+      "cases_with_llm_evaluation": 1975
+    }
+  },
+  {
+    "config": {
+      "model_name": "SmolLM2-135M_4bit",
+      "model_path": "/Users/choemanseung/789/hft/mlx_models/SmolLM2-135M-Instruct-MLX_4bit",
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_SmolLM2-135M_4bit_high_capacity_safe",
+      "rag_config": {
+        "name": "top1_structured_contextual_diverse",
+        "chunking_method": "structured_agent_tinfoil_medical",
+        "retrieval_type": "contextual_rag",
+        "bias_config": "diverse",
+        "pass_at_5": 0.595,
+        "description": "Best overall performer - structured chunking + contextual RAG"
+      },
+      "test_name": "SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_high_capacity_safe_RAG_top1_structured_contextual_diverse"
+    },
+    "timestamp": "2025-10-02T01:55:18.387497",
+    "triage_accuracy": 0.5675949367088607,
+    "f1_score": 0.5964621120760926,
+    "f2_score": 0.5728765294892452,
+    "confusion_matrix": [
+      [
+        189,
+        149,
+        0,
+        15
+      ],
+      [
+        543,
+        929,
+        7,
+        25
+      ],
+      [
+        46,
+        68,
+        3,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "classification_report": {
+      "ED": {
+        "precision": 0.24293059125964012,
+        "recall": 0.5354107648725213,
+        "f1-score": 0.33421750663129973,
+        "support": 353.0
+      },
+      "GP": {
+        "precision": 0.8106457242582897,
+        "recall": 0.617686170212766,
+        "f1-score": 0.7011320754716981,
+        "support": 1504.0
+      },
+      "HOME": {
+        "precision": 0.3,
+        "recall": 0.025423728813559324,
+        "f1-score": 0.046875,
+        "support": 118.0
+      },
+      "UNKNOWN": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "accuracy": 0.5675949367088607,
+      "macro avg": {
+        "precision": 0.3383940788794825,
+        "recall": 0.2946301659747116,
+        "f1-score": 0.27055614552574947,
+        "support": 1975.0
+      },
+      "weighted avg": {
+        "precision": 0.6786661610122131,
+        "recall": 0.5675949367088607,
+        "f1-score": 0.5964621120760926,
+        "support": 1975.0
+      }
+    },
+    "total_inference_time": 1908.5886986255646,
+    "avg_inference_time_per_case": 0.966374024620539,
+    "cases_evaluated": 1975,
+    "success_count": 1975,
+    "error_count": 0,
+    "error_details": [],
+    "unknown_triage_count": 41,
+    "total_failures": 41,
+    "rag_retrieval_time": 0.045303900754904446,
+    "rag_context_length_avg": 7061.193417721519,
+    "llm_judge_metrics": {
+      "avg_next_step_quality": 38.103291139240504,
+      "avg_reasoning_quality": 31.962025316455698,
+      "avg_overall_quality": 35.646784810126576,
+      "std_overall_quality": 22.532502286315367,
+      "min_overall_quality": 0.0,
+      "max_overall_quality": 89.0,
+      "cases_with_llm_evaluation": 1975
+    }
+  },
+  {
+    "config": {
+      "model_name": "SmolLM2-135M_4bit",
+      "model_path": "/Users/choemanseung/789/hft/mlx_models/SmolLM2-135M-Instruct-MLX_4bit",
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_SmolLM2-135M_4bit_high_capacity_safe",
+      "rag_config": {
+        "name": "top2_structured_pure_diverse",
+        "chunking_method": "structured_agent_tinfoil_medical",
+        "retrieval_type": "pure_rag",
+        "bias_config": "diverse",
+        "pass_at_5": 0.59,
+        "description": "Close second - structured chunking + pure RAG"
+      },
+      "test_name": "SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_high_capacity_safe_RAG_top2_structured_pure_diverse"
+    },
+    "timestamp": "2025-10-02T02:27:50.296731",
+    "triage_accuracy": 0.5412658227848102,
+    "f1_score": 0.5776481811627568,
+    "f2_score": 0.5482975258814808,
+    "confusion_matrix": [
+      [
+        181,
+        156,
+        0,
+        16
+      ],
+      [
+        594,
+        882,
+        9,
+        19
+      ],
+      [
+        57,
+        53,
+        6,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "classification_report": {
+      "ED": {
+        "precision": 0.21754807692307693,
+        "recall": 0.5127478753541076,
+        "f1-score": 0.30548523206751055,
+        "support": 353.0
+      },
+      "GP": {
+        "precision": 0.8084326306141155,
+        "recall": 0.586436170212766,
+        "f1-score": 0.6797687861271676,
+        "support": 1504.0
+      },
+      "HOME": {
+        "precision": 0.4,
+        "recall": 0.05084745762711865,
+        "f1-score": 0.09022556390977443,
+        "support": 118.0
+      },
+      "UNKNOWN": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "accuracy": 0.5412658227848102,
+      "macro avg": {
+        "precision": 0.3564951768842981,
+        "recall": 0.28750787579849807,
+        "f1-score": 0.2688698955261132,
+        "support": 1975.0
+      },
+      "weighted avg": {
+        "precision": 0.6784188089101144,
+        "recall": 0.5412658227848102,
+        "f1-score": 0.5776481811627568,
+        "support": 1975.0
+      }
+    },
+    "total_inference_time": 1907.745688199997,
+    "avg_inference_time_per_case": 0.9659471838987327,
+    "cases_evaluated": 1975,
+    "success_count": 1975,
+    "error_count": 0,
+    "error_details": [],
+    "unknown_triage_count": 37,
+    "total_failures": 37,
+    "rag_retrieval_time": 0.014925894194011446,
+    "rag_context_length_avg": 6854.6653164556965,
+    "llm_judge_metrics": {
+      "avg_next_step_quality": 36.939240506329114,
+      "avg_reasoning_quality": 31.686075949367087,
+      "avg_overall_quality": 34.8379746835443,
+      "std_overall_quality": 22.040976245910176,
+      "min_overall_quality": 0.0,
+      "max_overall_quality": 89.0,
+      "cases_with_llm_evaluation": 1975
+    }
+  }
+]

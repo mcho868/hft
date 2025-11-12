@@ -1,0 +1,9 @@
+chunking_method,retrieval_type,bias_config,pass_at_5,pass_at_10,pass_at_20,peak_memory_mb
+structured_agent_tinfoil_medical,contextual_rag,diverse,0.595,0.77,0.77,1.8
+structured_agent_tinfoil_medical,pure_rag,diverse,0.59,0.73,0.73,30.3
+contextual_sentence_c1024_o2_tinfoil,contextual_rag,diverse,0.525,0.635,0.635,0.0
+contextual_fixed_c512_o100,contextual_rag,diverse,0.52,0.65,0.65,0.0
+sentence_t1024_o2,contextual_rag,diverse,0.52,0.645,0.645,7.5
+structured_agent_tinfoil_medical,contextual_rag,healthify_focused,0.39,0.75,0.75,0.0
+structured_agent_tinfoil_medical,pure_rag,healthify_focused,0.385,0.73,0.73,142.2
+structured_agent_qwen3_4b_medical,contextual_rag,healthify_focused,0.36,0.675,0.675,4.2

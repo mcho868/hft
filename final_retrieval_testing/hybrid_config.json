@@ -1,0 +1,74 @@
+{
+  "bias_configurations": [
+    {
+      "name": "balanced",
+      "healthify": 4,
+      "mayo": 4,
+      "nhs": 4,
+      "description": "Equal representation from all sources"
+    },
+    {
+      "name": "healthify_bias_1",
+      "healthify": 6,
+      "mayo": 2,
+      "nhs": 2,
+      "description": "Strong Healthify bias (6:2:2)"
+    },
+    {
+      "name": "healthify_bias_2",
+      "healthify": 5,
+      "mayo": 3,
+      "nhs": 2,
+      "description": "Moderate Healthify bias (5:3:2)"
+    },
+    {
+      "name": "mayo_bias",
+      "healthify": 2,
+      "mayo": 6,
+      "nhs": 2,
+      "description": "Strong Mayo Clinic bias (2:6:2)"
+    },
+    {
+      "name": "nhs_bias",
+      "healthify": 2,
+      "mayo": 2,
+      "nhs": 6,
+      "description": "Strong NHS bias (2:2:6)"
+    },
+    {
+      "name": "medical_authority",
+      "healthify": 3,
+      "mayo": 4,
+      "nhs": 3,
+      "description": "Mayo-focused medical authority (3:4:3)"
+    },
+    {
+      "name": "user_custom_1",
+      "healthify": 4,
+      "mayo": 3,
+      "nhs": 3,
+      "description": "Custom configuration 1 (4:3:3)"
+    }
+  ],
+  "retrieval_types": [
+    {
+      "name": "pure_rag",
+      "description": "Pure RAG using original text only"
+    },
+    {
+      "name": "contextual_rag", 
+      "description": "Contextual RAG using contextual information when available"
+    }
+  ],
+  "evaluation_settings": {
+    "k_values": [5, 10, 20],
+    "primary_metric": "pass_at_5",
+    "max_configs_quick_test": 10,
+    "sources": ["healthify", "mayo", "nhs"],
+    "justification": "Pass@5 is primary metric for small model context limitations"
+  },
+  "file_patterns": {
+    "chunk_file_pattern": "{source}_chunks_{chunking_method}.json",
+    "index_file_pattern": "{source}_vector_db_{chunking_method}.index"
+  }
+}

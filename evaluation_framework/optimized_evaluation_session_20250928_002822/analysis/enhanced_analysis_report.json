@@ -1,0 +1,114 @@
+{
+  "dataset_summary": {
+    "total_configurations": 720,
+    "successful_evaluations": 720
+  },
+  "statistical_summaries": [
+    {
+      "metric_name": "triage_accuracy",
+      "mean": 0.7516666666666666,
+      "std": 0.09745369270695815,
+      "best_config": "G270_1_C5_3a482fea"
+    },
+    {
+      "metric_name": "f1_score",
+      "mean": 0.6964004345327874,
+      "std": 0.06851182094554814,
+      "best_config": "G270_1_C5_3a482fea"
+    },
+    {
+      "metric_name": "f2_score",
+      "mean": 0.7263612337131364,
+      "std": 0.08751691287873284,
+      "best_config": "G270_1_C5_3a482fea"
+    },
+    {
+      "metric_name": "next_step_quality",
+      "mean": 2.3949999999999996,
+      "std": 0.14597374193098334,
+      "best_config": "G270_1_C5_3a482fea"
+    }
+  ],
+  "best_configurations": [
+    {
+      "config_id": "G270_1_C5_3a482fea",
+      "f2_score": 0.8833333333333334,
+      "f1_score": 0.8666666666666666,
+      "triage_accuracy": 0.9,
+      "next_step_quality": 2.6
+    },
+    {
+      "config_id": "G270_1_C10_c1b77866",
+      "f2_score": 0.8833333333333334,
+      "f1_score": 0.8666666666666666,
+      "triage_accuracy": 0.9,
+      "next_step_quality": 2.6
+    },
+    {
+      "config_id": "G270_2_C5_112fedce",
+      "f2_score": 0.8833333333333334,
+      "f1_score": 0.8666666666666666,
+      "triage_accuracy": 0.9,
+      "next_step_quality": 3.2
+    },
+    {
+      "config_id": "G270_2_C10_ff0ad1e7",
+      "f2_score": 0.8833333333333334,
+      "f1_score": 0.8666666666666666,
+      "triage_accuracy": 0.9,
+      "next_step_quality": 2.6
+    },
+    {
+      "config_id": "G270_3_C5_69179247",
+      "f2_score": 0.8833333333333334,
+      "f1_score": 0.8666666666666666,
+      "triage_accuracy": 0.9,
+      "next_step_quality": 2.6
+    }
+  ],
+  "rag_integration": {
+    "validated_configs": 6,
+    "top_rag_performers": [
+      {
+        "config_id": "pass5_1_structur_contex",
+        "chunking_method": "structured_agent_tinfoil_medical",
+        "retrieval_type": "contextual_rag",
+        "pass_at_5": 0.595,
+        "pass_at_10": 0.77,
+        "retrieval_time": 0.0321
+      },
+      {
+        "config_id": "pass5_2_structur_pure_r",
+        "chunking_method": "structured_agent_tinfoil_medical",
+        "retrieval_type": "pure_rag",
+        "pass_at_5": 0.59,
+        "pass_at_10": 0.73,
+        "retrieval_time": 0.0017
+      },
+      {
+        "config_id": "pass5_3_contextu_contex",
+        "chunking_method": "contextual_sentence_c1024_o2_tinfoil",
+        "retrieval_type": "contextual_rag",
+        "pass_at_5": 0.525,
+        "pass_at_10": 0.635,
+        "retrieval_time": 0.461
+      },
+      {
+        "config_id": "pass5_4_contextu_contex",
+        "chunking_method": "contextual_fixed_c512_o100",
+        "retrieval_type": "contextual_rag",
+        "pass_at_5": 0.52,
+        "pass_at_10": 0.65,
+        "retrieval_time": 1.059
+      },
+      {
+        "config_id": "pass10_2_structur_contex",
+        "chunking_method": "structured_agent_tinfoil_medical",
+        "retrieval_type": "contextual_rag",
+        "pass_at_5": 0.39,
+        "pass_at_10": 0.75,
+        "retrieval_time": 0.0352
+      }
+    ]
+  }
+}

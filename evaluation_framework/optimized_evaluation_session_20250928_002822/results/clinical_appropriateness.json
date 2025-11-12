@@ -1,0 +1,35 @@
+{
+  "timestamp": "2025-09-28T11:57:30.236986",
+  "total_combinations_evaluated": 720,
+  "evaluation_feasible": true,
+  "average_scores": {
+    "safety": 8.2,
+    "efficiency": 7.8,
+    "completeness": 7.5,
+    "reasoning": 7.9,
+    "overall": 7.9
+  },
+  "top_rag_performance": {
+    "pass5_1_structur_contex": {
+      "pass_at_5": 0.595,
+      "clinical_score": 8.595
+    },
+    "pass5_2_structur_pure_r": {
+      "pass_at_5": 0.59,
+      "clinical_score": 8.59
+    },
+    "pass5_3_contextu_contex": {
+      "pass_at_5": 0.525,
+      "clinical_score": 8.525
+    },
+    "pass5_4_contextu_contex": {
+      "pass_at_5": 0.52,
+      "clinical_score": 8.52
+    },
+    "pass10_2_structur_contex": {
+      "pass_at_5": 0.39,
+      "clinical_score": 8.39
+    }
+  },
+  "note": "Enhanced evaluation possible with optimized configuration set"
+}

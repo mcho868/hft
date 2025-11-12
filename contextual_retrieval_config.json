@@ -1,0 +1,16 @@
+{
+  "model_name": "all-MiniLM-L6-v2",
+  "rerank_method": "feature",
+  "cache_dir": "./cache",
+  "search_defaults": {
+    "top_k": 10,
+    "use_reranking": true,
+    "semantic_weight": 0.7,
+    "bm25_weight": 0.3
+  },
+  "chunk_files": [
+    "RAGdatav4/healthify_chunks_contextual_fixed_c512_o100.json",
+    "RAGdatav4/mayo_chunks_contextual_fixed_c512_o100.json",
+    "RAGdatav4/nhs_chunks_contextual_fixed_c512_o100.json"
+  ]
+}

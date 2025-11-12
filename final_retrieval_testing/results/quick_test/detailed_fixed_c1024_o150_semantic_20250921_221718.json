@@ -1,0 +1,754 @@
+{
+  "config": {
+    "name": "fixed_c1024_o150_semantic",
+    "chunking_method": "fixed_c1024_o150",
+    "embedding_file": "embeddings_fixed_c1024_o150_all-MiniLM-L6-v2.pkl",
+    "index_file": "faiss_index_fixed_c1024_o150_all-MiniLM-L6-v2.index",
+    "chunk_data_file": "mayo_chunks_fixed_c1024_o150.json",
+    "retrieval_type": "semantic",
+    "rerank_method": null
+  },
+  "metrics": {
+    "pass_at_5": 0.0,
+    "pass_at_10": 0.0,
+    "pass_at_20": 0.0,
+    "avg_retrieval_time_ms": 173.3339786529541
+  },
+  "detailed_results": [
+    {
+      "test_case": "TestCase(symptom='Abdominal_aortic_aneurysm (Case 1)', patient_query=\"Hi, I'm a 28-year-old Pacific Island male in Auckland, and I've been having this deep, constant pain in my belly area and side, it's been going on for a few hours now, and I also have a throbbing feeling near my belly button, I'm getting really worried.\", patient_response=\"Yeah, the pain is really bad, it feels like it's ripping or tearing, and I do have back pain, it's been getting worse over the last hour, and I'm feeling a bit short of breath now.\", final_triage_decision='ED', next_step='Call 111 immediately and request an ambulance to go to the emergency department.', reasoning_question=\"The patient's symptoms of deep, constant belly pain and throbbing feeling near the belly button could indicate an abdominal aortic aneurysm, a potentially life-threatening condition, so clarifying the severity and nature of the pain is crucial to determine the urgency of the situation. The question also screens for red flags such as sudden severe pain, back pain, and breathing difficulties.\", reasoning_decision=\"The patient's symptoms of sudden, severe, and worsening belly and back pain, along with shortness of breath, are consistent with a ruptured abdominal aortic aneurysm, which is a medical emergency requiring immediate attention in the emergency department.\", clarifying_question='Can you tell me more about the pain, is it sudden and severe, and are you experiencing any back pain or difficulty breathing?', generation_timestamp=1758429942.574643)",
+      "query": "Hi, I'm a 28-year-old Pacific Island male in Auckland, and I've been having this deep, constant pain in my belly area and side, it's been going on for a few hours now, and I also have a throbbing feeling near my belly button, I'm getting really worried. Yeah, the pain is really bad, it feels like it's ripping or tearing, and I do have back pain, it's been getting worse over the last hour, and I'm feeling a bit short of breath now.",
+      "results": {
+        "pass_at_5": false,
+        "pass_at_10": false,
+        "pass_at_20": false
+      },
+      "retrieval_time": 0.21093416213989258,
+      "top_retrieved": [
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_18789",
+              "text": "After losing a baby toSIDS, getting emotional support is critical. You might be feeling guilty as you grieve the loss of your baby. You're also likely to be dealing with a police investigation into the cause of death as required by law. You might find it comforting to talk to other parents whose lives have been affected bySIDS. Ask your doctor or other member of your care team to suggest a support group in your area or online. Talking to a trusted friend, mental health professional or clergy member also can help. If you can, let friends and family know how you're feeling. People want to help, but they might not know how to approach you. Losing a child can put a terrible strain on a relationship. Be as open as possible with your spouse or partner. Counseling helps some couples understand and express their feelings. Finally, give yourself time to grieve. It's understandable to cry unexpectedly and to find holidays and milestones difficult. You'll also feel tired and drained at times. You're dealing with a devas",
+              "original_text": "After losing a baby toSIDS, getting emotional support is critical. You might be feeling guilty as you grieve the loss of your baby. You're also likely to be dealing with a police investigation into the cause of death as required by law. You might find it comforting to talk to other parents whose lives have been affected bySIDS. Ask your doctor or other member of your care team to suggest a support group in your area or online. Talking to a trusted friend, mental health professional or clergy member also can help. If you can, let friends and family know how you're feeling. People want to help, but they might not know how to approach you. Losing a child can put a terrible strain on a relationship. Be as open as possible with your spouse or partner. Counseling helps some couples understand and express their feelings. Finally, give yourself time to grieve. It's understandable to cry unexpectedly and to find holidays and milestones difficult. You'll also feel tired and drained at times. You're dealing with a devas",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Sudden_infant_death_syndrome_(SIDS)_diagnosis_treatment.txt",
+              "source_char_start": 0,
+              "source_char_end": 1024,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_18789",
+                "text": "After losing a baby toSIDS, getting emotional support is critical. You might be feeling guilty as you grieve the loss of your baby. You're also likely to be dealing with a police investigation into the cause of death as required by law. You might find it comforting to talk to other parents whose lives have been affected bySIDS. Ask your doctor or other member of your care team to suggest a support group in your area or online. Talking to a trusted friend, mental health professional or clergy member also can help. If you can, let friends and family know how you're feeling. People want to help, but they might not know how to approach you. Losing a child can put a terrible strain on a relationship. Be as open as possible with your spouse or partner. Counseling helps some couples understand and express their feelings. Finally, give yourself time to grieve. It's understandable to cry unexpectedly and to find holidays and milestones difficult. You'll also feel tired and drained at times. You're dealing with a devas",
+                "source_document": "Sudden_infant_death_syndrome_(SIDS)_diagnosis_treatment.txt",
+                "source_char_start": 0,
+                "source_char_end": 1024
+              }
+            },
+            "fusion_score": 0.008045977011494253,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 32.41124497991968,
+          "rerank_method": "feature",
+          "search_time": 0.21092987060546875,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_684",
+              "text": "onsidered an autoimmune disease, which means your body's immune system is mistakenly attacking healthy cells and tissue. Researchers think a combination of genetic and environmental factors triggers the disease. It usually develops slowly. At this time, there's no cure for primary biliary cholangitis, but medicines may slow liver damage, especially if treatment begins early. More than half of people with primary biliary cholangitis do not have any noticeable symptoms when diagnosed. The disease may be diagnosed when blood tests are done for other reasons, such as routine testing. Symptoms eventually develop over the next 5 to 20 years. Those who do have symptoms at diagnosis typically have poorer outcomes. Common early symptoms include: Fatigue. Itchy skin. Later signs and symptoms may include: Yellowing of the skin and eyes, called jaundice. Dry eyes and mouth. Pain in the upper right abdomen. Swelling of the spleen, called splenomegaly. Bone, muscle or joint pain. Swollen feet and ankles. Buildup of fluid i",
+              "original_text": "onsidered an autoimmune disease, which means your body's immune system is mistakenly attacking healthy cells and tissue. Researchers think a combination of genetic and environmental factors triggers the disease. It usually develops slowly. At this time, there's no cure for primary biliary cholangitis, but medicines may slow liver damage, especially if treatment begins early. More than half of people with primary biliary cholangitis do not have any noticeable symptoms when diagnosed. The disease may be diagnosed when blood tests are done for other reasons, such as routine testing. Symptoms eventually develop over the next 5 to 20 years. Those who do have symptoms at diagnosis typically have poorer outcomes. Common early symptoms include: Fatigue. Itchy skin. Later signs and symptoms may include: Yellowing of the skin and eyes, called jaundice. Dry eyes and mouth. Pain in the upper right abdomen. Swelling of the spleen, called splenomegaly. Bone, muscle or joint pain. Swollen feet and ankles. Buildup of fluid i",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Primary_biliary_cholangitis.txt",
+              "source_char_start": 874,
+              "source_char_end": 1898,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_684",
+                "text": "onsidered an autoimmune disease, which means your body's immune system is mistakenly attacking healthy cells and tissue. Researchers think a combination of genetic and environmental factors triggers the disease. It usually develops slowly. At this time, there's no cure for primary biliary cholangitis, but medicines may slow liver damage, especially if treatment begins early. More than half of people with primary biliary cholangitis do not have any noticeable symptoms when diagnosed. The disease may be diagnosed when blood tests are done for other reasons, such as routine testing. Symptoms eventually develop over the next 5 to 20 years. Those who do have symptoms at diagnosis typically have poorer outcomes. Common early symptoms include: Fatigue. Itchy skin. Later signs and symptoms may include: Yellowing of the skin and eyes, called jaundice. Dry eyes and mouth. Pain in the upper right abdomen. Swelling of the spleen, called splenomegaly. Bone, muscle or joint pain. Swollen feet and ankles. Buildup of fluid i",
+                "source_document": "Primary_biliary_cholangitis.txt",
+                "source_char_start": 874,
+                "source_char_end": 1898
+              }
+            },
+            "fusion_score": 0.006363636363636363,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 30.379310344827587,
+          "rerank_method": "feature",
+          "search_time": 0.21092987060546875,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_4944",
+              "text": "or the balls of the feet. Other symptoms can include: Large calf muscles. Muscle pain and stiffness. Learning or behavior-related challenges. Delayed growth. The symptoms of this type are like those of Duchenne muscular dystrophy, but Becker muscular dystrophy tends to be milder, and it becomes worse more slowly. In general, symptoms start in the teens or early adulthood. They might not occur until the mid-20s or later. Some types of muscular dystrophy are defined by a certain feature. Or they're defined by where in the body the symptoms start. Examples include: Emery-Dreifuss. The symptoms of this type often start by age 10. Emery-Dreifuss muscular dystrophy causes certain joints to become stiff. Early on, some children may walk on their toes due to stiff tendons in the heels. They also may have trouble bending the elbows. This type of muscular dystrophy also causes muscles in the shoulders, upper arms and calves to slowly waste and weaken. Some people with the disease develop heart conditions that can cause",
+              "original_text": "or the balls of the feet. Other symptoms can include: Large calf muscles. Muscle pain and stiffness. Learning or behavior-related challenges. Delayed growth. The symptoms of this type are like those of Duchenne muscular dystrophy, but Becker muscular dystrophy tends to be milder, and it becomes worse more slowly. In general, symptoms start in the teens or early adulthood. They might not occur until the mid-20s or later. Some types of muscular dystrophy are defined by a certain feature. Or they're defined by where in the body the symptoms start. Examples include: Emery-Dreifuss. The symptoms of this type often start by age 10. Emery-Dreifuss muscular dystrophy causes certain joints to become stiff. Early on, some children may walk on their toes due to stiff tendons in the heels. They also may have trouble bending the elbows. This type of muscular dystrophy also causes muscles in the shoulders, upper arms and calves to slowly waste and weaken. Some people with the disease develop heart conditions that can cause",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Muscular_dystrophy.txt",
+              "source_char_start": 874,
+              "source_char_end": 1898,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_4944",
+                "text": "or the balls of the feet. Other symptoms can include: Large calf muscles. Muscle pain and stiffness. Learning or behavior-related challenges. Delayed growth. The symptoms of this type are like those of Duchenne muscular dystrophy, but Becker muscular dystrophy tends to be milder, and it becomes worse more slowly. In general, symptoms start in the teens or early adulthood. They might not occur until the mid-20s or later. Some types of muscular dystrophy are defined by a certain feature. Or they're defined by where in the body the symptoms start. Examples include: Emery-Dreifuss. The symptoms of this type often start by age 10. Emery-Dreifuss muscular dystrophy causes certain joints to become stiff. Early on, some children may walk on their toes due to stiff tendons in the heels. They also may have trouble bending the elbows. This type of muscular dystrophy also causes muscles in the shoulders, upper arms and calves to slowly waste and weaken. Some people with the disease develop heart conditions that can cause",
+                "source_document": "Muscular_dystrophy.txt",
+                "source_char_start": 874,
+                "source_char_end": 1898
+              }
+            },
+            "fusion_score": 0.00648148148148148,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 28.370588235294118,
+          "rerank_method": "feature",
+          "search_time": 0.21092987060546875,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_4129",
+              "text": "n that occurs gradually over time. Tenosynovitisis inflammation of a thin layer of tissue that surrounds a tendon, called the sheath. Tendon conditions can occur in any tendon, but they are common in the shoulders, elbows, wrists, hips, knees and heels. Most tendinopathy can be treated with rest, physical therapy and medicine to reduce pain. There are many types of tendinopathy. Common tendinopathies include: Achilles tendinitis. The Achilles tendon is the band of tissue that connects calf muscles at the back of the lower leg to your heel bone. Achilles tendinitis is caused by overuse or strain on the Achilles, such as when a runner increases the intensity of a running program. Biceps tendinopathy. Also known as bicipital tendinitis, this type of tendinopathy is irritation of the tendon that connects the biceps muscle to the shoulder joint. It's often caused by moving your arms over your head repeatedly. It also can occur at the elbow and is typically seen in people who lift heavy weights in their jobs or fit",
+              "original_text": "n that occurs gradually over time. Tenosynovitisis inflammation of a thin layer of tissue that surrounds a tendon, called the sheath. Tendon conditions can occur in any tendon, but they are common in the shoulders, elbows, wrists, hips, knees and heels. Most tendinopathy can be treated with rest, physical therapy and medicine to reduce pain. There are many types of tendinopathy. Common tendinopathies include: Achilles tendinitis. The Achilles tendon is the band of tissue that connects calf muscles at the back of the lower leg to your heel bone. Achilles tendinitis is caused by overuse or strain on the Achilles, such as when a runner increases the intensity of a running program. Biceps tendinopathy. Also known as bicipital tendinitis, this type of tendinopathy is irritation of the tendon that connects the biceps muscle to the shoulder joint. It's often caused by moving your arms over your head repeatedly. It also can occur at the elbow and is typically seen in people who lift heavy weights in their jobs or fit",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Tendinopathy.txt",
+              "source_char_start": 874,
+              "source_char_end": 1898,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_4129",
+                "text": "n that occurs gradually over time. Tenosynovitisis inflammation of a thin layer of tissue that surrounds a tendon, called the sheath. Tendon conditions can occur in any tendon, but they are common in the shoulders, elbows, wrists, hips, knees and heels. Most tendinopathy can be treated with rest, physical therapy and medicine to reduce pain. There are many types of tendinopathy. Common tendinopathies include: Achilles tendinitis. The Achilles tendon is the band of tissue that connects calf muscles at the back of the lower leg to your heel bone. Achilles tendinitis is caused by overuse or strain on the Achilles, such as when a runner increases the intensity of a running program. Biceps tendinopathy. Also known as bicipital tendinitis, this type of tendinopathy is irritation of the tendon that connects the biceps muscle to the shoulder joint. It's often caused by moving your arms over your head repeatedly. It also can occur at the elbow and is typically seen in people who lift heavy weights in their jobs or fit",
+                "source_document": "Tendinopathy.txt",
+                "source_char_start": 874,
+                "source_char_end": 1898
+              }
+            },
+            "fusion_score": 0.009333333333333334,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 28.366244725738397,
+          "rerank_method": "feature",
+          "search_time": 0.21092987060546875,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_2075",
+              "text": "ay lessen swelling and ease pressure on your eyes. Use creams for swollen skin. Creams containing hydrocortisone that you can buy without a prescription (Cortizone 10, others) may help ease swollen skin on the shins and feet. For help finding these creams, ask a pharmacist. If you've been diagnosed with hyperthyroidism, it's important that you get the medical care you need. After you and your health care provider have decided on a treatment plan, there also are some things you can do to cope with the condition and help your body heal. Get regular exercise. Exercise can help you feel better. It improves muscle tone and helps keep your heart and lungs healthy. Exercise also can help you feel more energetic. Learn relaxation techniques. Many relaxation techniques can help you keep a positive outlook, especially when coping with illness. Research has shown that for Graves' disease in particular, stress is a risk factor. Learning to relax and find a sense of calm may help sustain your physical and mental well-bein",
+              "original_text": "ay lessen swelling and ease pressure on your eyes. Use creams for swollen skin. Creams containing hydrocortisone that you can buy without a prescription (Cortizone 10, others) may help ease swollen skin on the shins and feet. For help finding these creams, ask a pharmacist. If you've been diagnosed with hyperthyroidism, it's important that you get the medical care you need. After you and your health care provider have decided on a treatment plan, there also are some things you can do to cope with the condition and help your body heal. Get regular exercise. Exercise can help you feel better. It improves muscle tone and helps keep your heart and lungs healthy. Exercise also can help you feel more energetic. Learn relaxation techniques. Many relaxation techniques can help you keep a positive outlook, especially when coping with illness. Research has shown that for Graves' disease in particular, stress is a risk factor. Learning to relax and find a sense of calm may help sustain your physical and mental well-bein",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Hyperthyroidism_(overactive_thyroid)_diagnosis_treatment.txt",
+              "source_char_start": 2622,
+              "source_char_end": 3646,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_2075",
+                "text": "ay lessen swelling and ease pressure on your eyes. Use creams for swollen skin. Creams containing hydrocortisone that you can buy without a prescription (Cortizone 10, others) may help ease swollen skin on the shins and feet. For help finding these creams, ask a pharmacist. If you've been diagnosed with hyperthyroidism, it's important that you get the medical care you need. After you and your health care provider have decided on a treatment plan, there also are some things you can do to cope with the condition and help your body heal. Get regular exercise. Exercise can help you feel better. It improves muscle tone and helps keep your heart and lungs healthy. Exercise also can help you feel more energetic. Learn relaxation techniques. Many relaxation techniques can help you keep a positive outlook, especially when coping with illness. Research has shown that for Graves' disease in particular, stress is a risk factor. Learning to relax and find a sense of calm may help sustain your physical and mental well-bein",
+                "source_document": "Hyperthyroidism_(overactive_thyroid)_diagnosis_treatment.txt",
+                "source_char_start": 2622,
+                "source_char_end": 3646
+              }
+            },
+            "fusion_score": 0.007446808510638297,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 28.36376811594203,
+          "rerank_method": "feature",
+          "search_time": 0.21092987060546875,
+          "total_chunks": 19809
+        }
+      ]
+    },
+    {
+      "test_case": "TestCase(symptom='Abdominal_aortic_aneurysm (Case 2)', patient_query=\"Kia ora, I'm a 45-year-old P\u0101keh\u0101 man from a small town in the Waikato, and I've been having this deep, constant pain in my belly area and side, it's been going on for a few hours now, and I also have a throbbing feeling near my belly button.\", patient_response=\"Yes, the pain is really bad and it came on suddenly, I also have back pain and I'm feeling a bit lightheaded, my skin feels pale and I'm getting a bit worried.\", final_triage_decision='ED', next_step='Call 111 immediately and request an ambulance, as you may need urgent medical attention for a potential abdominal aortic aneurysm.', reasoning_question=\"The patient's symptoms of deep, constant belly pain and throbbing feeling near the belly button are concerning for an abdominal aortic aneurysm, and clarifying the severity and acuity of the pain, as well as screening for other red-flag symptoms like back pain or difficulty breathing, is crucial to determine the urgency of the situation.\", reasoning_decision=\"The patient's symptoms are consistent with a potential abdominal aortic aneurysm, which is a medical emergency requiring immediate attention, therefore, emergency department care is essential to prevent potential rupture and other complications.\", clarifying_question='Can you tell me more about the pain, is it sudden and severe, and are you experiencing any other symptoms like back pain or difficulty breathing?', generation_timestamp=1758429948.6866932)",
+      "query": "Kia ora, I'm a 45-year-old P\u0101keh\u0101 man from a small town in the Waikato, and I've been having this deep, constant pain in my belly area and side, it's been going on for a few hours now, and I also have a throbbing feeling near my belly button. Yes, the pain is really bad and it came on suddenly, I also have back pain and I'm feeling a bit lightheaded, my skin feels pale and I'm getting a bit worried.",
+      "results": {
+        "pass_at_5": false,
+        "pass_at_10": false,
+        "pass_at_20": false
+      },
+      "retrieval_time": 0.2037210464477539,
+      "top_retrieved": [
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_18789",
+              "text": "After losing a baby toSIDS, getting emotional support is critical. You might be feeling guilty as you grieve the loss of your baby. You're also likely to be dealing with a police investigation into the cause of death as required by law. You might find it comforting to talk to other parents whose lives have been affected bySIDS. Ask your doctor or other member of your care team to suggest a support group in your area or online. Talking to a trusted friend, mental health professional or clergy member also can help. If you can, let friends and family know how you're feeling. People want to help, but they might not know how to approach you. Losing a child can put a terrible strain on a relationship. Be as open as possible with your spouse or partner. Counseling helps some couples understand and express their feelings. Finally, give yourself time to grieve. It's understandable to cry unexpectedly and to find holidays and milestones difficult. You'll also feel tired and drained at times. You're dealing with a devas",
+              "original_text": "After losing a baby toSIDS, getting emotional support is critical. You might be feeling guilty as you grieve the loss of your baby. You're also likely to be dealing with a police investigation into the cause of death as required by law. You might find it comforting to talk to other parents whose lives have been affected bySIDS. Ask your doctor or other member of your care team to suggest a support group in your area or online. Talking to a trusted friend, mental health professional or clergy member also can help. If you can, let friends and family know how you're feeling. People want to help, but they might not know how to approach you. Losing a child can put a terrible strain on a relationship. Be as open as possible with your spouse or partner. Counseling helps some couples understand and express their feelings. Finally, give yourself time to grieve. It's understandable to cry unexpectedly and to find holidays and milestones difficult. You'll also feel tired and drained at times. You're dealing with a devas",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Sudden_infant_death_syndrome_(SIDS)_diagnosis_treatment.txt",
+              "source_char_start": 0,
+              "source_char_end": 1024,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_18789",
+                "text": "After losing a baby toSIDS, getting emotional support is critical. You might be feeling guilty as you grieve the loss of your baby. You're also likely to be dealing with a police investigation into the cause of death as required by law. You might find it comforting to talk to other parents whose lives have been affected bySIDS. Ask your doctor or other member of your care team to suggest a support group in your area or online. Talking to a trusted friend, mental health professional or clergy member also can help. If you can, let friends and family know how you're feeling. People want to help, but they might not know how to approach you. Losing a child can put a terrible strain on a relationship. Be as open as possible with your spouse or partner. Counseling helps some couples understand and express their feelings. Finally, give yourself time to grieve. It's understandable to cry unexpectedly and to find holidays and milestones difficult. You'll also feel tired and drained at times. You're dealing with a devas",
+                "source_document": "Sudden_infant_death_syndrome_(SIDS)_diagnosis_treatment.txt",
+                "source_char_start": 0,
+                "source_char_end": 1024
+              }
+            },
+            "fusion_score": 0.006666666666666667,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 28.38888888888889,
+          "rerank_method": "feature",
+          "search_time": 0.20371699333190918,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_2075",
+              "text": "ay lessen swelling and ease pressure on your eyes. Use creams for swollen skin. Creams containing hydrocortisone that you can buy without a prescription (Cortizone 10, others) may help ease swollen skin on the shins and feet. For help finding these creams, ask a pharmacist. If you've been diagnosed with hyperthyroidism, it's important that you get the medical care you need. After you and your health care provider have decided on a treatment plan, there also are some things you can do to cope with the condition and help your body heal. Get regular exercise. Exercise can help you feel better. It improves muscle tone and helps keep your heart and lungs healthy. Exercise also can help you feel more energetic. Learn relaxation techniques. Many relaxation techniques can help you keep a positive outlook, especially when coping with illness. Research has shown that for Graves' disease in particular, stress is a risk factor. Learning to relax and find a sense of calm may help sustain your physical and mental well-bein",
+              "original_text": "ay lessen swelling and ease pressure on your eyes. Use creams for swollen skin. Creams containing hydrocortisone that you can buy without a prescription (Cortizone 10, others) may help ease swollen skin on the shins and feet. For help finding these creams, ask a pharmacist. If you've been diagnosed with hyperthyroidism, it's important that you get the medical care you need. After you and your health care provider have decided on a treatment plan, there also are some things you can do to cope with the condition and help your body heal. Get regular exercise. Exercise can help you feel better. It improves muscle tone and helps keep your heart and lungs healthy. Exercise also can help you feel more energetic. Learn relaxation techniques. Many relaxation techniques can help you keep a positive outlook, especially when coping with illness. Research has shown that for Graves' disease in particular, stress is a risk factor. Learning to relax and find a sense of calm may help sustain your physical and mental well-bein",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Hyperthyroidism_(overactive_thyroid)_diagnosis_treatment.txt",
+              "source_char_start": 2622,
+              "source_char_end": 3646,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_2075",
+                "text": "ay lessen swelling and ease pressure on your eyes. Use creams for swollen skin. Creams containing hydrocortisone that you can buy without a prescription (Cortizone 10, others) may help ease swollen skin on the shins and feet. For help finding these creams, ask a pharmacist. If you've been diagnosed with hyperthyroidism, it's important that you get the medical care you need. After you and your health care provider have decided on a treatment plan, there also are some things you can do to cope with the condition and help your body heal. Get regular exercise. Exercise can help you feel better. It improves muscle tone and helps keep your heart and lungs healthy. Exercise also can help you feel more energetic. Learn relaxation techniques. Many relaxation techniques can help you keep a positive outlook, especially when coping with illness. Research has shown that for Graves' disease in particular, stress is a risk factor. Learning to relax and find a sense of calm may help sustain your physical and mental well-bein",
+                "source_document": "Hyperthyroidism_(overactive_thyroid)_diagnosis_treatment.txt",
+                "source_char_start": 2622,
+                "source_char_end": 3646
+              }
+            },
+            "fusion_score": 0.007446808510638297,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 26.36574074074074,
+          "rerank_method": "feature",
+          "search_time": 0.20371699333190918,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_4923",
+              "text": "ts some blood go to the lungs. The ductus arteriosus most often closes soon after birth. But medicine can keep it open. Babies with severe coarctation of the aorta often get such medicine until surgery is done to fix the aorta. Surgery or a heart procedure can be done to repair aortic coarctation. Options include: Balloon angioplasty and stenting. This may be the first treatment for aortic coarctation. Sometimes it's done if the aorta gets narrow again after coarctation surgery. The treatment helps widen a narrowed artery and improve blood flow. During angioplasty, a doctor uses a thin tube called a catheter and a tiny balloon to open a narrowed artery. Usually, a small metal coil called a stent is placed in the artery. The stent keeps the artery open. It also reduces the risk of renarrowing. Resection with end-to-end anastomosis. A surgeon removes the narrowed area of the aorta. This is called a resection. The surgeon then connects the two healthy parts of the aorta. This is called anastomosis. Subclavian fl",
+              "original_text": "ts some blood go to the lungs. The ductus arteriosus most often closes soon after birth. But medicine can keep it open. Babies with severe coarctation of the aorta often get such medicine until surgery is done to fix the aorta. Surgery or a heart procedure can be done to repair aortic coarctation. Options include: Balloon angioplasty and stenting. This may be the first treatment for aortic coarctation. Sometimes it's done if the aorta gets narrow again after coarctation surgery. The treatment helps widen a narrowed artery and improve blood flow. During angioplasty, a doctor uses a thin tube called a catheter and a tiny balloon to open a narrowed artery. Usually, a small metal coil called a stent is placed in the artery. The stent keeps the artery open. It also reduces the risk of renarrowing. Resection with end-to-end anastomosis. A surgeon removes the narrowed area of the aorta. This is called a resection. The surgeon then connects the two healthy parts of the aorta. This is called anastomosis. Subclavian fl",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Coarctation_of_the_aorta_diagnosis_treatment.txt",
+              "source_char_start": 874,
+              "source_char_end": 1898,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_4923",
+                "text": "ts some blood go to the lungs. The ductus arteriosus most often closes soon after birth. But medicine can keep it open. Babies with severe coarctation of the aorta often get such medicine until surgery is done to fix the aorta. Surgery or a heart procedure can be done to repair aortic coarctation. Options include: Balloon angioplasty and stenting. This may be the first treatment for aortic coarctation. Sometimes it's done if the aorta gets narrow again after coarctation surgery. The treatment helps widen a narrowed artery and improve blood flow. During angioplasty, a doctor uses a thin tube called a catheter and a tiny balloon to open a narrowed artery. Usually, a small metal coil called a stent is placed in the artery. The stent keeps the artery open. It also reduces the risk of renarrowing. Resection with end-to-end anastomosis. A surgeon removes the narrowed area of the aorta. This is called a resection. The surgeon then connects the two healthy parts of the aorta. This is called anastomosis. Subclavian fl",
+                "source_document": "Coarctation_of_the_aorta_diagnosis_treatment.txt",
+                "source_char_start": 874,
+                "source_char_end": 1898
+              }
+            },
+            "fusion_score": 0.00648148148148148,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 24.345509893455098,
+          "rerank_method": "feature",
+          "search_time": 0.20371699333190918,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_2074",
+              "text": "et. It can make hyperthyroidism worse. Kelp, dulse and other types of seaweed contain a lot of iodine. Cough syrup and multivitamins also may contain iodine. If you have Graves' disease that causes eye or skin problems, taking the following steps may help ease symptoms: Don't smoke. Smoking has been linked to the development of thyroid eye disease. It also can make that condition worse. And smoking can cause symptoms to come back after treatment. Keep your eyes lubricated. Eye drops may help relieve dryness and scratchiness. A cool compress also can provide moisture. If your eyes don't completely close, a lubricating gel at bedtime may help keep the cornea from drying out. Some people also tape their eyelids shut while they sleep. Protect your eyes. Wear sunglasses to help protect your eyes from the sun and wind. Keep your head up. Raising the head of your bed may lessen swelling and ease pressure on your eyes. Use creams for swollen skin. Creams containing hydrocortisone that you can buy without a prescripti",
+              "original_text": "et. It can make hyperthyroidism worse. Kelp, dulse and other types of seaweed contain a lot of iodine. Cough syrup and multivitamins also may contain iodine. If you have Graves' disease that causes eye or skin problems, taking the following steps may help ease symptoms: Don't smoke. Smoking has been linked to the development of thyroid eye disease. It also can make that condition worse. And smoking can cause symptoms to come back after treatment. Keep your eyes lubricated. Eye drops may help relieve dryness and scratchiness. A cool compress also can provide moisture. If your eyes don't completely close, a lubricating gel at bedtime may help keep the cornea from drying out. Some people also tape their eyelids shut while they sleep. Protect your eyes. Wear sunglasses to help protect your eyes from the sun and wind. Keep your head up. Raising the head of your bed may lessen swelling and ease pressure on your eyes. Use creams for swollen skin. Creams containing hydrocortisone that you can buy without a prescripti",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Hyperthyroidism_(overactive_thyroid)_diagnosis_treatment.txt",
+              "source_char_start": 1748,
+              "source_char_end": 2772,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_2074",
+                "text": "et. It can make hyperthyroidism worse. Kelp, dulse and other types of seaweed contain a lot of iodine. Cough syrup and multivitamins also may contain iodine. If you have Graves' disease that causes eye or skin problems, taking the following steps may help ease symptoms: Don't smoke. Smoking has been linked to the development of thyroid eye disease. It also can make that condition worse. And smoking can cause symptoms to come back after treatment. Keep your eyes lubricated. Eye drops may help relieve dryness and scratchiness. A cool compress also can provide moisture. If your eyes don't completely close, a lubricating gel at bedtime may help keep the cornea from drying out. Some people also tape their eyelids shut while they sleep. Protect your eyes. Wear sunglasses to help protect your eyes from the sun and wind. Keep your head up. Raising the head of your bed may lessen swelling and ease pressure on your eyes. Use creams for swollen skin. Creams containing hydrocortisone that you can buy without a prescripti",
+                "source_document": "Hyperthyroidism_(overactive_thyroid)_diagnosis_treatment.txt",
+                "source_char_start": 1748,
+                "source_char_end": 2772
+              }
+            },
+            "fusion_score": 0.008974358974358974,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 24.339105339105338,
+          "rerank_method": "feature",
+          "search_time": 0.20371699333190918,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_9789",
+              "text": "rtbeat, extreme tiredness, weakness and low blood pressure. Gastroesophageal reflux disease (GERD). Stomach acid repeatedly flows back up into the tube connecting the mouth and stomach, called the esophagus. This backwash is known as acid reflux, and it can irritate the lining of the esophagus. Mental health conditions. Having an ongoing medical condition that has no cure may cause fear, depression and anxiety. Higher risk of digestive tract cancer. The risk of cancer of the esophagus, stomach, small and large bowel, liver, and pancreas is higher in people with cystic fibrosis. Regular colorectal cancer screening should begin at age 40. If you or your partner have close relatives with cystic fibrosis, you both may choose to have genetic testing before having children. Testing done in a lab on a sample of blood can help find out your risk of having a child with CF. If you're already pregnant and the genetic test shows that your baby may be at risk of CF, your healthcare professional can do other tests on your ",
+              "original_text": "rtbeat, extreme tiredness, weakness and low blood pressure. Gastroesophageal reflux disease (GERD). Stomach acid repeatedly flows back up into the tube connecting the mouth and stomach, called the esophagus. This backwash is known as acid reflux, and it can irritate the lining of the esophagus. Mental health conditions. Having an ongoing medical condition that has no cure may cause fear, depression and anxiety. Higher risk of digestive tract cancer. The risk of cancer of the esophagus, stomach, small and large bowel, liver, and pancreas is higher in people with cystic fibrosis. Regular colorectal cancer screening should begin at age 40. If you or your partner have close relatives with cystic fibrosis, you both may choose to have genetic testing before having children. Testing done in a lab on a sample of blood can help find out your risk of having a child with CF. If you're already pregnant and the genetic test shows that your baby may be at risk of CF, your healthcare professional can do other tests on your ",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Cystic_fibrosis.txt",
+              "source_char_start": 9614,
+              "source_char_end": 10638,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_9789",
+                "text": "rtbeat, extreme tiredness, weakness and low blood pressure. Gastroesophageal reflux disease (GERD). Stomach acid repeatedly flows back up into the tube connecting the mouth and stomach, called the esophagus. This backwash is known as acid reflux, and it can irritate the lining of the esophagus. Mental health conditions. Having an ongoing medical condition that has no cure may cause fear, depression and anxiety. Higher risk of digestive tract cancer. The risk of cancer of the esophagus, stomach, small and large bowel, liver, and pancreas is higher in people with cystic fibrosis. Regular colorectal cancer screening should begin at age 40. If you or your partner have close relatives with cystic fibrosis, you both may choose to have genetic testing before having children. Testing done in a lab on a sample of blood can help find out your risk of having a child with CF. If you're already pregnant and the genetic test shows that your baby may be at risk of CF, your healthcare professional can do other tests on your ",
+                "source_document": "Cystic_fibrosis.txt",
+                "source_char_start": 9614,
+                "source_char_end": 10638
+              }
+            },
+            "fusion_score": 0.008333333333333331,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 24.334722222222222,
+          "rerank_method": "feature",
+          "search_time": 0.20371699333190918,
+          "total_chunks": 19809
+        }
+      ]
+    },
+    {
+      "test_case": "TestCase(symptom='Acute_myocardial_infarction (Case 1)', patient_query=\"I'm a 55-year-old man and I'm having severe chest pain that started about 30 minutes ago. The pain is crushing and feels like an elephant is sitting on my chest. It's radiating down my left arm.\", patient_response=\"Yes, I'm sweating profusely and feeling nauseous. I'm also having trouble breathing. I had a heart attack 5 years ago and I'm on medication for high blood pressure.\", final_triage_decision='ED', next_step='Call 111 immediately and request an ambulance. This appears to be a heart attack requiring emergency treatment.', reasoning_question='The patient presents with classic symptoms of myocardial infarction including severe crushing chest pain radiating to the arm. Additional symptoms and cardiac history need to be assessed to confirm urgency.', reasoning_decision='The combination of severe chest pain, arm radiation, sweating, nausea, breathing difficulty, and previous cardiac history strongly suggests acute myocardial infarction requiring immediate emergency intervention.', clarifying_question='Are you experiencing any other symptoms like shortness of breath, nausea, sweating, or dizziness? Have you had heart problems before?', generation_timestamp=1758449809.750725)",
+      "query": "I'm a 55-year-old man and I'm having severe chest pain that started about 30 minutes ago. The pain is crushing and feels like an elephant is sitting on my chest. It's radiating down my left arm. Yes, I'm sweating profusely and feeling nauseous. I'm also having trouble breathing. I had a heart attack 5 years ago and I'm on medication for high blood pressure.",
+      "results": {
+        "pass_at_5": false,
+        "pass_at_10": false,
+        "pass_at_20": false
+      },
+      "retrieval_time": 0.1623528003692627,
+      "top_retrieved": [
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_19257",
+              "text": "asts six months or longer. Some people have panic disorder in addition to agoraphobia. Panic disorder is a type of anxiety disorder that includes panic attacks. A panic attack is a sudden feeling of extreme fear that reaches a peak within a few minutes and triggers a variety of intense physical symptoms. You might think that you're totally losing control, having a heart attack or even dying. Fear of another panic attack can lead to avoiding similar situations or the place where it happened in an attempt to prevent future panic attacks. Symptoms of a panic attack can include: Rapid heart rate. Trouble breathing or a feeling of choking. Chest pain or pressure. Lightheadedness or dizziness. Feeling shaky, numb or tingling. Sweating too much. Sudden flushing or chills. Upset stomach or diarrhea. Feeling a loss of control. Fear of dying. Agoraphobia can severely limit your ability to socialize, work, attend important events and even manage the details of daily life, such as running errands. Don't let agoraphobia m",
+              "original_text": "asts six months or longer. Some people have panic disorder in addition to agoraphobia. Panic disorder is a type of anxiety disorder that includes panic attacks. A panic attack is a sudden feeling of extreme fear that reaches a peak within a few minutes and triggers a variety of intense physical symptoms. You might think that you're totally losing control, having a heart attack or even dying. Fear of another panic attack can lead to avoiding similar situations or the place where it happened in an attempt to prevent future panic attacks. Symptoms of a panic attack can include: Rapid heart rate. Trouble breathing or a feeling of choking. Chest pain or pressure. Lightheadedness or dizziness. Feeling shaky, numb or tingling. Sweating too much. Sudden flushing or chills. Upset stomach or diarrhea. Feeling a loss of control. Fear of dying. Agoraphobia can severely limit your ability to socialize, work, attend important events and even manage the details of daily life, such as running errands. Don't let agoraphobia m",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Agoraphobia.txt",
+              "source_char_start": 874,
+              "source_char_end": 1898,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_19257",
+                "text": "asts six months or longer. Some people have panic disorder in addition to agoraphobia. Panic disorder is a type of anxiety disorder that includes panic attacks. A panic attack is a sudden feeling of extreme fear that reaches a peak within a few minutes and triggers a variety of intense physical symptoms. You might think that you're totally losing control, having a heart attack or even dying. Fear of another panic attack can lead to avoiding similar situations or the place where it happened in an attempt to prevent future panic attacks. Symptoms of a panic attack can include: Rapid heart rate. Trouble breathing or a feeling of choking. Chest pain or pressure. Lightheadedness or dizziness. Feeling shaky, numb or tingling. Sweating too much. Sudden flushing or chills. Upset stomach or diarrhea. Feeling a loss of control. Fear of dying. Agoraphobia can severely limit your ability to socialize, work, attend important events and even manage the details of daily life, such as running errands. Don't let agoraphobia m",
+                "source_document": "Agoraphobia.txt",
+                "source_char_start": 874,
+                "source_char_end": 1898
+              }
+            },
+            "fusion_score": 0.003947368421052631,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 32.47924273157539,
+          "rerank_method": "feature",
+          "search_time": 0.16234874725341797,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_2119",
+              "text": "ctor is limited, so preparing a list of questions will help you make the most of your time together. Some good questions to ask your doctor include: Do my medicines or treatment plan need to be changed? What are the signs that I may be about to have an asthma attack? What can I take to prevent an asthma attack when my symptoms get worse, or when I'm exposed to my triggers? What steps do I need to take to stop an asthma attack in progress? When do I need to go to the emergency room or seek other emergency treatment? I'm having more heartburn. What can I do to prevent this? Is it time for my flu or COVID-19 shot? Am I due for a pneumonia shot? What else can I do to protect my health during cold and flu season? In addition to the questions that you've prepared to ask your doctor, don't hesitate to ask questions during your appointment. Your healthcare professional will likely to ask you a number of questions. Being ready to answer them may reserve time to go over any points you want to spend more time on. Your d",
+              "original_text": "ctor is limited, so preparing a list of questions will help you make the most of your time together. Some good questions to ask your doctor include: Do my medicines or treatment plan need to be changed? What are the signs that I may be about to have an asthma attack? What can I take to prevent an asthma attack when my symptoms get worse, or when I'm exposed to my triggers? What steps do I need to take to stop an asthma attack in progress? When do I need to go to the emergency room or seek other emergency treatment? I'm having more heartburn. What can I do to prevent this? Is it time for my flu or COVID-19 shot? Am I due for a pneumonia shot? What else can I do to protect my health during cold and flu season? In addition to the questions that you've prepared to ask your doctor, don't hesitate to ask questions during your appointment. Your healthcare professional will likely to ask you a number of questions. Being ready to answer them may reserve time to go over any points you want to spend more time on. Your d",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Asthma_attack_diagnosis_treatment.txt",
+              "source_char_start": 3496,
+              "source_char_end": 4520,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_2119",
+                "text": "ctor is limited, so preparing a list of questions will help you make the most of your time together. Some good questions to ask your doctor include: Do my medicines or treatment plan need to be changed? What are the signs that I may be about to have an asthma attack? What can I take to prevent an asthma attack when my symptoms get worse, or when I'm exposed to my triggers? What steps do I need to take to stop an asthma attack in progress? When do I need to go to the emergency room or seek other emergency treatment? I'm having more heartburn. What can I do to prevent this? Is it time for my flu or COVID-19 shot? Am I due for a pneumonia shot? What else can I do to protect my health during cold and flu season? In addition to the questions that you've prepared to ask your doctor, don't hesitate to ask questions during your appointment. Your healthcare professional will likely to ask you a number of questions. Being ready to answer them may reserve time to go over any points you want to spend more time on. Your d",
+                "source_document": "Asthma_attack_diagnosis_treatment.txt",
+                "source_char_start": 3496,
+                "source_char_end": 4520
+              }
+            },
+            "fusion_score": 0.004918032786885246,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 26.38846360461993,
+          "rerank_method": "feature",
+          "search_time": 0.16234874725341797,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_13380",
+              "text": "lve prolapse are able to do daily activities and exercise without restrictions. Aim to include about 30 minutes of physical activity, such as brisk walks, into your daily fitness routine. If mitral valve prolapse causes severe regurgitation, your provider may recommend certain exercise limitations. Manage stress. Getting more exercise, connecting with others and practicing mindfulness are some ways to reduce stress. Avoid tobacco. If you smoke, quit. Ask your health care provider about resources to help you quit smoking. Here's some information to help you get ready for your appointment. Be aware of any pre-appointment restrictions. At the time you make the appointment, be sure to ask if there's anything you need to do in advance. Write down your symptoms, including any that may seem unrelated to mitral valve prolapse, and when they began. Write down key personal information, including a family history of heart disease, heart defects, genetic disorders, strokes, high blood pressure or diabetes, and any major ",
+              "original_text": "lve prolapse are able to do daily activities and exercise without restrictions. Aim to include about 30 minutes of physical activity, such as brisk walks, into your daily fitness routine. If mitral valve prolapse causes severe regurgitation, your provider may recommend certain exercise limitations. Manage stress. Getting more exercise, connecting with others and practicing mindfulness are some ways to reduce stress. Avoid tobacco. If you smoke, quit. Ask your health care provider about resources to help you quit smoking. Here's some information to help you get ready for your appointment. Be aware of any pre-appointment restrictions. At the time you make the appointment, be sure to ask if there's anything you need to do in advance. Write down your symptoms, including any that may seem unrelated to mitral valve prolapse, and when they began. Write down key personal information, including a family history of heart disease, heart defects, genetic disorders, strokes, high blood pressure or diabetes, and any major ",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Mitral_valve_prolapse_diagnosis_treatment.txt",
+              "source_char_start": 3496,
+              "source_char_end": 4520,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_13380",
+                "text": "lve prolapse are able to do daily activities and exercise without restrictions. Aim to include about 30 minutes of physical activity, such as brisk walks, into your daily fitness routine. If mitral valve prolapse causes severe regurgitation, your provider may recommend certain exercise limitations. Manage stress. Getting more exercise, connecting with others and practicing mindfulness are some ways to reduce stress. Avoid tobacco. If you smoke, quit. Ask your health care provider about resources to help you quit smoking. Here's some information to help you get ready for your appointment. Be aware of any pre-appointment restrictions. At the time you make the appointment, be sure to ask if there's anything you need to do in advance. Write down your symptoms, including any that may seem unrelated to mitral valve prolapse, and when they began. Write down key personal information, including a family history of heart disease, heart defects, genetic disorders, strokes, high blood pressure or diabetes, and any major ",
+                "source_document": "Mitral_valve_prolapse_diagnosis_treatment.txt",
+                "source_char_start": 3496,
+                "source_char_end": 4520
+              }
+            },
+            "fusion_score": 0.007954545454545454,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 26.38319143446852,
+          "rerank_method": "feature",
+          "search_time": 0.16234874725341797,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_3280",
+              "text": "nd the doses, and any other conditions for which you've recently been treated. Your health care provider also is likely to ask about any recent injuries to your head. Take a family member or friend along, if possible. Sometimes it can be hard to remember all the information you get during an appointment. Someone who goes with you may remember something that you missed or forgot. Write down questions to askyour health care provider. For diabetes insipidus, some basic questions to ask your health care provider include: What's the most likely cause of my symptoms? What kinds of tests do I need? Is my condition likely temporary or will I always have it? What treatments are available, and which do you recommend for me? How will you monitor whether my treatment is working? Will I need to make any changes to my diet or lifestyle? Will I still need to drink a lot of water if I'm taking medicines? I have other health conditions. How can I best manage these conditions together? Are there any dietary restrictions I need",
+              "original_text": "nd the doses, and any other conditions for which you've recently been treated. Your health care provider also is likely to ask about any recent injuries to your head. Take a family member or friend along, if possible. Sometimes it can be hard to remember all the information you get during an appointment. Someone who goes with you may remember something that you missed or forgot. Write down questions to askyour health care provider. For diabetes insipidus, some basic questions to ask your health care provider include: What's the most likely cause of my symptoms? What kinds of tests do I need? Is my condition likely temporary or will I always have it? What treatments are available, and which do you recommend for me? How will you monitor whether my treatment is working? Will I need to make any changes to my diet or lifestyle? Will I still need to drink a lot of water if I'm taking medicines? I have other health conditions. How can I best manage these conditions together? Are there any dietary restrictions I need",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Diabetes_insipidus_diagnosis_treatment.txt",
+              "source_char_start": 5244,
+              "source_char_end": 6268,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_3280",
+                "text": "nd the doses, and any other conditions for which you've recently been treated. Your health care provider also is likely to ask about any recent injuries to your head. Take a family member or friend along, if possible. Sometimes it can be hard to remember all the information you get during an appointment. Someone who goes with you may remember something that you missed or forgot. Write down questions to askyour health care provider. For diabetes insipidus, some basic questions to ask your health care provider include: What's the most likely cause of my symptoms? What kinds of tests do I need? Is my condition likely temporary or will I always have it? What treatments are available, and which do you recommend for me? How will you monitor whether my treatment is working? Will I need to make any changes to my diet or lifestyle? Will I still need to drink a lot of water if I'm taking medicines? I have other health conditions. How can I best manage these conditions together? Are there any dietary restrictions I need",
+                "source_document": "Diabetes_insipidus_diagnosis_treatment.txt",
+                "source_char_start": 5244,
+                "source_char_end": 6268
+              }
+            },
+            "fusion_score": 0.004477611940298507,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 26.38235294117647,
+          "rerank_method": "feature",
+          "search_time": 0.16234874725341797,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_2308",
+              "text": "he right procedure that would work best for you with the lowest risk. If you're wondering about bringing a family member or a friend or somebody with you, I think it's very helpful to have that. I also sometimes we call a family member and have them on a speaker phone in the room, and they can listen in. So I'm happy to do that too. But just to share more about best options and how to make that right decision. You know, sometimes the Zenker's is really small, and if you have very little in the way of symptoms, you don't have to have the surgery either. So making those decisions, it's kind of nice to have someone else with you. Now, also, if you are planning on needing surgery next day or planning on surgery next day, then I would for sure have someone with you because you can't drive for 24 hours after you're going to be staying in the hospital typically one night after this procedure. But it's nice to have someone with if you can. From an Internet standpoint, there's so much information that you can read. An",
+              "original_text": "he right procedure that would work best for you with the lowest risk. If you're wondering about bringing a family member or a friend or somebody with you, I think it's very helpful to have that. I also sometimes we call a family member and have them on a speaker phone in the room, and they can listen in. So I'm happy to do that too. But just to share more about best options and how to make that right decision. You know, sometimes the Zenker's is really small, and if you have very little in the way of symptoms, you don't have to have the surgery either. So making those decisions, it's kind of nice to have someone else with you. Now, also, if you are planning on needing surgery next day or planning on surgery next day, then I would for sure have someone with you because you can't drive for 24 hours after you're going to be staying in the hospital typically one night after this procedure. But it's nice to have someone with if you can. From an Internet standpoint, there's so much information that you can read. An",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Zenker's_diverticulum.txt",
+              "source_char_start": 6992,
+              "source_char_end": 8016,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_2308",
+                "text": "he right procedure that would work best for you with the lowest risk. If you're wondering about bringing a family member or a friend or somebody with you, I think it's very helpful to have that. I also sometimes we call a family member and have them on a speaker phone in the room, and they can listen in. So I'm happy to do that too. But just to share more about best options and how to make that right decision. You know, sometimes the Zenker's is really small, and if you have very little in the way of symptoms, you don't have to have the surgery either. So making those decisions, it's kind of nice to have someone else with you. Now, also, if you are planning on needing surgery next day or planning on surgery next day, then I would for sure have someone with you because you can't drive for 24 hours after you're going to be staying in the hospital typically one night after this procedure. But it's nice to have someone with if you can. From an Internet standpoint, there's so much information that you can read. An",
+                "source_document": "Zenker's_diverticulum.txt",
+                "source_char_start": 6992,
+                "source_char_end": 8016
+              }
+            },
+            "fusion_score": 0.004054054054054054,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 26.38235294117647,
+          "rerank_method": "feature",
+          "search_time": 0.16234874725341797,
+          "total_chunks": 19809
+        }
+      ]
+    },
+    {
+      "test_case": "TestCase(symptom='Asthma (Case 1)', patient_query=\"I'm a 25-year-old woman and I'm having trouble breathing. My chest feels tight and I'm wheezing. I have asthma but my inhaler isn't helping much today.\", patient_response=\"It's about a 7 out of 10. I can only speak a few words at a time. I used my inhaler 20 minutes ago but it's not working like it usually does.\", final_triage_decision='ED', next_step='Go to the emergency department immediately. This appears to be a severe asthma attack that requires urgent medical attention.', reasoning_question='Severe asthma symptoms with poor response to rescue medication need immediate assessment to determine if this represents a severe exacerbation requiring emergency treatment.', reasoning_decision=\"The patient's inability to speak in full sentences, high symptom severity score, and poor response to rescue inhaler indicate a severe asthma exacerbation requiring immediate emergency care.\", clarifying_question='How severe is your breathing difficulty on a scale of 1-10? Are you able to speak in full sentences? When did you last use your inhaler?', generation_timestamp=1758449809.750725)",
+      "query": "I'm a 25-year-old woman and I'm having trouble breathing. My chest feels tight and I'm wheezing. I have asthma but my inhaler isn't helping much today. It's about a 7 out of 10. I can only speak a few words at a time. I used my inhaler 20 minutes ago but it's not working like it usually does.",
+      "results": {
+        "pass_at_5": false,
+        "pass_at_10": false,
+        "pass_at_20": false
+      },
+      "retrieval_time": 0.146759033203125,
+      "top_retrieved": [
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_8314",
+              "text": "s when most dreaming happens. Typically, people enter REM sleep 60 to 90 minutes after falling asleep. But people with narcolepsy often move more quickly to REM sleep. They tend to enter REM sleep within 15 minutes of falling asleep. REM sleep also can happen at any time of the day. People with narcolepsy may have other sleep conditions. They might have obstructive sleep apnea, in which breathing starts and stops during the night. Or they may act out their dreams, known as REM sleep behavior disorder. Or they may have trouble falling asleep or staying asleep, called insomnia. See your healthcare professional if you experience daytime sleepiness that affects your personal or professional life. ErrorEmail field is required ErrorInclude a valid email address Please, try again in a couple of minutes The exact cause of narcolepsy is not known. People with type 1 narcolepsy have low levels of hypocretin (hi-poe-KREE-tin), also called orexin. Hypocretin is a chemical in the brain that helps control being awake and e",
+              "original_text": "s when most dreaming happens. Typically, people enter REM sleep 60 to 90 minutes after falling asleep. But people with narcolepsy often move more quickly to REM sleep. They tend to enter REM sleep within 15 minutes of falling asleep. REM sleep also can happen at any time of the day. People with narcolepsy may have other sleep conditions. They might have obstructive sleep apnea, in which breathing starts and stops during the night. Or they may act out their dreams, known as REM sleep behavior disorder. Or they may have trouble falling asleep or staying asleep, called insomnia. See your healthcare professional if you experience daytime sleepiness that affects your personal or professional life. ErrorEmail field is required ErrorInclude a valid email address Please, try again in a couple of minutes The exact cause of narcolepsy is not known. People with type 1 narcolepsy have low levels of hypocretin (hi-poe-KREE-tin), also called orexin. Hypocretin is a chemical in the brain that helps control being awake and e",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Narcolepsy.txt",
+              "source_char_start": 2622,
+              "source_char_end": 3646,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_8314",
+                "text": "s when most dreaming happens. Typically, people enter REM sleep 60 to 90 minutes after falling asleep. But people with narcolepsy often move more quickly to REM sleep. They tend to enter REM sleep within 15 minutes of falling asleep. REM sleep also can happen at any time of the day. People with narcolepsy may have other sleep conditions. They might have obstructive sleep apnea, in which breathing starts and stops during the night. Or they may act out their dreams, known as REM sleep behavior disorder. Or they may have trouble falling asleep or staying asleep, called insomnia. See your healthcare professional if you experience daytime sleepiness that affects your personal or professional life. ErrorEmail field is required ErrorInclude a valid email address Please, try again in a couple of minutes The exact cause of narcolepsy is not known. People with type 1 narcolepsy have low levels of hypocretin (hi-poe-KREE-tin), also called orexin. Hypocretin is a chemical in the brain that helps control being awake and e",
+                "source_document": "Narcolepsy.txt",
+                "source_char_start": 2622,
+                "source_char_end": 3646
+              }
+            },
+            "fusion_score": 0.006730769230769231,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 22.35745814307458,
+          "rerank_method": "feature",
+          "search_time": 0.1467571258544922,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_8315",
+              "text": "olepsy have low levels of hypocretin (hi-poe-KREE-tin), also called orexin. Hypocretin is a chemical in the brain that helps control being awake and entering REM sleep. Hypocretin levels are low in people who have cataplexy. Exactly what causes the loss of hypocretin-producing cells in the brain isn't known. But experts suspect it's due to an autoimmune reaction. An autoimmune reaction is when the body's immune system destroys its own cells. It's also likely that genetics plays a role in narcolepsy. But the risk of a parent passing this sleep condition to a child is very low \u2014 only about 1% to 2%. Narcolepsy may be linked to exposure to the H1N1 flu, sometimes called the swine flu. It also may be linked to a certain type of the H1N1 vaccine that was given in Europe. The typical process of falling asleep begins with a phase called non-rapid eye movement (NREM) sleep. During this phase, brain waves slow. After an hour or so of NREM sleep, brain activity changes and REM sleep begins. Most dreaming occurs during ",
+              "original_text": "olepsy have low levels of hypocretin (hi-poe-KREE-tin), also called orexin. Hypocretin is a chemical in the brain that helps control being awake and entering REM sleep. Hypocretin levels are low in people who have cataplexy. Exactly what causes the loss of hypocretin-producing cells in the brain isn't known. But experts suspect it's due to an autoimmune reaction. An autoimmune reaction is when the body's immune system destroys its own cells. It's also likely that genetics plays a role in narcolepsy. But the risk of a parent passing this sleep condition to a child is very low \u2014 only about 1% to 2%. Narcolepsy may be linked to exposure to the H1N1 flu, sometimes called the swine flu. It also may be linked to a certain type of the H1N1 vaccine that was given in Europe. The typical process of falling asleep begins with a phase called non-rapid eye movement (NREM) sleep. During this phase, brain waves slow. After an hour or so of NREM sleep, brain activity changes and REM sleep begins. Most dreaming occurs during ",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Narcolepsy.txt",
+              "source_char_start": 3496,
+              "source_char_end": 4520,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_8315",
+                "text": "olepsy have low levels of hypocretin (hi-poe-KREE-tin), also called orexin. Hypocretin is a chemical in the brain that helps control being awake and entering REM sleep. Hypocretin levels are low in people who have cataplexy. Exactly what causes the loss of hypocretin-producing cells in the brain isn't known. But experts suspect it's due to an autoimmune reaction. An autoimmune reaction is when the body's immune system destroys its own cells. It's also likely that genetics plays a role in narcolepsy. But the risk of a parent passing this sleep condition to a child is very low \u2014 only about 1% to 2%. Narcolepsy may be linked to exposure to the H1N1 flu, sometimes called the swine flu. It also may be linked to a certain type of the H1N1 vaccine that was given in Europe. The typical process of falling asleep begins with a phase called non-rapid eye movement (NREM) sleep. During this phase, brain waves slow. After an hour or so of NREM sleep, brain activity changes and REM sleep begins. Most dreaming occurs during ",
+                "source_document": "Narcolepsy.txt",
+                "source_char_start": 3496,
+                "source_char_end": 4520
+              }
+            },
+            "fusion_score": 0.00648148148148148,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 20.320906432748536,
+          "rerank_method": "feature",
+          "search_time": 0.1467571258544922,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_5033",
+              "text": "A pheochromocytoma can cause large changes in blood pressure. When that happens, it's called a spell. Blood pressure may return to a healthy range between spells. That can make it harder to diagnose a pheochromocytoma. The graph shows a nine-day period of short, irregular bursts in blood pressure due to a pheochromocytoma. The lower points show the bottom number of the reading, called diastolic pressure. The higher points show the top number of the reading, called systolic pressure. For example, the first burst in blood pressure is seen on day two with a reading of 250/110 millimeters of mercury. A pheochromocytoma (fee-o-kroe-moe-sy-TOE-muh) is a rare tumor that grows in an adrenal gland. Most often, the tumor is not cancer and has not spread to other parts of the body. This is called benign or nonmetastatic pheochromocytoma. Rarely, the tumor is cancer and has spread to other parts of the body. This is called malignant or metastatic pheochromocytoma. You have two adrenal glands \u2014 one at the top of each kidn",
+              "original_text": "A pheochromocytoma can cause large changes in blood pressure. When that happens, it's called a spell. Blood pressure may return to a healthy range between spells. That can make it harder to diagnose a pheochromocytoma. The graph shows a nine-day period of short, irregular bursts in blood pressure due to a pheochromocytoma. The lower points show the bottom number of the reading, called diastolic pressure. The higher points show the top number of the reading, called systolic pressure. For example, the first burst in blood pressure is seen on day two with a reading of 250/110 millimeters of mercury. A pheochromocytoma (fee-o-kroe-moe-sy-TOE-muh) is a rare tumor that grows in an adrenal gland. Most often, the tumor is not cancer and has not spread to other parts of the body. This is called benign or nonmetastatic pheochromocytoma. Rarely, the tumor is cancer and has spread to other parts of the body. This is called malignant or metastatic pheochromocytoma. You have two adrenal glands \u2014 one at the top of each kidn",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Pheochromocytoma.txt",
+              "source_char_start": 0,
+              "source_char_end": 1024,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_5033",
+                "text": "A pheochromocytoma can cause large changes in blood pressure. When that happens, it's called a spell. Blood pressure may return to a healthy range between spells. That can make it harder to diagnose a pheochromocytoma. The graph shows a nine-day period of short, irregular bursts in blood pressure due to a pheochromocytoma. The lower points show the bottom number of the reading, called diastolic pressure. The higher points show the top number of the reading, called systolic pressure. For example, the first burst in blood pressure is seen on day two with a reading of 250/110 millimeters of mercury. A pheochromocytoma (fee-o-kroe-moe-sy-TOE-muh) is a rare tumor that grows in an adrenal gland. Most often, the tumor is not cancer and has not spread to other parts of the body. This is called benign or nonmetastatic pheochromocytoma. Rarely, the tumor is cancer and has spread to other parts of the body. This is called malignant or metastatic pheochromocytoma. You have two adrenal glands \u2014 one at the top of each kidn",
+                "source_document": "Pheochromocytoma.txt",
+                "source_char_start": 0,
+                "source_char_end": 1024
+              }
+            },
+            "fusion_score": 0.00588235294117647,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 18.303846153846152,
+          "rerank_method": "feature",
+          "search_time": 0.1467571258544922,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_5034",
+              "text": " spread to other parts of the body. This is called malignant or metastatic pheochromocytoma. You have two adrenal glands \u2014 one at the top of each kidney. The adrenal glands make hormones that help control key processes in the body, such as blood pressure. Usually, a pheochromocytoma forms in only one adrenal gland. But tumors can grow in both adrenal glands. With a pheochromocytoma, the tumor releases hormones that can cause various symptoms. They include high blood pressure, headache, sweating and symptoms of a panic attack. If a pheochromocytoma isn't treated, serious or life-threatening damage to other body systems can happen. Surgery to remove a pheochromocytoma often returns blood pressure to a healthy range. A pheochromocytoma often causes the following symptoms: High blood pressure. Headache. Heavy sweating. Rapid heartbeat. Some people with pheochromocytomas also have symptoms such as: Nervous shaking. Skin that turns a lighter color, also called pallor. Shortness of breath. Panic attack-type symptoms",
+              "original_text": " spread to other parts of the body. This is called malignant or metastatic pheochromocytoma. You have two adrenal glands \u2014 one at the top of each kidney. The adrenal glands make hormones that help control key processes in the body, such as blood pressure. Usually, a pheochromocytoma forms in only one adrenal gland. But tumors can grow in both adrenal glands. With a pheochromocytoma, the tumor releases hormones that can cause various symptoms. They include high blood pressure, headache, sweating and symptoms of a panic attack. If a pheochromocytoma isn't treated, serious or life-threatening damage to other body systems can happen. Surgery to remove a pheochromocytoma often returns blood pressure to a healthy range. A pheochromocytoma often causes the following symptoms: High blood pressure. Headache. Heavy sweating. Rapid heartbeat. Some people with pheochromocytomas also have symptoms such as: Nervous shaking. Skin that turns a lighter color, also called pallor. Shortness of breath. Panic attack-type symptoms",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Pheochromocytoma.txt",
+              "source_char_start": 874,
+              "source_char_end": 1898,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_5034",
+                "text": " spread to other parts of the body. This is called malignant or metastatic pheochromocytoma. You have two adrenal glands \u2014 one at the top of each kidney. The adrenal glands make hormones that help control key processes in the body, such as blood pressure. Usually, a pheochromocytoma forms in only one adrenal gland. But tumors can grow in both adrenal glands. With a pheochromocytoma, the tumor releases hormones that can cause various symptoms. They include high blood pressure, headache, sweating and symptoms of a panic attack. If a pheochromocytoma isn't treated, serious or life-threatening damage to other body systems can happen. Surgery to remove a pheochromocytoma often returns blood pressure to a healthy range. A pheochromocytoma often causes the following symptoms: High blood pressure. Headache. Heavy sweating. Rapid heartbeat. Some people with pheochromocytomas also have symptoms such as: Nervous shaking. Skin that turns a lighter color, also called pallor. Shortness of breath. Panic attack-type symptoms",
+                "source_document": "Pheochromocytoma.txt",
+                "source_char_start": 874,
+                "source_char_end": 1898
+              }
+            },
+            "fusion_score": 0.01129032258064516,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 18.29507042253521,
+          "rerank_method": "feature",
+          "search_time": 0.1467571258544922,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_1814",
+              "text": "ink between smoking and prostate cancer. But not all studies agree. People with prostate cancer who smoke may have a higher risk of the cancer coming back. People who smoke also have a higher risk of the cancer spreading beyond the prostate. Some treatments for metastatic prostate cancer can cause thinning bones. This complication can cause bones to break more easily. To help reduce the risk of thinning bones, your healthcare team might recommend that you: Limit how much alcohol you drink. Stop smoking if you smoke. Get 30 minutes of weight-bearing exercise most days of the week. Weight-bearing exercises include activities where your legs carry your weight. Examples include strength training, lifting weights, walking, running, basketball and pickleball. Eat foods that are rich in calcium. Examples include dairy products, such as cheese, milk and yogurt, and some vegetables, such as bok choy, broccoli and kale. Take vitamin supplements, but don't do this without talking with your healthcare team. Your care tea",
+              "original_text": "ink between smoking and prostate cancer. But not all studies agree. People with prostate cancer who smoke may have a higher risk of the cancer coming back. People who smoke also have a higher risk of the cancer spreading beyond the prostate. Some treatments for metastatic prostate cancer can cause thinning bones. This complication can cause bones to break more easily. To help reduce the risk of thinning bones, your healthcare team might recommend that you: Limit how much alcohol you drink. Stop smoking if you smoke. Get 30 minutes of weight-bearing exercise most days of the week. Weight-bearing exercises include activities where your legs carry your weight. Examples include strength training, lifting weights, walking, running, basketball and pickleball. Eat foods that are rich in calcium. Examples include dairy products, such as cheese, milk and yogurt, and some vegetables, such as bok choy, broccoli and kale. Take vitamin supplements, but don't do this without talking with your healthcare team. Your care tea",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Metastatic_(stage_4)_prostate_cancer.txt",
+              "source_char_start": 2622,
+              "source_char_end": 3646,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_1814",
+                "text": "ink between smoking and prostate cancer. But not all studies agree. People with prostate cancer who smoke may have a higher risk of the cancer coming back. People who smoke also have a higher risk of the cancer spreading beyond the prostate. Some treatments for metastatic prostate cancer can cause thinning bones. This complication can cause bones to break more easily. To help reduce the risk of thinning bones, your healthcare team might recommend that you: Limit how much alcohol you drink. Stop smoking if you smoke. Get 30 minutes of weight-bearing exercise most days of the week. Weight-bearing exercises include activities where your legs carry your weight. Examples include strength training, lifting weights, walking, running, basketball and pickleball. Eat foods that are rich in calcium. Examples include dairy products, such as cheese, milk and yogurt, and some vegetables, such as bok choy, broccoli and kale. Take vitamin supplements, but don't do this without talking with your healthcare team. Your care tea",
+                "source_document": "Metastatic_(stage_4)_prostate_cancer.txt",
+                "source_char_start": 2622,
+                "source_char_end": 3646
+              }
+            },
+            "fusion_score": 0.008235294117647058,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 18.289403973509934,
+          "rerank_method": "feature",
+          "search_time": 0.1467571258544922,
+          "total_chunks": 19809
+        }
+      ]
+    },
+    {
+      "test_case": "TestCase(symptom='Migraine (Case 1)', patient_query=\"I'm a 30-year-old woman and I have a severe headache that started this morning. It's throbbing on the right side of my head and I'm sensitive to light and sound.\", patient_response=\"Yes, I get migraines occasionally but this one feels worse than usual. I'm feeling nauseous and had to vomit once. No vision changes though.\", final_triage_decision='Self-care', next_step='Try rest in a dark, quiet room, over-the-counter pain medication, and plenty of fluids. If symptoms worsen significantly, seek medical attention.', reasoning_question=\"Need to differentiate between typical migraine and more serious headache causes by assessing associated symptoms and comparing to patient's usual pattern.\", reasoning_decision='This appears to be a typical migraine episode, albeit more severe than usual. The absence of concerning neurological symptoms allows for initial self-care management with safety netting.', clarifying_question='Have you experienced headaches like this before? Are you experiencing any vision changes, nausea, or vomiting?', generation_timestamp=1758449809.750725)",
+      "query": "I'm a 30-year-old woman and I have a severe headache that started this morning. It's throbbing on the right side of my head and I'm sensitive to light and sound. Yes, I get migraines occasionally but this one feels worse than usual. I'm feeling nauseous and had to vomit once. No vision changes though.",
+      "results": {
+        "pass_at_5": false,
+        "pass_at_10": false,
+        "pass_at_20": false
+      },
+      "retrieval_time": 0.14290285110473633,
+      "top_retrieved": [
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_2428",
+              "text": "By definition, chronic daily headaches occur 15 days or more a month, for longer than three months. True (primary) chronic daily headaches aren't caused by another condition. There are short-lasting and long-lasting chronic daily headaches. Long-lasting headaches last more than four hours. They include: Chronic migraine Chronic tension-type headache New daily persistent headache Hemicrania continua This type typically occurs in people with a history of episodic migraines. Chronic migraines tend to: Affect one side or both sides of your head Have a pulsating, throbbing sensation Cause moderate to severe pain And they cause at least one of the following: Nausea, vomiting or both Sensitivity to light and sound These headaches tend to: Affect both sides of your head Cause mild to moderate pain Cause pain that feels pressing or tightening, but not pulsating These headaches come on suddenly, usually in people without a headache history. They become constant within three days of your first headache. They: Often affe",
+              "original_text": "By definition, chronic daily headaches occur 15 days or more a month, for longer than three months. True (primary) chronic daily headaches aren't caused by another condition. There are short-lasting and long-lasting chronic daily headaches. Long-lasting headaches last more than four hours. They include: Chronic migraine Chronic tension-type headache New daily persistent headache Hemicrania continua This type typically occurs in people with a history of episodic migraines. Chronic migraines tend to: Affect one side or both sides of your head Have a pulsating, throbbing sensation Cause moderate to severe pain And they cause at least one of the following: Nausea, vomiting or both Sensitivity to light and sound These headaches tend to: Affect both sides of your head Cause mild to moderate pain Cause pain that feels pressing or tightening, but not pulsating These headaches come on suddenly, usually in people without a headache history. They become constant within three days of your first headache. They: Often affe",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Chronic_daily_headaches.txt",
+              "source_char_start": 0,
+              "source_char_end": 1024,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_2428",
+                "text": "By definition, chronic daily headaches occur 15 days or more a month, for longer than three months. True (primary) chronic daily headaches aren't caused by another condition. There are short-lasting and long-lasting chronic daily headaches. Long-lasting headaches last more than four hours. They include: Chronic migraine Chronic tension-type headache New daily persistent headache Hemicrania continua This type typically occurs in people with a history of episodic migraines. Chronic migraines tend to: Affect one side or both sides of your head Have a pulsating, throbbing sensation Cause moderate to severe pain And they cause at least one of the following: Nausea, vomiting or both Sensitivity to light and sound These headaches tend to: Affect both sides of your head Cause mild to moderate pain Cause pain that feels pressing or tightening, but not pulsating These headaches come on suddenly, usually in people without a headache history. They become constant within three days of your first headache. They: Often affe",
+                "source_document": "Chronic_daily_headaches.txt",
+                "source_char_start": 0,
+                "source_char_end": 1024
+              }
+            },
+            "fusion_score": 0.004838709677419354,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 40.67881944444444,
+          "rerank_method": "feature",
+          "search_time": 0.1429002285003662,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_2308",
+              "text": "he right procedure that would work best for you with the lowest risk. If you're wondering about bringing a family member or a friend or somebody with you, I think it's very helpful to have that. I also sometimes we call a family member and have them on a speaker phone in the room, and they can listen in. So I'm happy to do that too. But just to share more about best options and how to make that right decision. You know, sometimes the Zenker's is really small, and if you have very little in the way of symptoms, you don't have to have the surgery either. So making those decisions, it's kind of nice to have someone else with you. Now, also, if you are planning on needing surgery next day or planning on surgery next day, then I would for sure have someone with you because you can't drive for 24 hours after you're going to be staying in the hospital typically one night after this procedure. But it's nice to have someone with if you can. From an Internet standpoint, there's so much information that you can read. An",
+              "original_text": "he right procedure that would work best for you with the lowest risk. If you're wondering about bringing a family member or a friend or somebody with you, I think it's very helpful to have that. I also sometimes we call a family member and have them on a speaker phone in the room, and they can listen in. So I'm happy to do that too. But just to share more about best options and how to make that right decision. You know, sometimes the Zenker's is really small, and if you have very little in the way of symptoms, you don't have to have the surgery either. So making those decisions, it's kind of nice to have someone else with you. Now, also, if you are planning on needing surgery next day or planning on surgery next day, then I would for sure have someone with you because you can't drive for 24 hours after you're going to be staying in the hospital typically one night after this procedure. But it's nice to have someone with if you can. From an Internet standpoint, there's so much information that you can read. An",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Zenker's_diverticulum.txt",
+              "source_char_start": 6992,
+              "source_char_end": 8016,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_2308",
+                "text": "he right procedure that would work best for you with the lowest risk. If you're wondering about bringing a family member or a friend or somebody with you, I think it's very helpful to have that. I also sometimes we call a family member and have them on a speaker phone in the room, and they can listen in. So I'm happy to do that too. But just to share more about best options and how to make that right decision. You know, sometimes the Zenker's is really small, and if you have very little in the way of symptoms, you don't have to have the surgery either. So making those decisions, it's kind of nice to have someone else with you. Now, also, if you are planning on needing surgery next day or planning on surgery next day, then I would for sure have someone with you because you can't drive for 24 hours after you're going to be staying in the hospital typically one night after this procedure. But it's nice to have someone with if you can. From an Internet standpoint, there's so much information that you can read. An",
+                "source_document": "Zenker's_diverticulum.txt",
+                "source_char_start": 6992,
+                "source_char_end": 8016
+              }
+            },
+            "fusion_score": 0.0046875,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 30.488505747126435,
+          "rerank_method": "feature",
+          "search_time": 0.1429002285003662,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_18983",
+              "text": "nses are most commonly used for people with cataracts, but younger people who want correction from nearsightedness could benefit too. For Medical Edge, I'm Vivien Williams. Yes, babies and kids get cataracts, too \u2014 whether from complex genetic disease, a firecracker injury in an older child, or a birth defect in a newborn. Cataracts may severely cloud the vision of children. And since vision development in the brain takes years to refine, having a cataract even for a short time will have a lifelong implication. This is an example of a complex pediatric cataract surgery. The ocular features in this unilateral condition include the eye being abnormally small, having an irregular iris appearance and an often membranous-like cataract with a vessel stalk that connects that cataract to the back of the eye. One can see that stalk in this surgical video. Eyes like this often have a less favorable outcome because they hold a greater risk of glaucoma and retinal detachment. Standard intraocular lenses are typically not",
+              "original_text": "nses are most commonly used for people with cataracts, but younger people who want correction from nearsightedness could benefit too. For Medical Edge, I'm Vivien Williams. Yes, babies and kids get cataracts, too \u2014 whether from complex genetic disease, a firecracker injury in an older child, or a birth defect in a newborn. Cataracts may severely cloud the vision of children. And since vision development in the brain takes years to refine, having a cataract even for a short time will have a lifelong implication. This is an example of a complex pediatric cataract surgery. The ocular features in this unilateral condition include the eye being abnormally small, having an irregular iris appearance and an often membranous-like cataract with a vessel stalk that connects that cataract to the back of the eye. One can see that stalk in this surgical video. Eyes like this often have a less favorable outcome because they hold a greater risk of glaucoma and retinal detachment. Standard intraocular lenses are typically not",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Cataracts_diagnosis_treatment.txt",
+              "source_char_start": 4370,
+              "source_char_end": 5394,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_18983",
+                "text": "nses are most commonly used for people with cataracts, but younger people who want correction from nearsightedness could benefit too. For Medical Edge, I'm Vivien Williams. Yes, babies and kids get cataracts, too \u2014 whether from complex genetic disease, a firecracker injury in an older child, or a birth defect in a newborn. Cataracts may severely cloud the vision of children. And since vision development in the brain takes years to refine, having a cataract even for a short time will have a lifelong implication. This is an example of a complex pediatric cataract surgery. The ocular features in this unilateral condition include the eye being abnormally small, having an irregular iris appearance and an often membranous-like cataract with a vessel stalk that connects that cataract to the back of the eye. One can see that stalk in this surgical video. Eyes like this often have a less favorable outcome because they hold a greater risk of glaucoma and retinal detachment. Standard intraocular lenses are typically not",
+                "source_document": "Cataracts_diagnosis_treatment.txt",
+                "source_char_start": 4370,
+                "source_char_end": 5394
+              }
+            },
+            "fusion_score": 0.0047619047619047615,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 28.452050708426547,
+          "rerank_method": "feature",
+          "search_time": 0.1429002285003662,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_10826",
+              "text": "eriencing, and for how long Your medical information, including other injuries or surgeries you've had and whether your family has a history of keloids Questions to ask your doctorto make the most of your time together Questions may include: Am I at risk of developing keloids? How can I reduce the risk of developing a keloid? What if I want to get a tattoo or body piercing? What if I need surgery? How soon after beginning treatment might my symptoms start to improve? When will you see me again to evaluate whether my treatment is working? What are the chances of the keloid coming back? What are possible side effects of the treatment you're suggesting? I'm scheduled for surgery. What can I do to minimize the risk of a keloid developing from the scar? What's your advice on wound care after surgery? Can my keloid turn into cancer? What self-care steps might prevent a keloid from coming back? Do you recommend any changes to the products I'm using on my skin, including soaps, lotions, sunscreens and cosmetics? Don'",
+              "original_text": "eriencing, and for how long Your medical information, including other injuries or surgeries you've had and whether your family has a history of keloids Questions to ask your doctorto make the most of your time together Questions may include: Am I at risk of developing keloids? How can I reduce the risk of developing a keloid? What if I want to get a tattoo or body piercing? What if I need surgery? How soon after beginning treatment might my symptoms start to improve? When will you see me again to evaluate whether my treatment is working? What are the chances of the keloid coming back? What are possible side effects of the treatment you're suggesting? I'm scheduled for surgery. What can I do to minimize the risk of a keloid developing from the scar? What's your advice on wound care after surgery? Can my keloid turn into cancer? What self-care steps might prevent a keloid from coming back? Do you recommend any changes to the products I'm using on my skin, including soaps, lotions, sunscreens and cosmetics? Don'",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Keloid_scar_diagnosis_treatment.txt",
+              "source_char_start": 4370,
+              "source_char_end": 5394,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_10826",
+                "text": "eriencing, and for how long Your medical information, including other injuries or surgeries you've had and whether your family has a history of keloids Questions to ask your doctorto make the most of your time together Questions may include: Am I at risk of developing keloids? How can I reduce the risk of developing a keloid? What if I want to get a tattoo or body piercing? What if I need surgery? How soon after beginning treatment might my symptoms start to improve? When will you see me again to evaluate whether my treatment is working? What are the chances of the keloid coming back? What are possible side effects of the treatment you're suggesting? I'm scheduled for surgery. What can I do to minimize the risk of a keloid developing from the scar? What's your advice on wound care after surgery? Can my keloid turn into cancer? What self-care steps might prevent a keloid from coming back? Do you recommend any changes to the products I'm using on my skin, including soaps, lotions, sunscreens and cosmetics? Don'",
+                "source_document": "Keloid_scar_diagnosis_treatment.txt",
+                "source_char_start": 4370,
+                "source_char_end": 5394
+              }
+            },
+            "fusion_score": 0.004918032786885246,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 26.428174603174604,
+          "rerank_method": "feature",
+          "search_time": 0.1429002285003662,
+          "total_chunks": 19809
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "mayo_fixed_c1024_o150_chunk_16678",
+              "text": "re team to talk with you about the possible side effects. After treatment, your health care team likely will want to check your amniotic fluid level about every 1 to 3 weeks. If you have mild to moderate polyhydramnios, your care team probably will plan to have you deliver your baby at 39 or 40 weeks. If you have severe polyhydramnios, your team likely will talk about the right timing of delivery. The goal is to lower the chances of health problems for you and your baby. Having polyhydramnios can be stressful. But your health care team is there for you. Work together to ensure that you and your baby receive the best possible care. You're likely to start by talking with your pregnancy care professional. Here's some information to help you get ready for your appointment. Before your appointment: Write down any symptoms you've been having. Include when they started and how they've changed over time. Write down key personal information, including any other medical conditions for which you're being treated. Make a",
+              "original_text": "re team to talk with you about the possible side effects. After treatment, your health care team likely will want to check your amniotic fluid level about every 1 to 3 weeks. If you have mild to moderate polyhydramnios, your care team probably will plan to have you deliver your baby at 39 or 40 weeks. If you have severe polyhydramnios, your team likely will talk about the right timing of delivery. The goal is to lower the chances of health problems for you and your baby. Having polyhydramnios can be stressful. But your health care team is there for you. Work together to ensure that you and your baby receive the best possible care. You're likely to start by talking with your pregnancy care professional. Here's some information to help you get ready for your appointment. Before your appointment: Write down any symptoms you've been having. Include when they started and how they've changed over time. Write down key personal information, including any other medical conditions for which you're being treated. Make a",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Polyhydramnios_diagnosis_treatment.txt",
+              "source_char_start": 874,
+              "source_char_end": 1898,
+              "metadata": {
+                "chunk_id": "mayo_fixed_c1024_o150_chunk_16678",
+                "text": "re team to talk with you about the possible side effects. After treatment, your health care team likely will want to check your amniotic fluid level about every 1 to 3 weeks. If you have mild to moderate polyhydramnios, your care team probably will plan to have you deliver your baby at 39 or 40 weeks. If you have severe polyhydramnios, your team likely will talk about the right timing of delivery. The goal is to lower the chances of health problems for you and your baby. Having polyhydramnios can be stressful. But your health care team is there for you. Work together to ensure that you and your baby receive the best possible care. You're likely to start by talking with your pregnancy care professional. Here's some information to help you get ready for your appointment. Before your appointment: Write down any symptoms you've been having. Include when they started and how they've changed over time. Write down key personal information, including any other medical conditions for which you're being treated. Make a",
+                "source_document": "Polyhydramnios_diagnosis_treatment.txt",
+                "source_char_start": 874,
+                "source_char_end": 1898
+              }
+            },
+            "fusion_score": 0.008235294117647058,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 26.425252525252525,
+          "rerank_method": "feature",
+          "search_time": 0.1429002285003662,
+          "total_chunks": 19809
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,802 @@
+[
+  {
+    "combo_id": "G270_1_C5_3a482fea",
+    "rag_config": {
+      "chunking_method": "structured_agent_tinfoil_medical",
+      "retrieval_type": "contextual_rag",
+      "bias_config": "diverse",
+      "chunk_limit": 5,
+      "pass_at_5": 0.595,
+      "pass_at_10": 0.77,
+      "avg_retrieval_time": 0.0321,
+      "peak_memory_mb": 1.8,
+      "config_id": "pass5_1_structur_contex"
+    },
+    "adapter_config": {
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+      "model_name": "Gemma-270M",
+      "adapter_type": "safety",
+      "training_config": {
+        "adapter_path": "safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+        "batch_size": 4,
+        "config": "safety_triage_results_20250926_114751/safe_config_safe_triage_Gemma-270M_8bit_balanced_safe.json",
+        "data": "./Final_dataset/final_triage_dialogues_mlx",
+        "fine_tune_type": "lora",
+        "grad_checkpoint": false,
+        "iters": 1200,
+        "learning_rate": 1e-05,
+        "lora_parameters": {
+          "rank": 8,
+          "dropout": 0.1,
+          "scale": 8.0
+        },
+        "lr_schedule": null,
+        "mask_prompt": true,
+        "max_seq_length": 2048,
+        "model": "/Users/choemanseung/789/hft/mlx_models/gemma-270m-mlx_8bit",
+        "num_layers": 16,
+        "optimizer": "adamw",
+        "optimizer_config": {
+          "adamw": {
+            "weight_decay": 0.01
+          }
+        },
+        "project_name": null,
+        "report_to": null,
+        "resume_adapter_file": null,
+        "safety_config": {
+          "class_weights": {
+            "ED": 9.324834749763928,
+            "GP": 0.8754432624113475,
+            "HOME": 5.5790960451977405
+          },
+          "cost_matrix": {
+            "ED_GP": 100.0,
+            "ED_HOME": 100.0,
+            "GP_HOME": 10.0,
+            "GP_ED": 2.0,
+            "HOME_ED": 2.0,
+            "HOME_GP": 3.0,
+            "ED_ED": 1.0,
+            "GP_GP": 1.0,
+            "HOME_HOME": 1.0
+          },
+          "target_ed_recall": 0.96,
+          "safety_priority": "high",
+          "mc_dropout_samples": 100,
+          "uncertainty_threshold": 0.3
+        },
+        "save_every": 100,
+        "seed": 42,
+        "steps_per_eval": 200,
+        "steps_per_report": 50,
+        "test": true,
+        "test_batches": -1,
+        "train": true,
+        "val_batches": -1,
+        "wandb": null,
+        "warmup_ratio": 0.1
+      }
+    }
+  },
+  {
+    "combo_id": "G270_1_C10_c1b77866",
+    "rag_config": {
+      "chunking_method": "structured_agent_tinfoil_medical",
+      "retrieval_type": "contextual_rag",
+      "bias_config": "diverse",
+      "chunk_limit": 10,
+      "pass_at_5": 0.595,
+      "pass_at_10": 0.77,
+      "avg_retrieval_time": 0.0321,
+      "peak_memory_mb": 1.8,
+      "config_id": "pass5_1_structur_contex"
+    },
+    "adapter_config": {
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+      "model_name": "Gemma-270M",
+      "adapter_type": "safety",
+      "training_config": {
+        "adapter_path": "safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+        "batch_size": 4,
+        "config": "safety_triage_results_20250926_114751/safe_config_safe_triage_Gemma-270M_8bit_balanced_safe.json",
+        "data": "./Final_dataset/final_triage_dialogues_mlx",
+        "fine_tune_type": "lora",
+        "grad_checkpoint": false,
+        "iters": 1200,
+        "learning_rate": 1e-05,
+        "lora_parameters": {
+          "rank": 8,
+          "dropout": 0.1,
+          "scale": 8.0
+        },
+        "lr_schedule": null,
+        "mask_prompt": true,
+        "max_seq_length": 2048,
+        "model": "/Users/choemanseung/789/hft/mlx_models/gemma-270m-mlx_8bit",
+        "num_layers": 16,
+        "optimizer": "adamw",
+        "optimizer_config": {
+          "adamw": {
+            "weight_decay": 0.01
+          }
+        },
+        "project_name": null,
+        "report_to": null,
+        "resume_adapter_file": null,
+        "safety_config": {
+          "class_weights": {
+            "ED": 9.324834749763928,
+            "GP": 0.8754432624113475,
+            "HOME": 5.5790960451977405
+          },
+          "cost_matrix": {
+            "ED_GP": 100.0,
+            "ED_HOME": 100.0,
+            "GP_HOME": 10.0,
+            "GP_ED": 2.0,
+            "HOME_ED": 2.0,
+            "HOME_GP": 3.0,
+            "ED_ED": 1.0,
+            "GP_GP": 1.0,
+            "HOME_HOME": 1.0
+          },
+          "target_ed_recall": 0.96,
+          "safety_priority": "high",
+          "mc_dropout_samples": 100,
+          "uncertainty_threshold": 0.3
+        },
+        "save_every": 100,
+        "seed": 42,
+        "steps_per_eval": 200,
+        "steps_per_report": 50,
+        "test": true,
+        "test_batches": -1,
+        "train": true,
+        "val_batches": -1,
+        "wandb": null,
+        "warmup_ratio": 0.1
+      }
+    }
+  },
+  {
+    "combo_id": "G270_2_C5_112fedce",
+    "rag_config": {
+      "chunking_method": "structured_agent_tinfoil_medical",
+      "retrieval_type": "pure_rag",
+      "bias_config": "diverse",
+      "chunk_limit": 5,
+      "pass_at_5": 0.59,
+      "pass_at_10": 0.73,
+      "avg_retrieval_time": 0.0017,
+      "peak_memory_mb": 30.3,
+      "config_id": "pass5_2_structur_pure_r"
+    },
+    "adapter_config": {
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+      "model_name": "Gemma-270M",
+      "adapter_type": "safety",
+      "training_config": {
+        "adapter_path": "safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+        "batch_size": 4,
+        "config": "safety_triage_results_20250926_114751/safe_config_safe_triage_Gemma-270M_8bit_balanced_safe.json",
+        "data": "./Final_dataset/final_triage_dialogues_mlx",
+        "fine_tune_type": "lora",
+        "grad_checkpoint": false,
+        "iters": 1200,
+        "learning_rate": 1e-05,
+        "lora_parameters": {
+          "rank": 8,
+          "dropout": 0.1,
+          "scale": 8.0
+        },
+        "lr_schedule": null,
+        "mask_prompt": true,
+        "max_seq_length": 2048,
+        "model": "/Users/choemanseung/789/hft/mlx_models/gemma-270m-mlx_8bit",
+        "num_layers": 16,
+        "optimizer": "adamw",
+        "optimizer_config": {
+          "adamw": {
+            "weight_decay": 0.01
+          }
+        },
+        "project_name": null,
+        "report_to": null,
+        "resume_adapter_file": null,
+        "safety_config": {
+          "class_weights": {
+            "ED": 9.324834749763928,
+            "GP": 0.8754432624113475,
+            "HOME": 5.5790960451977405
+          },
+          "cost_matrix": {
+            "ED_GP": 100.0,
+            "ED_HOME": 100.0,
+            "GP_HOME": 10.0,
+            "GP_ED": 2.0,
+            "HOME_ED": 2.0,
+            "HOME_GP": 3.0,
+            "ED_ED": 1.0,
+            "GP_GP": 1.0,
+            "HOME_HOME": 1.0
+          },
+          "target_ed_recall": 0.96,
+          "safety_priority": "high",
+          "mc_dropout_samples": 100,
+          "uncertainty_threshold": 0.3
+        },
+        "save_every": 100,
+        "seed": 42,
+        "steps_per_eval": 200,
+        "steps_per_report": 50,
+        "test": true,
+        "test_batches": -1,
+        "train": true,
+        "val_batches": -1,
+        "wandb": null,
+        "warmup_ratio": 0.1
+      }
+    }
+  },
+  {
+    "combo_id": "G270_2_C10_ff0ad1e7",
+    "rag_config": {
+      "chunking_method": "structured_agent_tinfoil_medical",
+      "retrieval_type": "pure_rag",
+      "bias_config": "diverse",
+      "chunk_limit": 10,
+      "pass_at_5": 0.59,
+      "pass_at_10": 0.73,
+      "avg_retrieval_time": 0.0017,
+      "peak_memory_mb": 30.3,
+      "config_id": "pass5_2_structur_pure_r"
+    },
+    "adapter_config": {
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+      "model_name": "Gemma-270M",
+      "adapter_type": "safety",
+      "training_config": {
+        "adapter_path": "safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+        "batch_size": 4,
+        "config": "safety_triage_results_20250926_114751/safe_config_safe_triage_Gemma-270M_8bit_balanced_safe.json",
+        "data": "./Final_dataset/final_triage_dialogues_mlx",
+        "fine_tune_type": "lora",
+        "grad_checkpoint": false,
+        "iters": 1200,
+        "learning_rate": 1e-05,
+        "lora_parameters": {
+          "rank": 8,
+          "dropout": 0.1,
+          "scale": 8.0
+        },
+        "lr_schedule": null,
+        "mask_prompt": true,
+        "max_seq_length": 2048,
+        "model": "/Users/choemanseung/789/hft/mlx_models/gemma-270m-mlx_8bit",
+        "num_layers": 16,
+        "optimizer": "adamw",
+        "optimizer_config": {
+          "adamw": {
+            "weight_decay": 0.01
+          }
+        },
+        "project_name": null,
+        "report_to": null,
+        "resume_adapter_file": null,
+        "safety_config": {
+          "class_weights": {
+            "ED": 9.324834749763928,
+            "GP": 0.8754432624113475,
+            "HOME": 5.5790960451977405
+          },
+          "cost_matrix": {
+            "ED_GP": 100.0,
+            "ED_HOME": 100.0,
+            "GP_HOME": 10.0,
+            "GP_ED": 2.0,
+            "HOME_ED": 2.0,
+            "HOME_GP": 3.0,
+            "ED_ED": 1.0,
+            "GP_GP": 1.0,
+            "HOME_HOME": 1.0
+          },
+          "target_ed_recall": 0.96,
+          "safety_priority": "high",
+          "mc_dropout_samples": 100,
+          "uncertainty_threshold": 0.3
+        },
+        "save_every": 100,
+        "seed": 42,
+        "steps_per_eval": 200,
+        "steps_per_report": 50,
+        "test": true,
+        "test_batches": -1,
+        "train": true,
+        "val_batches": -1,
+        "wandb": null,
+        "warmup_ratio": 0.1
+      }
+    }
+  },
+  {
+    "combo_id": "G270_3_C5_69179247",
+    "rag_config": {
+      "chunking_method": "contextual_sentence_c1024_o2_tinfoil",
+      "retrieval_type": "contextual_rag",
+      "bias_config": "diverse",
+      "chunk_limit": 5,
+      "pass_at_5": 0.525,
+      "pass_at_10": 0.635,
+      "avg_retrieval_time": 0.461,
+      "peak_memory_mb": 0.0,
+      "config_id": "pass5_3_contextu_contex"
+    },
+    "adapter_config": {
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+      "model_name": "Gemma-270M",
+      "adapter_type": "safety",
+      "training_config": {
+        "adapter_path": "safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+        "batch_size": 4,
+        "config": "safety_triage_results_20250926_114751/safe_config_safe_triage_Gemma-270M_8bit_balanced_safe.json",
+        "data": "./Final_dataset/final_triage_dialogues_mlx",
+        "fine_tune_type": "lora",
+        "grad_checkpoint": false,
+        "iters": 1200,
+        "learning_rate": 1e-05,
+        "lora_parameters": {
+          "rank": 8,
+          "dropout": 0.1,
+          "scale": 8.0
+        },
+        "lr_schedule": null,
+        "mask_prompt": true,
+        "max_seq_length": 2048,
+        "model": "/Users/choemanseung/789/hft/mlx_models/gemma-270m-mlx_8bit",
+        "num_layers": 16,
+        "optimizer": "adamw",
+        "optimizer_config": {
+          "adamw": {
+            "weight_decay": 0.01
+          }
+        },
+        "project_name": null,
+        "report_to": null,
+        "resume_adapter_file": null,
+        "safety_config": {
+          "class_weights": {
+            "ED": 9.324834749763928,
+            "GP": 0.8754432624113475,
+            "HOME": 5.5790960451977405
+          },
+          "cost_matrix": {
+            "ED_GP": 100.0,
+            "ED_HOME": 100.0,
+            "GP_HOME": 10.0,
+            "GP_ED": 2.0,
+            "HOME_ED": 2.0,
+            "HOME_GP": 3.0,
+            "ED_ED": 1.0,
+            "GP_GP": 1.0,
+            "HOME_HOME": 1.0
+          },
+          "target_ed_recall": 0.96,
+          "safety_priority": "high",
+          "mc_dropout_samples": 100,
+          "uncertainty_threshold": 0.3
+        },
+        "save_every": 100,
+        "seed": 42,
+        "steps_per_eval": 200,
+        "steps_per_report": 50,
+        "test": true,
+        "test_batches": -1,
+        "train": true,
+        "val_batches": -1,
+        "wandb": null,
+        "warmup_ratio": 0.1
+      }
+    }
+  },
+  {
+    "combo_id": "G270_3_C10_94a82773",
+    "rag_config": {
+      "chunking_method": "contextual_sentence_c1024_o2_tinfoil",
+      "retrieval_type": "contextual_rag",
+      "bias_config": "diverse",
+      "chunk_limit": 10,
+      "pass_at_5": 0.525,
+      "pass_at_10": 0.635,
+      "avg_retrieval_time": 0.461,
+      "peak_memory_mb": 0.0,
+      "config_id": "pass5_3_contextu_contex"
+    },
+    "adapter_config": {
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+      "model_name": "Gemma-270M",
+      "adapter_type": "safety",
+      "training_config": {
+        "adapter_path": "safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+        "batch_size": 4,
+        "config": "safety_triage_results_20250926_114751/safe_config_safe_triage_Gemma-270M_8bit_balanced_safe.json",
+        "data": "./Final_dataset/final_triage_dialogues_mlx",
+        "fine_tune_type": "lora",
+        "grad_checkpoint": false,
+        "iters": 1200,
+        "learning_rate": 1e-05,
+        "lora_parameters": {
+          "rank": 8,
+          "dropout": 0.1,
+          "scale": 8.0
+        },
+        "lr_schedule": null,
+        "mask_prompt": true,
+        "max_seq_length": 2048,
+        "model": "/Users/choemanseung/789/hft/mlx_models/gemma-270m-mlx_8bit",
+        "num_layers": 16,
+        "optimizer": "adamw",
+        "optimizer_config": {
+          "adamw": {
+            "weight_decay": 0.01
+          }
+        },
+        "project_name": null,
+        "report_to": null,
+        "resume_adapter_file": null,
+        "safety_config": {
+          "class_weights": {
+            "ED": 9.324834749763928,
+            "GP": 0.8754432624113475,
+            "HOME": 5.5790960451977405
+          },
+          "cost_matrix": {
+            "ED_GP": 100.0,
+            "ED_HOME": 100.0,
+            "GP_HOME": 10.0,
+            "GP_ED": 2.0,
+            "HOME_ED": 2.0,
+            "HOME_GP": 3.0,
+            "ED_ED": 1.0,
+            "GP_GP": 1.0,
+            "HOME_HOME": 1.0
+          },
+          "target_ed_recall": 0.96,
+          "safety_priority": "high",
+          "mc_dropout_samples": 100,
+          "uncertainty_threshold": 0.3
+        },
+        "save_every": 100,
+        "seed": 42,
+        "steps_per_eval": 200,
+        "steps_per_report": 50,
+        "test": true,
+        "test_batches": -1,
+        "train": true,
+        "val_batches": -1,
+        "wandb": null,
+        "warmup_ratio": 0.1
+      }
+    }
+  },
+  {
+    "combo_id": "G270_4_C5_3b1cbe85",
+    "rag_config": {
+      "chunking_method": "contextual_fixed_c512_o100",
+      "retrieval_type": "contextual_rag",
+      "bias_config": "diverse",
+      "chunk_limit": 5,
+      "pass_at_5": 0.52,
+      "pass_at_10": 0.65,
+      "avg_retrieval_time": 1.059,
+      "peak_memory_mb": 0.0,
+      "config_id": "pass5_4_contextu_contex"
+    },
+    "adapter_config": {
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+      "model_name": "Gemma-270M",
+      "adapter_type": "safety",
+      "training_config": {
+        "adapter_path": "safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+        "batch_size": 4,
+        "config": "safety_triage_results_20250926_114751/safe_config_safe_triage_Gemma-270M_8bit_balanced_safe.json",
+        "data": "./Final_dataset/final_triage_dialogues_mlx",
+        "fine_tune_type": "lora",
+        "grad_checkpoint": false,
+        "iters": 1200,
+        "learning_rate": 1e-05,
+        "lora_parameters": {
+          "rank": 8,
+          "dropout": 0.1,
+          "scale": 8.0
+        },
+        "lr_schedule": null,
+        "mask_prompt": true,
+        "max_seq_length": 2048,
+        "model": "/Users/choemanseung/789/hft/mlx_models/gemma-270m-mlx_8bit",
+        "num_layers": 16,
+        "optimizer": "adamw",
+        "optimizer_config": {
+          "adamw": {
+            "weight_decay": 0.01
+          }
+        },
+        "project_name": null,
+        "report_to": null,
+        "resume_adapter_file": null,
+        "safety_config": {
+          "class_weights": {
+            "ED": 9.324834749763928,
+            "GP": 0.8754432624113475,
+            "HOME": 5.5790960451977405
+          },
+          "cost_matrix": {
+            "ED_GP": 100.0,
+            "ED_HOME": 100.0,
+            "GP_HOME": 10.0,
+            "GP_ED": 2.0,
+            "HOME_ED": 2.0,
+            "HOME_GP": 3.0,
+            "ED_ED": 1.0,
+            "GP_GP": 1.0,
+            "HOME_HOME": 1.0
+          },
+          "target_ed_recall": 0.96,
+          "safety_priority": "high",
+          "mc_dropout_samples": 100,
+          "uncertainty_threshold": 0.3
+        },
+        "save_every": 100,
+        "seed": 42,
+        "steps_per_eval": 200,
+        "steps_per_report": 50,
+        "test": true,
+        "test_batches": -1,
+        "train": true,
+        "val_batches": -1,
+        "wandb": null,
+        "warmup_ratio": 0.1
+      }
+    }
+  },
+  {
+    "combo_id": "G270_4_C10_8e1f8d80",
+    "rag_config": {
+      "chunking_method": "contextual_fixed_c512_o100",
+      "retrieval_type": "contextual_rag",
+      "bias_config": "diverse",
+      "chunk_limit": 10,
+      "pass_at_5": 0.52,
+      "pass_at_10": 0.65,
+      "avg_retrieval_time": 1.059,
+      "peak_memory_mb": 0.0,
+      "config_id": "pass5_4_contextu_contex"
+    },
+    "adapter_config": {
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+      "model_name": "Gemma-270M",
+      "adapter_type": "safety",
+      "training_config": {
+        "adapter_path": "safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+        "batch_size": 4,
+        "config": "safety_triage_results_20250926_114751/safe_config_safe_triage_Gemma-270M_8bit_balanced_safe.json",
+        "data": "./Final_dataset/final_triage_dialogues_mlx",
+        "fine_tune_type": "lora",
+        "grad_checkpoint": false,
+        "iters": 1200,
+        "learning_rate": 1e-05,
+        "lora_parameters": {
+          "rank": 8,
+          "dropout": 0.1,
+          "scale": 8.0
+        },
+        "lr_schedule": null,
+        "mask_prompt": true,
+        "max_seq_length": 2048,
+        "model": "/Users/choemanseung/789/hft/mlx_models/gemma-270m-mlx_8bit",
+        "num_layers": 16,
+        "optimizer": "adamw",
+        "optimizer_config": {
+          "adamw": {
+            "weight_decay": 0.01
+          }
+        },
+        "project_name": null,
+        "report_to": null,
+        "resume_adapter_file": null,
+        "safety_config": {
+          "class_weights": {
+            "ED": 9.324834749763928,
+            "GP": 0.8754432624113475,
+            "HOME": 5.5790960451977405
+          },
+          "cost_matrix": {
+            "ED_GP": 100.0,
+            "ED_HOME": 100.0,
+            "GP_HOME": 10.0,
+            "GP_ED": 2.0,
+            "HOME_ED": 2.0,
+            "HOME_GP": 3.0,
+            "ED_ED": 1.0,
+            "GP_GP": 1.0,
+            "HOME_HOME": 1.0
+          },
+          "target_ed_recall": 0.96,
+          "safety_priority": "high",
+          "mc_dropout_samples": 100,
+          "uncertainty_threshold": 0.3
+        },
+        "save_every": 100,
+        "seed": 42,
+        "steps_per_eval": 200,
+        "steps_per_report": 50,
+        "test": true,
+        "test_batches": -1,
+        "train": true,
+        "val_batches": -1,
+        "wandb": null,
+        "warmup_ratio": 0.1
+      }
+    }
+  },
+  {
+    "combo_id": "G270_2_C5_d4a5684e",
+    "rag_config": {
+      "chunking_method": "structured_agent_tinfoil_medical",
+      "retrieval_type": "contextual_rag",
+      "bias_config": "healthify_focused",
+      "chunk_limit": 5,
+      "pass_at_5": 0.39,
+      "pass_at_10": 0.75,
+      "avg_retrieval_time": 0.0352,
+      "peak_memory_mb": 0.0,
+      "config_id": "pass10_2_structur_contex"
+    },
+    "adapter_config": {
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+      "model_name": "Gemma-270M",
+      "adapter_type": "safety",
+      "training_config": {
+        "adapter_path": "safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+        "batch_size": 4,
+        "config": "safety_triage_results_20250926_114751/safe_config_safe_triage_Gemma-270M_8bit_balanced_safe.json",
+        "data": "./Final_dataset/final_triage_dialogues_mlx",
+        "fine_tune_type": "lora",
+        "grad_checkpoint": false,
+        "iters": 1200,
+        "learning_rate": 1e-05,
+        "lora_parameters": {
+          "rank": 8,
+          "dropout": 0.1,
+          "scale": 8.0
+        },
+        "lr_schedule": null,
+        "mask_prompt": true,
+        "max_seq_length": 2048,
+        "model": "/Users/choemanseung/789/hft/mlx_models/gemma-270m-mlx_8bit",
+        "num_layers": 16,
+        "optimizer": "adamw",
+        "optimizer_config": {
+          "adamw": {
+            "weight_decay": 0.01
+          }
+        },
+        "project_name": null,
+        "report_to": null,
+        "resume_adapter_file": null,
+        "safety_config": {
+          "class_weights": {
+            "ED": 9.324834749763928,
+            "GP": 0.8754432624113475,
+            "HOME": 5.5790960451977405
+          },
+          "cost_matrix": {
+            "ED_GP": 100.0,
+            "ED_HOME": 100.0,
+            "GP_HOME": 10.0,
+            "GP_ED": 2.0,
+            "HOME_ED": 2.0,
+            "HOME_GP": 3.0,
+            "ED_ED": 1.0,
+            "GP_GP": 1.0,
+            "HOME_HOME": 1.0
+          },
+          "target_ed_recall": 0.96,
+          "safety_priority": "high",
+          "mc_dropout_samples": 100,
+          "uncertainty_threshold": 0.3
+        },
+        "save_every": 100,
+        "seed": 42,
+        "steps_per_eval": 200,
+        "steps_per_report": 50,
+        "test": true,
+        "test_batches": -1,
+        "train": true,
+        "val_batches": -1,
+        "wandb": null,
+        "warmup_ratio": 0.1
+      }
+    }
+  },
+  {
+    "combo_id": "G270_2_C10_4e5485d2",
+    "rag_config": {
+      "chunking_method": "structured_agent_tinfoil_medical",
+      "retrieval_type": "contextual_rag",
+      "bias_config": "healthify_focused",
+      "chunk_limit": 10,
+      "pass_at_5": 0.39,
+      "pass_at_10": 0.75,
+      "avg_retrieval_time": 0.0352,
+      "peak_memory_mb": 0.0,
+      "config_id": "pass10_2_structur_contex"
+    },
+    "adapter_config": {
+      "adapter_path": "/Users/choemanseung/789/hft/safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+      "model_name": "Gemma-270M",
+      "adapter_type": "safety",
+      "training_config": {
+        "adapter_path": "safety_triage_adapters/adapter_safe_triage_Gemma-270M_8bit_balanced_safe",
+        "batch_size": 4,
+        "config": "safety_triage_results_20250926_114751/safe_config_safe_triage_Gemma-270M_8bit_balanced_safe.json",
+        "data": "./Final_dataset/final_triage_dialogues_mlx",
+        "fine_tune_type": "lora",
+        "grad_checkpoint": false,
+        "iters": 1200,
+        "learning_rate": 1e-05,
+        "lora_parameters": {
+          "rank": 8,
+          "dropout": 0.1,
+          "scale": 8.0
+        },
+        "lr_schedule": null,
+        "mask_prompt": true,
+        "max_seq_length": 2048,
+        "model": "/Users/choemanseung/789/hft/mlx_models/gemma-270m-mlx_8bit",
+        "num_layers": 16,
+        "optimizer": "adamw",
+        "optimizer_config": {
+          "adamw": {
+            "weight_decay": 0.01
+          }
+        },
+        "project_name": null,
+        "report_to": null,
+        "resume_adapter_file": null,
+        "safety_config": {
+          "class_weights": {
+            "ED": 9.324834749763928,
+            "GP": 0.8754432624113475,
+            "HOME": 5.5790960451977405
+          },
+          "cost_matrix": {
+            "ED_GP": 100.0,
+            "ED_HOME": 100.0,
+            "GP_HOME": 10.0,
+            "GP_ED": 2.0,
+            "HOME_ED": 2.0,
+            "HOME_GP": 3.0,
+            "ED_ED": 1.0,
+            "GP_GP": 1.0,
+            "HOME_HOME": 1.0
+          },
+          "target_ed_recall": 0.96,
+          "safety_priority": "high",
+          "mc_dropout_samples": 100,
+          "uncertainty_threshold": 0.3
+        },
+        "save_every": 100,
+        "seed": 42,
+        "steps_per_eval": 200,
+        "steps_per_report": 50,
+        "test": true,
+        "test_batches": -1,
+        "train": true,
+        "val_batches": -1,
+        "wandb": null,
+        "warmup_ratio": 0.1
+      }
+    }
+  }
+]
