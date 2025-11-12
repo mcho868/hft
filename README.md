@@ -106,7 +106,7 @@ The system is designed with medical safety as the primary constraint:
 
 ### Stage 1: Web Scraping
 
-**Location:** `webscrapers/`
+**Location:** `1. KB and DS construction/webscrapers/`
 
 #### Purpose
 Collect high-quality medical information from trusted authoritative sources.
@@ -145,21 +145,21 @@ Collect high-quality medical information from trusted authoritative sources.
 #### Usage
 ```bash
 # NHS scraper
-python webscrapers/nhs_scraper.py          # Full scrape
-python webscrapers/nhs_scraper.py --test   # Test mode (3 pages)
+python "1. KB and DS construction/webscrapers/nhs_scraper.py"          # Full scrape
+python "1. KB and DS construction/webscrapers/nhs_scraper.py" --test   # Test mode (3 pages)
 
 # Mayo scraper
-python webscrapers/mayo_scraper.py
+python "1. KB and DS construction/webscrapers/mayo_scraper.py"
 
 # Healthify scraper
-python webscrapers/healthify_scraper.py
+python "1. KB and DS construction/webscrapers/healthify_scraper.py"
 ```
 
 ---
 
 ### Stage 2: Dataset Preparation
 
-**Location:** `preparing dataset/`, `Final_dataset/`
+**Location:** `1. KB and DS construction/preparing dataset/`, `Final_dataset/`
 
 #### Purpose
 Transform raw medical documents and generate synthetic triage dialogues for model training.
@@ -235,20 +235,20 @@ Transform raw medical documents and generate synthetic triage dialogues for mode
 #### Usage
 ```bash
 # Generate triage dialogues
-python generate_triage_dialogues.py
+python "1. KB and DS construction/generate_triage_dialogues.py"
 
 # Clean and prepare final dataset
-python "preparing dataset/clean_triage_data.py"
+python "1. KB and DS construction/preparing dataset/clean_triage_data.py"
 
 # Convert to MLX format
-python convert_to_mlx_format.py
+python "1. KB and DS construction/convert_to_mlx_format.py"
 ```
 
 ---
 
 ### Stage 3: Document Chunking
 
-**Location:** `RAGdatav3/scripts/`, `main_chunking_script_v4.py`
+**Location:** `RAGdatav3/scripts/`, `1. KB and DS construction/main_chunking_script_v4.py`
 
 #### Purpose
 Split medical documents into semantically coherent chunks optimized for retrieval.
@@ -363,7 +363,7 @@ Total configurations tested: **~35-40 per source** (NHS, Mayo, Healthify)
 #### Usage
 
 ```bash
-python main_chunking_script_v4.py
+python "1. KB and DS construction/main_chunking_script_v4.py"
 
 # Interactive menu:
 # 1. Fixed-length chunking
@@ -388,7 +388,7 @@ python main_chunking_script_v4.py
 
 ### Stage 4: Vector Index Building
 
-**Location:** `main_build_script_index_only.py`
+**Location:** `1. KB and DS construction/main_build_script_index_only.py`
 
 #### Purpose
 Build efficient vector indices for semantic search and hybrid retrieval.
@@ -430,7 +430,7 @@ RAGdatav4/indiv_embeddings/
 #### Usage
 
 ```bash
-python main_build_script_index_only.py
+python "1. KB and DS construction/main_build_script_index_only.py"
 
 # Interactive menu:
 # 1. Build all indices
@@ -1409,23 +1409,32 @@ xcodebuild -scheme TriageApp -configuration Release
 
 ```
 hft/
-├── webscrapers/                              # Stage 1: Web Scraping
-│   ├── nhs_scraper.py
-│   ├── mayo_scraper.py
-│   ├── mayo_diagnosis_treatment_scraper.py
-│   ├── healthify_scraper.py
-│   └── medical_scraper.py
-│
-├── preparing dataset/                        # Stage 2: Data Preparation
-│   ├── simple_deduplicator.py
-│   ├── clean_triage_data.py
-│   ├── prepare_mlx_dataset.py
-│   └── prepare_simple_dataset.py
+├── 1. KB and DS construction/               # SECTION 1: Stages 1-4
+│   ├── webscrapers/                         # Stage 1: Web Scraping
+│   │   ├── nhs_scraper.py
+│   │   ├── mayo_scraper.py
+│   │   ├── mayo_diagnosis_treatment_scraper.py
+│   │   ├── healthify_scraper.py
+│   │   └── medical_scraper.py
+│   ├── preparing dataset/                   # Stage 2: Data Preparation
+│   │   ├── simple_deduplicator.py
+│   │   ├── clean_triage_data.py
+│   │   └── prepare_mlx_dataset.py
+│   ├── generate_triage_dialogues.py         # Dialogue Generator
+│   ├── extract_medical_conditions.py        # Condition Extractor
+│   ├── filter_medical_conditions.py         # Condition Filter
+│   ├── ai_filter_medical_conditions.py      # AI-based Filter
+│   ├── convert_to_mlx_format.py             # MLX Converter
+│   ├── main_chunking_script_v4.py           # Stage 3: Chunking Runner
+│   ├── main_build_script_index_only.py      # Stage 4: Index Builder
+│   ├── contextual_retrieval_config.json     # Retrieval Config
+│   ├── unique_medical_conditions.txt        # Reference Data
+│   └── ai_filtered_medical_conditions.txt   # Reference Data
 │
 ├── RAGdatav3/                               # Raw medical documents
-│   ├── nhs/
-│   ├── mayo/
-│   ├── healthify/
+│   ├── nhs/                                 # ~800 condition files
+│   ├── mayo/                                # Comprehensive medical data
+│   ├── healthify/                           # NZ-specific health info
 │   └── scripts/                             # Chunking modules
 │       ├── __init__.py
 │       ├── chunker_base.py
@@ -1437,26 +1446,26 @@ hft/
 │       ├── contextual_retrieval_chunker.py
 │       └── utils.py
 │
-├── RAGdatav4/                               # Stage 3: Chunked Documents
+├── RAGdatav4/                               # Chunked documents + indices
 │   ├── {source}_chunks_{config}.json        # ~100 chunk files
-│   └── indiv_embeddings/                    # Stage 4: Vector Indices
+│   └── indiv_embeddings/                    # ~100-120 FAISS indices
 │       └── {source}_vector_db_{config}.index
 │
-├── Final_dataset/                           # Training Data
+├── Final_dataset/                           # Training data
 │   ├── generated_triage_dialogues.json      # Full dialogues
 │   ├── simplified_triage_dialogues_train.json
 │   ├── simplified_triage_dialogues_val.json
 │   ├── simplified_triage_dialogues_test.json
 │   └── final_triage_dialogues_mlx/          # MLX format
-│       ├── train.jsonl
-│       ├── valid.jsonl
-│       └── test.jsonl
+│       ├── train.jsonl (9,100 dialogues)
+│       ├── valid.jsonl (1,975 dialogues)
+│       └── test.jsonl (1,975 dialogues)
 │
 ├── finetune/                                # Stage 5: Model Fine-Tuning
 │   ├── safety_enhanced_triage_finetune.py
 │   └── triage_lora_finetune.py
 │
-├── safety_triage_adapters/                  # Fine-tuned Adapters
+├── safety_triage_adapters/                  # Fine-tuned LoRA adapters
 │   └── adapter_safe_triage_{model}_{config}/
 │
 ├── final_retrieval_testing/                 # Stage 6: Retrieval Testing
@@ -1490,7 +1499,7 @@ hft/
 │   └── TriageApp/
 │       └── TriageApp.xcodeproj
 │
-├── mlx_models/                              # Model Assets
+├── mlx_models/                              # Model assets
 │   ├── SmolLM2-135M-Instruct-MLX_4bit/
 │   ├── SmolLM2-135M-Instruct-MLX_8bit/
 │   ├── SmolLM2-360M-Instruct-MLX_4bit/
@@ -1499,17 +1508,21 @@ hft/
 │   ├── gemma-270m-mlx_8bit/
 │   └── tinfoilAgent.py
 │
+├── backup_bin/                              # Archived experimental code
+│   ├── data_quality_checks/
+│   ├── dataset_analysis/
+│   ├── dataset_tools_old/
+│   ├── chunking_tools/
+│   ├── retrieval_old/
+│   └── ... (11 organized categories)
+│
 ├── tools/                                   # Utilities
 │   ├── export_mobile_rag_pack.py
 │   ├── test_finetuned_model.py
 │   └── medical_chatbot.py
 │
-├── main_chunking_script_v4.py              # Stage 3 Runner
-├── main_build_script_index_only.py         # Stage 4 Runner
-├── generate_triage_dialogues.py            # Dialogue Generator
-├── extract_medical_conditions.py           # Condition Extractor
 ├── requirements.txt                         # Dependencies
-└── WORKFLOW_README.md                       # This file
+└── README.md                                # This file
 ```
 
 ---
@@ -1582,25 +1595,25 @@ python -m spacy download en_core_web_sm
 **1. Scrape Medical Data**
 ```bash
 # Scrape all sources
-python webscrapers/nhs_scraper.py
-python webscrapers/mayo_scraper.py
-python webscrapers/healthify_scraper.py
+python "1. KB and DS construction/webscrapers/nhs_scraper.py"
+python "1. KB and DS construction/webscrapers/mayo_scraper.py"
+python "1. KB and DS construction/webscrapers/healthify_scraper.py"
 ```
 
 **2. Prepare Training Data**
 ```bash
 # Generate triage dialogues
-python generate_triage_dialogues.py
+python "1. KB and DS construction/generate_triage_dialogues.py"
 
 # Clean and format
-python "preparing dataset/clean_triage_data.py"
-python convert_to_mlx_format.py
+python "1. KB and DS construction/preparing dataset/clean_triage_data.py"
+python "1. KB and DS construction/convert_to_mlx_format.py"
 ```
 
 **3. Create Chunked Documents**
 ```bash
 # Run all chunking strategies
-python main_chunking_script_v4.py
+python "1. KB and DS construction/main_chunking_script_v4.py"
 # Select: 7 (All strategies)
 # API: 2 (TinfoilAgent for agent-based methods)
 ```
@@ -1608,7 +1621,7 @@ python main_chunking_script_v4.py
 **4. Build Vector Indices**
 ```bash
 # Build all FAISS indices
-python main_build_script_index_only.py
+python "1. KB and DS construction/main_build_script_index_only.py"
 # Select: 1 (Build all indices)
 ```
 
@@ -1663,7 +1676,7 @@ open TriageApp/TriageApp.xcodeproj
 
 **Test Single Chunking Strategy**:
 ```bash
-python main_chunking_script_v4.py
+python "1. KB and DS construction/main_chunking_script_v4.py"
 # Select: 1 (Fixed-length)
 # Runs 13 fixed-length configurations
 ```
