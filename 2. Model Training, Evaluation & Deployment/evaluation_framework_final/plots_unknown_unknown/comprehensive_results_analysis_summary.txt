@@ -1,0 +1,31 @@
+COMPREHENSIVE EVALUATION RESULTS SUMMARY
+==================================================
+
+Total Configurations: 96
+Average Accuracy: 0.229 ± 0.119
+Average F1 Score: 0.197 ± 0.157
+Average F2 Score: 0.196 ± 0.137
+Average Inference Time: 0.940 ± 0.259s
+
+TOP 10 CONFIGURATIONS BY ACCURACY:
+----------------------------------------
+ 1. SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_high_capacity_safe_NoRAG
+    Accuracy: 0.680, F2: 0.667, Time: 0.527s
+ 2. SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_balanced_safe_NoRAG
+    Accuracy: 0.595, F2: 0.591, Time: 0.369s
+ 3. SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_performance_safe_NoRAG
+    Accuracy: 0.570, F2: 0.572, Time: 0.566s
+ 4. SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_high_capacity_safe_RAG_top1_structured_contextual_diverse
+    Accuracy: 0.550, F2: 0.558, Time: 0.932s
+ 5. SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_high_capacity_safe_RAG_top2_structured_pure_diverse
+    Accuracy: 0.540, F2: 0.547, Time: 0.909s
+ 6. SmolLM2-360M_4bit_FineTuned_adapter_safe_triage_SmolLM2-360M_4bit_balanced_safe_NoRAG
+    Accuracy: 0.465, F2: 0.459, Time: 0.802s
+ 7. SmolLM2-360M_8bit_FineTuned_adapter_safe_triage_SmolLM2-360M_8bit_high_capacity_safe_NoRAG
+    Accuracy: 0.455, F2: 0.455, Time: 0.686s
+ 8. SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_balanced_safe_RAG_top1_structured_contextual_diverse
+    Accuracy: 0.410, F2: 0.403, Time: 1.001s
+ 9. SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_balanced_safe_RAG_top2_structured_pure_diverse
+    Accuracy: 0.380, F2: 0.374, Time: 0.985s
+10. SmolLM2-360M_4bit_FineTuned_adapter_safe_triage_SmolLM2-360M_4bit_high_capacity_safe_NoRAG
+    Accuracy: 0.370, F2: 0.357, Time: 0.746s

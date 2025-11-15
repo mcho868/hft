@@ -1,0 +1,5 @@
+adapter_type,Mean Acc,Std Acc,Max Acc,Mean Extract,Std Extract,Mean F2,Std F2,Max F2,Mean Time,Std Time,Num Configs
+balanced_safe,0.2529,0.1131,0.595,1.0,0.0,0.2164,0.1392,0.5911,0.9396,0.2646,24
+high_capacity_safe,0.2767,0.1437,0.68,1.0,0.0,0.2447,0.1684,0.6668,0.946,0.238,24
+performance_safe,0.2142,0.0998,0.57,1.0,0.0,0.1808,0.117,0.5721,0.9084,0.2647,24
+ultra_safe,0.1713,0.0928,0.315,1.0,0.0,0.1411,0.0965,0.3304,0.9667,0.2794,24

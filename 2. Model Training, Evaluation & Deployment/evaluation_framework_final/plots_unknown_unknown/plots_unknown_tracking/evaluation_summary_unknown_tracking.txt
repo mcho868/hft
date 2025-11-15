@@ -1,0 +1,79 @@
+MEDICAL TRIAGE EVALUATION SUMMARY - UNKNOWN TRACKING ANALYSIS
+======================================================================
+
+OVERALL PERFORMANCE STATISTICS:
+-----------------------------------
+Total Configurations Evaluated: 96
+Average Triage Accuracy: 0.229 ± 0.119
+Average Extraction Success Rate: 0.807 ± 0.227
+Average Unknown Cases per Config: 38.6 ± 45.5
+Average F2 Score: 0.196 ± 0.137
+
+TOP 5 MOST RELIABLE CONFIGURATIONS:
+--------------------------------------
+1. SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_high_capacity_safe_NoRAG
+   Reliability Score: 0.774
+   Accuracy: 0.680
+   Extraction Success: 0.995
+   Unknown Cases: 1
+
+2. SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_high_capacity_safe_RAG_top1_structured_contextual_diverse
+   Reliability Score: 0.676
+   Accuracy: 0.550
+   Extraction Success: 0.970
+   Unknown Cases: 6
+
+3. SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_performance_safe_NoRAG
+   Reliability Score: 0.675
+   Accuracy: 0.570
+   Extraction Success: 0.920
+   Unknown Cases: 16
+
+4. SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_high_capacity_safe_RAG_top2_structured_pure_diverse
+   Reliability Score: 0.669
+   Accuracy: 0.540
+   Extraction Success: 0.970
+   Unknown Cases: 6
+
+5. SmolLM2-135M_4bit_FineTuned_adapter_safe_triage_SmolLM2-135M_4bit_balanced_safe_NoRAG
+   Reliability Score: 0.667
+   Accuracy: 0.595
+   Extraction Success: 0.835
+   Unknown Cases: 33
+
+PERFORMANCE BY MODEL FAMILY:
+--------------------------------
+Gemma:
+  Accuracy: 0.181 ± 0.019
+  Extraction Success: 0.944 ± 0.089
+  Avg Unknown Cases: 11.2
+
+SmolLM2:
+  Accuracy: 0.253 ± 0.140
+  Extraction Success: 0.738 ± 0.245
+  Avg Unknown Cases: 52.3
+
+RAG IMPACT ANALYSIS:
+--------------------
+Without RAG:
+  Accuracy: 0.261
+  Extraction Success: 0.739
+  Avg Unknown Cases: 52.1
+
+With RAG:
+  Accuracy: 0.218
+  Extraction Success: 0.830
+  Avg Unknown Cases: 34.1
+
+RAG Benefits:
+  Accuracy Improvement: -0.043
+  Extraction Improvement: 0.090
+  Unknown Reduction: 18.0
+
+KEY INSIGHTS FROM UNKNOWN TRACKING:
+----------------------------------------
+1. Extraction Success Rate provides crucial insight into model reliability
+2. UNKNOWN cases reveal parsing/format issues vs true performance gaps
+3. Reliability Score (accuracy + extraction) gives holistic view
+4. RAG impact should be measured on both accuracy AND extraction success
+5. Model comparison is now honest (no artificial GP inflation)

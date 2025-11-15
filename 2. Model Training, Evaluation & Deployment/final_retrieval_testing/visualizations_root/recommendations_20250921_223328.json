@@ -1,0 +1,21 @@
+{
+  "best_overall": {
+    "config": "structured_agent_tinfoil_medical_semantic",
+    "pass_at_10": 100.0,
+    "retrieval_time": 8.71882438659668
+  },
+  "best_for_production": {
+    "config": "structured_agent_tinfoil_medical_semantic",
+    "pass_at_10": 100.0,
+    "retrieval_time": 8.71882438659668
+  },
+  "best_chunking_method": {
+    "method": "unknown",
+    "avg_performance": 50.0
+  },
+  "best_retrieval_type": {
+    "type": "semantic",
+    "avg_performance": 80.0
+  },
+  "optimal_chunk_size": {
+    "size": 

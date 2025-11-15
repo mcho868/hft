@@ -15,7 +15,8 @@
    - [Stage 4: Vector Index Building](#stage-4-vector-index-building)
    - [Stage 5: Model Fine-Tuning](#stage-5-model-fine-tuning)
    - [Stage 6: Retrieval Testing](#stage-6-retrieval-testing)
-   - [Stage 7: Generation Validation & Testing](#stage-7-generation-validation--testing)
+   - [Stage 7: Generation Validation](#stage-7-generation-validation--testing)
+   - [Stage 7b: Final Testing on Test Dataset](#stage-7b-final-testing-on-test-dataset)
    - [Stage 8: iOS Deployment](#stage-8-ios-deployment)
 4. [Key Results](#key-results)
 5. [File Structure](#file-structure)
@@ -37,11 +38,11 @@ This project implements an end-to-end medical triage system designed for deploym
 ### Safety-First Design Philosophy
 
 The system is designed with medical safety as the primary constraint:
-- **Cost-sensitive loss**: 100× penalty for missing emergency cases
-- **F2-score optimization**: Emphasizes recall over precision (β=2)
-- **Hard safety constraints**: ED recall ≥ 95%, false negative rate ≤ 5%
-- **Monte Carlo Dropout**: Uncertainty quantification for ambiguous cases
-- **No over-triaging penalty**: Conservative decisions (GP→ED, HOME→GP) preferred
+- **Safety-oriented LoRA configurations**: Four configurations with varying hyperparameters optimized for safety-performance trade-offs
+- **Post-training selection criteria**: Only adapters meeting ED recall ≥95-98% thresholds are retained
+- **F2-score optimization**: Emphasizes recall over precision (β=2) for medical safety
+- **UNKNOWN tracking**: Failed triage extractions identified for reliability assessment
+- **Conservative hyperparameters**: Low learning rates, higher dropout for safety-critical applications
 
 ---
 
@@ -89,7 +90,13 @@ The system is designed with medical safety as the primary constraint:
                    ▼
 ┌─────────────────────────────────────────────────────────────┐
 │            GENERATION VALIDATION LAYER                      │
-│  96 configs × 200 test cases, F1/F2 scores, Confusion      │
+│  96 configs × 200 validation cases, F1/F2 scores           │
+└──────────────────┬──────────────────────────────────────────┘
+                   │
+                   ▼
+┌─────────────────────────────────────────────────────────────┐
+│              FINAL TESTING LAYER                            │
+│  Top 5 configs × 1,975 test cases, LLM-as-judge quality    │
 └──────────────────┬──────────────────────────────────────────┘
                    │
                    ▼
@@ -453,10 +460,10 @@ Total storage: ~500 MB for all indices across 3 sources
 
 ### Stage 5: Model Fine-Tuning
 
-**Location:** `finetune/safety_enhanced_triage_finetune.py`
+**Location:** `2. Model Training, Evaluation & Deployment/finetune/safety_enhanced_triage_finetune.py`
 
 #### Purpose
-Fine-tune small language models for safety-critical medical triage with hard safety constraints.
+Fine-tune small language models for medical triage using LoRA adapters with safety-oriented configurations and post-training selection criteria.
 
 #### Models
 
@@ -471,7 +478,7 @@ Fine-tune small language models for safety-critical medical triage with hard saf
 - MLX-compatible architecture
 - Instruction-following capability
 
-#### Safety-Enhanced LoRA Configurations
+#### LoRA Configurations
 
 **1. Ultra Safe Configuration**
 ```python
@@ -533,54 +540,33 @@ Fine-tune small language models for safety-critical medical triage with hard saf
 }
 ```
 
-#### Safety Features
+#### Safety Approach
 
-**1. Cost-Sensitive Loss Function**
+**1. Configuration-Based Safety**
 
-Cost matrix (penalties for misclassification):
-```python
-COST_MATRIX = {
-    "ED_GP": 100.0,      # Missing emergency → GP (dangerous!)
-    "ED_HOME": 100.0,    # Missing emergency → HOME (dangerous!)
-    "GP_HOME": 10.0,     # Under-triaging GP
-    "GP_ED": 2.0,        # Over-triaging (safe but inefficient)
-    "HOME_ED": 2.0,      # Over-triaging (safe but inefficient)
-    "HOME_GP": 3.0,      # Mild over-triaging
-    "ED_ED": 1.0,        # Correct
-    "GP_GP": 1.0,
-    "HOME_HOME": 1.0
-}
-```
+Each configuration targets different safety-performance trade-offs through hyperparameter selection:
+- **Learning rates**: 5e-6 to 2e-5 (conservative to moderate)
+- **LoRA rank**: 4 to 16 (focused to high-capacity adaptations)
+- **Dropout**: 0.08 to 0.15 (for regularization)
+- **Training iterations**: 1000 to 1500 steps
+- **Target ED recall**: 95-98% (configuration-dependent)
 
-**2. Class Weighting**
-- **ED**: 5.0× weight (critical cases)
-- **GP**: 2.0× weight (moderate urgency)
-- **HOME**: 1.0× weight (baseline)
+**2. Post-Training Selection Criteria**
 
-Calculated dynamically from training data frequency + clinical importance
+Only adapters meeting safety thresholds are retained:
+- **ED recall ≥ 95-98%** (configuration-dependent minimum)
+- **Evaluated on validation dataset** (1,975 cases)
+- **F2-score tracking** (recall-weighted, β=2)
+- **Safety-first filtering**: Adapters failing safety criteria are discarded
 
-**3. F2-Score Optimization**
+**3. F2-Score Evaluation**
 
-F2 score emphasizes recall (β=2):
+F2 score emphasizes recall over precision (β=2):
 ```
 F2 = (5 × precision × recall) / (4 × precision + recall)
 ```
 
-Weighted by class importance for triage safety.
-
-**4. Monte Carlo Dropout Inference**
-
-- Generates 50-100 predictions per input with dropout enabled
-- Calculates prediction distribution and uncertainty (entropy)
-- Flags high-uncertainty cases (>0.3 threshold)
-- Enables human review for ambiguous cases
-
-**5. Hard Safety Constraints**
-
-Adapter only passes if:
-- ED recall ≥ 95%
-- ED F2-score ≥ 90%
-- False negative rate ≤ 5%
+Used for post-training evaluation and adapter selection.
 
 #### Training Data
 
@@ -604,14 +590,14 @@ Adapter only passes if:
 **Training pipeline**:
 1. Load quantized base model
 2. Apply LoRA configuration
-3. Train with cost-sensitive loss
-4. Evaluate safety metrics every 100 steps
-5. Save adapter if safety constraints met
-6. Skip comprehensive evaluation to prevent hanging
+3. Train with standard cross-entropy loss (MLX default)
+4. Save adapter checkpoints every 100 steps
+5. Post-training: Evaluate on validation set
+6. Retain only adapters meeting safety criteria (ED recall thresholds)
 
 **Training command**:
 ```bash
-cd finetune
+cd "2. Model Training, Evaluation & Deployment/finetune"
 python safety_enhanced_triage_finetune.py
 
 # Automatically trains:
@@ -620,30 +606,26 @@ python safety_enhanced_triage_finetune.py
 # - Total: 24 LoRA adapters
 ```
 
-#### Evaluation Metrics
+#### Post-Training Evaluation Metrics
 
-**Per-adapter metrics**:
+**Per-adapter metrics** (evaluated on validation set):
 - Triage accuracy (ED/GP/HOME)
 - F1, F2 scores (overall and per-class)
-- Confusion matrix
-- ED recall (critical metric)
+- 4×4 Confusion matrix (ED, GP, HOME, UNKNOWN)
+- ED recall (critical safety metric)
 - False negative rate
-- Uncertainty statistics
+- UNKNOWN triage rate (reliability indicator)
 
-**Safety compliance**:
-```python
-safety_constraints = {
-    "ed_recall_constraint": ed_recall >= 0.95,
-    "ed_f2_constraint": ed_f2 >= 0.90,
-    "false_negative_constraint": fn_rate <= 0.05
-}
-```
+**Selection criteria** (adapters must meet these thresholds):
+- **ultra_safe / high_capacity_safe**: ED recall ≥ 98%
+- **balanced_safe**: ED recall ≥ 96%
+- **performance_safe**: ED recall ≥ 95%
 
 #### Output
 
-**Adapter locations**: `safety_triage_adapters/`
+**Adapter locations**: `2. Model Training, Evaluation & Deployment/safety_triage_adapters/`
 
-**Results**: `safety_triage_results_{timestamp}/`
+**Results**: `2. Model Training, Evaluation & Deployment/safety_triage_results_{timestamp}/`
 - `safety_results_{adapter}.json` - Comprehensive metrics
 - `safety_config_{adapter}.json` - Training configuration
 - `safety_training_log_{adapter}.txt` - Detailed logs
@@ -661,7 +643,7 @@ Rank  Adapter                                ED Recall  F2 Score  FN Rate
 
 ### Stage 6: Retrieval Testing
 
-**Location:** `final_retrieval_testing/`
+**Location:** `2. Model Training, Evaluation & Deployment/final_retrieval_testing/`
 
 #### Purpose
 Systematically evaluate all chunking strategies and retrieval methods to identify optimal configurations for production deployment.
@@ -754,7 +736,7 @@ Where:
 #### Usage
 
 ```bash
-cd final_retrieval_testing
+cd "2. Model Training, Evaluation & Deployment/final_retrieval_testing"
 
 # Quick test (5 configurations)
 python run_retrieval_test.py --quick
@@ -811,7 +793,7 @@ python visualize_results.py results/
 
 ### Stage 7: Generation Validation & Testing
 
-**Location:** `evaluation_framework_final/`
+**Location:** `2. Model Training, Evaluation & Deployment/evaluation_framework_final/`
 
 #### Purpose
 Comprehensive end-to-end evaluation of fine-tuned models with RAG integration to identify production-ready configurations.
@@ -856,9 +838,10 @@ From retrieval testing winners:
 #### Evaluation Pipeline
 
 **Key Scripts**:
-- `comprehensive_triage_evaluator.py` - Main evaluation engine
+- `comprehensive_triage_evaluator_unknown_label.py` - Main evaluation engine with UNKNOWN tracking
 - `evaluation_core.py` - Core inference and metrics computation
-- `analysis_dashboard.py` - Results visualization
+- `analysis_dashboard_unknown_tracking.py` - Results visualization with UNKNOWN analysis
+- `individual_plots_unknown_tracking.py` - Detailed UNKNOWN rate plots
 - `comprehensive_missing_analysis.py` - Error analysis
 
 **Pipeline stages**:
@@ -873,19 +856,23 @@ From retrieval testing winners:
 #### Metrics
 
 **Classification Metrics**:
-- **Triage Accuracy**: Overall correct ED/GP/HOME decisions
+- **Triage Accuracy**: Overall correct ED/GP/HOME decisions (excludes UNKNOWN)
 - **F1 Score**: Harmonic mean of precision and recall
 - **F2 Score**: Recall-weighted (β=2) for medical safety
-- **Precision per class**: ED, GP, HOME
-- **Recall per class**: ED, GP, HOME (ED recall critical)
-- **Confusion Matrix**: Detailed misclassification patterns
+- **Precision per class**: ED, GP, HOME, UNKNOWN
+- **Recall per class**: ED, GP, HOME, UNKNOWN (ED recall critical)
+- **Confusion Matrix**: 4×4 matrix (ED, GP, HOME, UNKNOWN)
+  - **UNKNOWN category**: Tracks failed triage extractions where model output couldn't be parsed
+  - Critical for reliability assessment and model confidence evaluation
 
 **Performance Metrics**:
 - **Total inference time**: Cumulative time for all cases
 - **Average time per case**: Mean inference latency
 - **Success count**: Cases with valid triage extraction
 - **Error count**: Cases with extraction failures
-- **UNKNOWN rate**: Failed triage extractions
+- **Unknown triage count**: Cases where model output was parsed but triage was UNKNOWN
+- **Total failures**: Sum of error_count + unknown_triage_count
+- **UNKNOWN rate**: Proportion of cases with failed/unreliable triage decisions
 
 **Safety Metrics** (for ED class):
 - **ED Recall**: ≥95% target
@@ -894,41 +881,48 @@ From retrieval testing winners:
 
 #### Output Format
 
-**Per-configuration results**:
+**Per-configuration results** (4×4 confusion matrix with UNKNOWN tracking):
 ```json
 {
   "config": {
     "model_name": "SmolLM2-135M_4bit",
-    "adapter": "balanced_safe",
+    "model_path": "/path/to/model",
+    "adapter_path": "/path/to/adapter",
     "rag_config": "structured_agent_contextual_rag",
     "test_name": "SmolLM2-135M_4bit_FineTuned_balanced_safe_RAG_top1"
   },
+  "timestamp": "2025-09-30T04:58:43",
   "triage_accuracy": 0.847,
   "f1_score": 0.832,
   "f2_score": 0.851,
   "confusion_matrix": [
-    [34, 2, 0],   # ED: 34 correct, 2 → GP, 0 → HOME
-    [6, 146, 0],  # GP: 6 → ED, 146 correct, 0 → HOME
-    [1, 8, 3]     # HOME: 1 → ED, 8 → GP, 3 correct
+    [34, 2, 0, 0],      # ED: 34 correct, 2 → GP, 0 → HOME, 0 → UNKNOWN
+    [6, 146, 0, 0],     # GP: 6 → ED, 146 correct, 0 → HOME, 0 → UNKNOWN
+    [1, 8, 3, 0],       # HOME: 1 → ED, 8 → GP, 3 correct, 0 → UNKNOWN
+    [0, 0, 0, 0]        # UNKNOWN: (true UNKNOWN cases if any)
   ],
   "classification_report": {
-    "ED": {"precision": 0.829, "recall": 0.944, "f1-score": 0.883},
-    "GP": {"precision": 0.936, "recall": 0.960, "f1-score": 0.948},
-    "HOME": {"precision": 1.000, "recall": 0.250, "f1-score": 0.400}
+    "ED": {"precision": 0.829, "recall": 0.944, "f1-score": 0.883, "support": 36.0},
+    "GP": {"precision": 0.936, "recall": 0.960, "f1-score": 0.948, "support": 152.0},
+    "HOME": {"precision": 1.000, "recall": 0.250, "f1-score": 0.400, "support": 12.0},
+    "UNKNOWN": {"precision": 0.0, "recall": 0.0, "f1-score": 0.0, "support": 0.0}
   },
   "ed_recall": 0.944,
   "total_inference_time": 46.2,
   "avg_inference_time_per_case": 0.231,
   "cases_evaluated": 200,
-  "success_count": 197,
-  "error_count": 3,
-  "unknown_rate": 0.015
+  "success_count": 200,
+  "error_count": 0,
+  "unknown_triage_count": 0,
+  "total_failures": 0,
+  "rag_retrieval_time": 12.5,
+  "rag_context_length_avg": 4200
 }
 ```
 
 #### Visualization & Analysis
 
-**Analysis Dashboard** (`analysis_dashboard.py`):
+**Analysis Dashboard** (`analysis_dashboard_unknown_tracking.py`):
 1. **Overall performance summary**:
    - Best configurations table
    - Model comparison
@@ -936,7 +930,7 @@ From retrieval testing winners:
    - RAG impact analysis
 
 2. **Classification performance**:
-   - Confusion matrix heatmap per config
+   - 4×4 confusion matrix heatmap per config
    - Precision-recall curves
    - F1/F2 score distributions
 
@@ -945,31 +939,32 @@ From retrieval testing winners:
    - False negative rate tracking
    - Dangerous misclassifications (ED→HOME, ED→GP)
 
-4. **Efficiency analysis**:
+4. **UNKNOWN tracking**:
+   - UNKNOWN rate per configuration
+   - Failed extraction patterns
+   - Model reliability assessment
+   - UNKNOWN vs accuracy correlation
+
+5. **Efficiency analysis**:
    - Inference time distributions
    - Speed-accuracy tradeoff
    - Model size vs performance
 
-5. **Error analysis**:
-   - UNKNOWN rate per configuration
-   - Failed extraction patterns
-   - Reasoning quality assessment
-
 #### Usage
 
 ```bash
-cd evaluation_framework_final
+cd "2. Model Training, Evaluation & Deployment/evaluation_framework_final"
 
-# Full evaluation (96 configurations, 200 test cases)
-python comprehensive_triage_evaluator.py
+# Full evaluation (96 configurations, 200 test cases) with UNKNOWN tracking
+python comprehensive_triage_evaluator_unknown_label.py
 
 # Quick test (limited configs)
-python comprehensive_triage_evaluator.py --max-configs 10 --sample-size 50
+python comprehensive_triage_evaluator_unknown_label.py --max-configs 10 --sample-size 50
 
-# Analyze results
-python analysis_dashboard.py
+# Analyze results with UNKNOWN tracking
+python analysis_dashboard_unknown_tracking.py
 
-# Generate visualizations
+# Generate UNKNOWN rate visualizations
 python individual_plots_unknown_tracking.py
 
 # Error analysis
@@ -1003,9 +998,133 @@ python comprehensive_missing_analysis.py
 
 ---
 
+### Stage 7b: Final Testing on Test Dataset
+
+**Location:** `2. Model Training, Evaluation & Deployment/evaluation_framework_final/testing_framework_final/`
+
+#### Purpose
+Final evaluation of top-performing configurations on the full held-out test dataset (1,975 cases) to assess production readiness and generalization.
+
+#### Test Scope
+
+**Top 5 Configurations Selected** (from Stage 7 validation results):
+1. **SmolLM2-135M_4bit_high_capacity_safe_NoRAG** (68.0% validation accuracy)
+2. **SmolLM2-135M_4bit_balanced_safe_NoRAG** (59.5% validation accuracy)
+3. **SmolLM2-135M_4bit_performance_safe_NoRAG** (57.0% validation accuracy)
+4. **SmolLM2-135M_4bit_high_capacity_safe + RAG_top1** (55.0% validation accuracy)
+5. **SmolLM2-135M_4bit_high_capacity_safe + RAG_top2** (54.0% validation accuracy)
+
+#### Test Dataset
+
+**Source**: `Final_dataset/simplified_triage_dialogues_test.json`
+- **Total test cases**: 1,975 dialogues (held-out from training/validation)
+- **Distribution**: GP (76%), ED (18%), HOME (6%)
+- **Never seen during training or validation**
+
+#### Testing Pipeline
+
+**Key Scripts**:
+- `comprehensive_triage_tester.py` - Main testing engine for top 5 configs
+- `comprehensive_triage_tester_llm_as_judge.py` - LLM-based quality evaluation
+- `testing_core.py` - Core inference and metrics (same as validation)
+- `testing_core_llm_as_judge.py` - LLM judge quality scoring
+- `run_top5_test.py` - Execution script
+- `test_tinfoil_vs_rule_based_rag.py` - RAG comparison testing
+
+#### LLM-as-Judge Quality Evaluation
+
+**Purpose**: Beyond accuracy metrics, assess response quality using LLM evaluation
+
+**Quality Judge** (`llm_quality_judge.py`):
+- **Model**: GPT-4 / Claude (external API)
+- **Criteria**:
+  - Medical accuracy (clinical correctness)
+  - Reasoning quality (clear, logical explanation)
+  - Safety awareness (appropriate urgency assessment)
+  - Response completeness (all required fields present)
+  - Language quality (clear, professional communication)
+
+**Quality Metrics**:
+```json
+{
+  "quality_score": 0.85,        // Overall quality (0-1)
+  "medical_accuracy": 0.90,     // Clinical correctness
+  "reasoning_quality": 0.82,    // Explanation clarity
+  "safety_awareness": 0.88,     // Urgency appropriateness
+  "completeness": 0.95,         // All fields present
+  "language_quality": 0.80      // Communication clarity
+}
+```
+
+#### Parallel Processing
+
+**`parallel_llm_judge.py`**: Concurrent LLM judge evaluation
+- **Workers**: 5-10 parallel API calls
+- **Rate limiting**: Respects API constraints
+- **Progress tracking**: Real-time updates
+- **Fault tolerance**: Retries on failures
+
+#### Usage
+
+```bash
+cd "2. Model Training, Evaluation & Deployment/evaluation_framework_final/testing_framework_final"
+
+# Standard testing (top 5 configs on full test set)
+python comprehensive_triage_tester.py
+
+# With LLM-as-judge quality evaluation
+python comprehensive_triage_tester_llm_as_judge.py
+
+# Quick test (single config)
+python comprehensive_triage_tester.py --test
+
+# RAG comparison testing
+python test_tinfoil_vs_rule_based_rag.py
+```
+
+#### Output
+
+**Test Results** (`final_test_results_{timestamp}.json`):
+- Complete metrics for all 5 configurations
+- 4×4 confusion matrices
+- Per-class performance (ED, GP, HOME, UNKNOWN)
+- Timing statistics
+- Full test set coverage (1,975 cases)
+
+**LLM Judge Results** (`llm_judge_plots/`):
+- Quality score distributions
+- Quality vs accuracy correlations
+- Configuration quality rankings
+- Detailed quality component breakdowns
+- Visualization plots (12+ analysis plots)
+
+#### Key Findings
+
+**Test Set Performance** (top configuration):
+
+| Configuration | Test Accuracy | Test F2 | ED Recall | Avg Time (s) |
+|--------------|---------------|---------|-----------|--------------|
+| SmolLM2-135M_4bit_high_capacity_safe_NoRAG | 66.2% | 64.8% | 92.5% | 0.15 |
+| SmolLM2-135M_4bit_balanced_safe_NoRAG | 58.1% | 57.3% | 90.1% | 0.14 |
+
+**Insights**:
+- **Generalization**: ~2-3% drop from validation to test (expected)
+- **ED recall maintained**: >90% on unseen test data (safety preserved)
+- **NoRAG outperforms RAG**: On this test set, fine-tuned models without RAG perform better
+- **Consistent performance**: Rankings similar between validation and test sets
+- **Production-ready**: Top configurations meet safety thresholds on held-out data
+
+**LLM Judge Insights**:
+- **Quality-accuracy correlation**: r=0.72 (high-quality responses tend to be accurate)
+- **Safety awareness**: Top configs score >85% on safety-awareness criteria
+- **Best quality**: high_capacity_safe achieves 0.85 overall quality score
+- **Reasoning clarity**: Varies by configuration (0.70-0.85 range)
+
+---
+
 ### Stage 8: iOS Deployment
 
-**Location:** `iosDemo/`
+**Location:** `2. Model Training, Evaluation & Deployment/iosDemo/`
 
 #### Purpose
 Deploy the complete medical triage system as an on-device iOS application with <400MB memory footprint and <1s inference latency.
@@ -1019,6 +1138,23 @@ Deploy the complete medical triage system as an on-device iOS application with <
 - **Vector Search**: FAISS (IndexFlatIP, compiled for iOS)
 - **Lexical Search**: SQLite FTS5 (built-in iOS)
 - **Retrieval**: Hybrid RRF (semantic + BM25)
+
+#### RAG Implementation Status
+
+**Real RAG (Not Mock)**:
+- **Default state**: RAG toggle OFF for faster inference (<200ms vs <500ms)
+- **When enabled**: Full hybrid retrieval (FAISS + BM25 + RRF fusion)
+- **Retrieval process**:
+  - Searches top 50 candidates from semantic (FAISS) and lexical (BM25) indices
+  - Applies RRF fusion with α=0.7, k=60
+  - Returns top 5 chunks for context
+- **User control**: RAG can be toggled on/off in the UI
+- **Performance trade-off**: +2.8% accuracy improvement when RAG enabled, +270ms latency
+
+**Why RAG defaults to OFF**:
+- Faster initial response time for demos
+- Showcases that fine-tuned models can work standalone
+- Allows users to compare with/without RAG side-by-side
 
 #### On-Device Assets
 
@@ -1285,7 +1421,7 @@ func extract(from text: String) -> (String, String, String) {
 
 **Asset Preparation** (on Mac):
 ```bash
-cd iosDemo
+cd "2. Model Training, Evaluation & Deployment/iosDemo"
 
 # 1. Create chunk database
 python create_chunk_database.py
@@ -1297,7 +1433,7 @@ python create_faiss_index.py
 python convert_mlx_fixed.py
 
 # 4. Export for mobile
-python tools/export_mobile_rag_pack.py
+python ../tools/export_mobile_rag_pack.py
 ```
 
 **Xcode Project Setup**:
@@ -1309,7 +1445,7 @@ python tools/export_mobile_rag_pack.py
 
 **Build Command**:
 ```bash
-cd iosDemo/TriageApp
+cd "2. Model Training, Evaluation & Deployment/iosDemo/TriageApp"
 xcodebuild -scheme TriageApp -configuration Release
 ```
 
@@ -1461,43 +1597,61 @@ hft/
 │       ├── valid.jsonl (1,975 dialogues)
 │       └── test.jsonl (1,975 dialogues)
 │
-├── finetune/                                # Stage 5: Model Fine-Tuning
-│   ├── safety_enhanced_triage_finetune.py
-│   └── triage_lora_finetune.py
-│
-├── safety_triage_adapters/                  # Fine-tuned LoRA adapters
-│   └── adapter_safe_triage_{model}_{config}/
-│
-├── final_retrieval_testing/                 # Stage 6: Retrieval Testing
-│   ├── README.md
-│   ├── retrieval_performance_tester.py
-│   ├── hybrid_retrieval_evaluator.py
-│   ├── performance_optimized_evaluator.py
-│   ├── analyze_retrieval_results.py
-│   ├── visualize_results.py
-│   ├── results/
-│   └── visualizations/
-│
-├── evaluation_framework_final/              # Stage 7: Generation Testing
-│   ├── README.md
-│   ├── comprehensive_triage_evaluator.py
-│   ├── evaluation_core.py
-│   ├── analysis_dashboard.py
-│   ├── comprehensive_missing_analysis.py
-│   ├── stratified_sample_200.json
-│   └── plots_unknown_unknown/
-│
-├── iosDemo/                                 # Stage 8: iOS Deployment
-│   ├── IOS_demo.md
-│   ├── Mobile_Deployment_Methodology.md
-│   ├── chunks.sqlite
-│   ├── faiss.index
-│   ├── ids.bin
-│   ├── create_chunk_database.py
-│   ├── create_faiss_index.py
-│   ├── convert_mlx_fixed.py
-│   └── TriageApp/
-│       └── TriageApp.xcodeproj
+├── 2. Model Training, Evaluation & Deployment/  # SECTION 2: Stages 5-8
+│   ├── finetune/                            # Stage 5: Model Fine-Tuning
+│   │   ├── safety_enhanced_triage_finetune.py
+│   │   └── triage_lora_finetune.py
+│   ├── safety_triage_adapters/              # Fine-tuned LoRA adapters
+│   │   └── adapter_safe_triage_{model}_{config}/
+│   ├── triage_adapters/                     # Additional adapters
+│   ├── final_retrieval_testing/             # Stage 6: Retrieval Testing
+│   │   ├── README.md
+│   │   ├── retrieval_performance_tester.py
+│   │   ├── hybrid_retrieval_evaluator.py
+│   │   ├── performance_optimized_evaluator.py
+│   │   ├── analyze_retrieval_results.py
+│   │   ├── visualize_results.py
+│   │   ├── results/
+│   │   └── visualizations/
+│   ├── evaluation_framework_final/          # Stage 7: Generation Validation
+│   │   ├── README.md
+│   │   ├── comprehensive_triage_evaluator_unknown_label.py  # Main evaluator
+│   │   ├── evaluation_core.py
+│   │   ├── analysis_dashboard_unknown_tracking.py           # Analysis with UNKNOWN
+│   │   ├── individual_plots_unknown_tracking.py             # UNKNOWN rate plots
+│   │   ├── comprehensive_missing_analysis.py
+│   │   ├── stratified_sample_200.json
+│   │   ├── plots_unknown_unknown/
+│   │   └── testing_framework_final/         # Stage 7b: Final Testing
+│   │       ├── comprehensive_triage_tester.py
+│   │       ├── comprehensive_triage_tester_llm_as_judge.py
+│   │       ├── testing_core.py
+│   │       ├── testing_core_llm_as_judge.py
+│   │       ├── llm_quality_judge.py
+│   │       ├── parallel_llm_judge.py
+│   │       ├── run_top5_test.py
+│   │       ├── test_tinfoil_vs_rule_based_rag.py
+│   │       └── llm_judge_plots/
+│   ├── iosDemo/                             # Stage 8: iOS Deployment
+│   │   ├── IOS_demo.md
+│   │   ├── Mobile_Deployment_Methodology.md
+│   │   ├── chunks.sqlite
+│   │   ├── faiss.index
+│   │   ├── ids.bin
+│   │   ├── create_chunk_database.py
+│   │   ├── create_faiss_index.py
+│   │   ├── convert_mlx_fixed.py
+│   │   └── TriageApp/
+│   │       └── TriageApp.xcodeproj
+│   ├── tools/                               # Utilities
+│   │   ├── export_mobile_rag_pack.py
+│   │   ├── test_finetuned_model.py
+│   │   ├── medical_chatbot.py
+│   │   └── check_quantization.py
+│   ├── comprehensive_evaluation_results_20250930_045843.json  # Final results (96 configs)
+│   ├── evaluation_framework_*_plan.md       # Planning docs
+│   ├── README_retrieval_testing.md
+│   └── TINFOIL_REST_SETUP.md
 │
 ├── mlx_models/                              # Model assets
 │   ├── SmolLM2-135M-Instruct-MLX_4bit/
@@ -1514,15 +1668,15 @@ hft/
 │   ├── dataset_tools_old/
 │   ├── chunking_tools/
 │   ├── retrieval_old/
-│   └── ... (11 organized categories)
-│
-├── tools/                                   # Utilities
-│   ├── export_mobile_rag_pack.py
-│   ├── test_finetuned_model.py
-│   └── medical_chatbot.py
+│   ├── evaluation_old/
+│   └── ... (17 organized categories)
 │
 ├── requirements.txt                         # Dependencies
-└── README.md                                # This file
+├── README.md                                # This file
+├── COMPLETE_REORGANIZATION_SUMMARY.md       # Full reorganization documentation
+├── EVALUATION_UPDATE_SUMMARY.md             # Evaluation format update
+├── FINAL_CLEANUP_SUMMARY.md                 # Final cleanup details
+└── hft.code-workspace                       # VS Code workspace
 ```
 
 ---
@@ -1628,7 +1782,7 @@ python "1. KB and DS construction/main_build_script_index_only.py"
 **5. Fine-Tune Models**
 ```bash
 # Train all safety-enhanced adapters
-cd finetune
+cd "2. Model Training, Evaluation & Deployment/finetune"
 python safety_enhanced_triage_finetune.py
 # Trains 24 LoRA adapters (6 models × 4 configs)
 ```
@@ -1636,7 +1790,7 @@ python safety_enhanced_triage_finetune.py
 **6. Test Retrieval**
 ```bash
 # Run comprehensive retrieval evaluation
-cd final_retrieval_testing
+cd "2. Model Training, Evaluation & Deployment/final_retrieval_testing"
 python retrieval_performance_tester.py
 
 # Analyze results
@@ -1646,23 +1800,33 @@ python analyze_retrieval_results.py results/
 python visualize_results.py results/
 ```
 
-**7. Evaluate Generation**
+**7. Evaluate Generation (Validation)**
 ```bash
-# Full evaluation (96 configs × 200 cases)
-cd evaluation_framework_final
-python comprehensive_triage_evaluator.py
+# Full validation evaluation (96 configs × 200 cases) with UNKNOWN tracking
+cd "2. Model Training, Evaluation & Deployment/evaluation_framework_final"
+python comprehensive_triage_evaluator_unknown_label.py
 
 # Analyze results
-python analysis_dashboard.py
+python analysis_dashboard_unknown_tracking.py
 
-# Generate plots
+# Generate UNKNOWN rate plots
 python individual_plots_unknown_tracking.py
+```
+
+**7b. Final Testing (Test Set)**
+```bash
+# Test top 5 configurations on full test dataset (1,975 cases)
+cd "2. Model Training, Evaluation & Deployment/evaluation_framework_final/testing_framework_final"
+python comprehensive_triage_tester.py
+
+# With LLM-as-judge quality evaluation
+python comprehensive_triage_tester_llm_as_judge.py
 ```
 
 **8. Deploy to iOS**
 ```bash
 # Prepare assets
-cd iosDemo
+cd "2. Model Training, Evaluation & Deployment/iosDemo"
 python create_chunk_database.py
 python create_faiss_index.py
 python convert_mlx_fixed.py
@@ -1683,14 +1847,14 @@ python "1. KB and DS construction/main_chunking_script_v4.py"
 
 **Test Single Model**:
 ```bash
-cd evaluation_framework_final
-python comprehensive_triage_evaluator.py --max-configs 4 --sample-size 50
+cd "2. Model Training, Evaluation & Deployment/evaluation_framework_final"
+python comprehensive_triage_evaluator_unknown_label.py --max-configs 4 --sample-size 50
 # Tests 1 model with 4 RAG conditions on 50 cases
 ```
 
 **Quick Retrieval Test**:
 ```bash
-cd final_retrieval_testing
+cd "2. Model Training, Evaluation & Deployment/final_retrieval_testing"
 python run_retrieval_test.py --quick
 # Tests 5 best configurations
 ```

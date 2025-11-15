@@ -1,0 +1,754 @@
+{
+  "config": {
+    "name": "fixed_c1024_o150_hybrid",
+    "chunking_method": "fixed_c1024_o150",
+    "embedding_file": "embeddings_fixed_c1024_o150_all-MiniLM-L6-v2.pkl",
+    "index_file": "faiss_index_fixed_c1024_o150_all-MiniLM-L6-v2.index",
+    "chunk_data_file": "healthify_chunks_fixed_c1024_o150.json",
+    "retrieval_type": "hybrid",
+    "rerank_method": null
+  },
+  "metrics": {
+    "pass_at_5": 0.0,
+    "pass_at_10": 0.0,
+    "pass_at_20": 0.0,
+    "avg_retrieval_time_ms": 119.47011947631836
+  },
+  "detailed_results": [
+    {
+      "test_case": "TestCase(symptom='Abdominal_aortic_aneurysm (Case 1)', patient_query=\"Hi, I'm a 28-year-old Pacific Island male in Auckland, and I've been having this deep, constant pain in my belly area and side, it's been going on for a few hours now, and I also have a throbbing feeling near my belly button, I'm getting really worried.\", patient_response=\"Yeah, the pain is really bad, it feels like it's ripping or tearing, and I do have back pain, it's been getting worse over the last hour, and I'm feeling a bit short of breath now.\", final_triage_decision='ED', next_step='Call 111 immediately and request an ambulance to go to the emergency department.', reasoning_question=\"The patient's symptoms of deep, constant belly pain and throbbing feeling near the belly button could indicate an abdominal aortic aneurysm, a potentially life-threatening condition, so clarifying the severity and nature of the pain is crucial to determine the urgency of the situation. The question also screens for red flags such as sudden severe pain, back pain, and breathing difficulties.\", reasoning_decision=\"The patient's symptoms of sudden, severe, and worsening belly and back pain, along with shortness of breath, are consistent with a ruptured abdominal aortic aneurysm, which is a medical emergency requiring immediate attention in the emergency department.\", clarifying_question='Can you tell me more about the pain, is it sudden and severe, and are you experiencing any back pain or difficulty breathing?', generation_timestamp=1758429942.574643)",
+      "query": "Hi, I'm a 28-year-old Pacific Island male in Auckland, and I've been having this deep, constant pain in my belly area and side, it's been going on for a few hours now, and I also have a throbbing feeling near my belly button, I'm getting really worried. Yeah, the pain is really bad, it feels like it's ripping or tearing, and I do have back pain, it's been getting worse over the last hour, and I'm feeling a bit short of breath now.",
+      "results": {
+        "pass_at_5": false,
+        "pass_at_10": false,
+        "pass_at_20": false
+      },
+      "retrieval_time": 0.15368175506591797,
+      "top_retrieved": [
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_4098",
+              "text": "Back pain can be scary, disabling and distressing. It's common and usually occurs in the lower part of the back. Most back pain isn't serious and will improve over time \u2013 each person's journey is different. Most people will do well with self-care strategies, some will benefit from seeking help from a healthcare provider. Rarely, back pain is a sign of a more serious problem. There are key signs to check for (see below). (Healthify He Puna Waiora, 2025) Back pain can start suddenly or it can come on slowly over a few days or weeks. Most episodes are short term (acute back pain). These episodes often improve a lot over the first 2 weeks, then settle further over the following months. Don't be concerned if you continue to have low level discomfort. Sometimes back pain can last longer than 3 months (persistent back pain). This doesn't mean that there's a serious problem. Persistent pain also tends to get better over time. Read more aboutchronic pain. It's not uncommon to have further episodes of back pain (recurr",
+              "original_text": "Back pain can be scary, disabling and distressing. It's common and usually occurs in the lower part of the back. Most back pain isn't serious and will improve over time \u2013 each person's journey is different. Most people will do well with self-care strategies, some will benefit from seeking help from a healthcare provider. Rarely, back pain is a sign of a more serious problem. There are key signs to check for (see below). (Healthify He Puna Waiora, 2025) Back pain can start suddenly or it can come on slowly over a few days or weeks. Most episodes are short term (acute back pain). These episodes often improve a lot over the first 2 weeks, then settle further over the following months. Don't be concerned if you continue to have low level discomfort. Sometimes back pain can last longer than 3 months (persistent back pain). This doesn't mean that there's a serious problem. Persistent pain also tends to get better over time. Read more aboutchronic pain. It's not uncommon to have further episodes of back pain (recurr",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Back_pain.txt",
+              "source_char_start": 0,
+              "source_char_end": 1024,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_4098",
+                "text": "Back pain can be scary, disabling and distressing. It's common and usually occurs in the lower part of the back. Most back pain isn't serious and will improve over time \u2013 each person's journey is different. Most people will do well with self-care strategies, some will benefit from seeking help from a healthcare provider. Rarely, back pain is a sign of a more serious problem. There are key signs to check for (see below). (Healthify He Puna Waiora, 2025) Back pain can start suddenly or it can come on slowly over a few days or weeks. Most episodes are short term (acute back pain). These episodes often improve a lot over the first 2 weeks, then settle further over the following months. Don't be concerned if you continue to have low level discomfort. Sometimes back pain can last longer than 3 months (persistent back pain). This doesn't mean that there's a serious problem. Persistent pain also tends to get better over time. Read more aboutchronic pain. It's not uncommon to have further episodes of back pain (recurr",
+                "source_document": "Back_pain.txt",
+                "source_char_start": 0,
+                "source_char_end": 1024
+              }
+            },
+            "fusion_score": 0.011921983983466803,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 42.54565217391305,
+          "rerank_method": "feature",
+          "search_time": 0.15367889404296875,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_11381",
+              "text": "dleboarding (SUP) and surfing, kiteboarding, sailing. I run bush skills courses for women. I can spend hours working in the garden. I feel fit and active. POP!? Why me? In July 2019, my peeing felt a little bit different for a couple of days. The following night I had to get up to the loo nearly every hour, each time feeling more uncomfortable \u2018down there\u2019. Explaining it to my husband the next morning, I said \u201cit feels like something is going to fall out of my vagina\u201d. No other way to describe it. After googling my symptoms, \u2018bladder prolapse\u2019 appeared on the screen. It sounded vaguely familiar, but I certainly couldn\u2019t relate it to me. Luckily I managed to get the last appointment at the medical centre (it was Friday of all days!). The doctor\u2019s examination confirmed a prolapse \u2013 not bladder but uterus. I felt stunned. Read more ofthis story(external link). I was 35 years old and three weeks postpartum after my first baby when (after lots of googling with few answers) I went to a GP thinking I had a prolapse.",
+              "original_text": "dleboarding (SUP) and surfing, kiteboarding, sailing. I run bush skills courses for women. I can spend hours working in the garden. I feel fit and active. POP!? Why me? In July 2019, my peeing felt a little bit different for a couple of days. The following night I had to get up to the loo nearly every hour, each time feeling more uncomfortable \u2018down there\u2019. Explaining it to my husband the next morning, I said \u201cit feels like something is going to fall out of my vagina\u201d. No other way to describe it. After googling my symptoms, \u2018bladder prolapse\u2019 appeared on the screen. It sounded vaguely familiar, but I certainly couldn\u2019t relate it to me. Luckily I managed to get the last appointment at the medical centre (it was Friday of all days!). The doctor\u2019s examination confirmed a prolapse \u2013 not bladder but uterus. I felt stunned. Read more ofthis story(external link). I was 35 years old and three weeks postpartum after my first baby when (after lots of googling with few answers) I went to a GP thinking I had a prolapse.",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Pelvic_organ_prolapse.txt",
+              "source_char_start": 6992,
+              "source_char_end": 8016,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_11381",
+                "text": "dleboarding (SUP) and surfing, kiteboarding, sailing. I run bush skills courses for women. I can spend hours working in the garden. I feel fit and active. POP!? Why me? In July 2019, my peeing felt a little bit different for a couple of days. The following night I had to get up to the loo nearly every hour, each time feeling more uncomfortable \u2018down there\u2019. Explaining it to my husband the next morning, I said \u201cit feels like something is going to fall out of my vagina\u201d. No other way to describe it. After googling my symptoms, \u2018bladder prolapse\u2019 appeared on the screen. It sounded vaguely familiar, but I certainly couldn\u2019t relate it to me. Luckily I managed to get the last appointment at the medical centre (it was Friday of all days!). The doctor\u2019s examination confirmed a prolapse \u2013 not bladder but uterus. I felt stunned. Read more ofthis story(external link). I was 35 years old and three weeks postpartum after my first baby when (after lots of googling with few answers) I went to a GP thinking I had a prolapse.",
+                "source_document": "Pelvic_organ_prolapse.txt",
+                "source_char_start": 6992,
+                "source_char_end": 8016
+              }
+            },
+            "fusion_score": 0.012130325814536339,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 40.50574712643678,
+          "rerank_method": "feature",
+          "search_time": 0.15367889404296875,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_4101",
+              "text": " redness or swelling on your back. You have weakness or numbness (can't feel a pin prick) in your leg. You have shooting pain in your calf that's worse than the pain in your back. You have difficulty walking. You have constant pain \u2013 especially at night. Your pain is getting much worse, or spreading up your spine. You have a rash in the same area as your pain. Your back pain is severe, disabling or distressing You're unable to work because of your pain. You are worrying a lot about your back pain. You have back pain that's not getting better after a few weeks of trying self-care. Read more aboutself-care for back pain. Most back pain isn't due to any serious injury or disease. People often have back pain for no apparent reason or after a minor or common movement. This means that there hasn't been any injury. Sometimes back pain starts after you use your back differently or more than normal (eg, heavy lifting), this doesn't necessarily mean that you're injured. Back pain can also start after something traumati",
+              "original_text": " redness or swelling on your back. You have weakness or numbness (can't feel a pin prick) in your leg. You have shooting pain in your calf that's worse than the pain in your back. You have difficulty walking. You have constant pain \u2013 especially at night. Your pain is getting much worse, or spreading up your spine. You have a rash in the same area as your pain. Your back pain is severe, disabling or distressing You're unable to work because of your pain. You are worrying a lot about your back pain. You have back pain that's not getting better after a few weeks of trying self-care. Read more aboutself-care for back pain. Most back pain isn't due to any serious injury or disease. People often have back pain for no apparent reason or after a minor or common movement. This means that there hasn't been any injury. Sometimes back pain starts after you use your back differently or more than normal (eg, heavy lifting), this doesn't necessarily mean that you're injured. Back pain can also start after something traumati",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Back_pain.txt",
+              "source_char_start": 2622,
+              "source_char_end": 3646,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_4101",
+                "text": " redness or swelling on your back. You have weakness or numbness (can't feel a pin prick) in your leg. You have shooting pain in your calf that's worse than the pain in your back. You have difficulty walking. You have constant pain \u2013 especially at night. Your pain is getting much worse, or spreading up your spine. You have a rash in the same area as your pain. Your back pain is severe, disabling or distressing You're unable to work because of your pain. You are worrying a lot about your back pain. You have back pain that's not getting better after a few weeks of trying self-care. Read more aboutself-care for back pain. Most back pain isn't due to any serious injury or disease. People often have back pain for no apparent reason or after a minor or common movement. This means that there hasn't been any injury. Sometimes back pain starts after you use your back differently or more than normal (eg, heavy lifting), this doesn't necessarily mean that you're injured. Back pain can also start after something traumati",
+                "source_document": "Back_pain.txt",
+                "source_char_start": 2622,
+                "source_char_end": 3646
+              }
+            },
+            "fusion_score": 0.010166561910747957,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 38.509234234234235,
+          "rerank_method": "feature",
+          "search_time": 0.15367889404296875,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_10171",
+              "text": "very high blood levels of calcium or triglycerides (fats). The following video is about acute pancreatitis. It may take a few moments to load. (The National Pancreas Foundation, US, 2013) The main symptom of acute pancreatitis is sudden, severe pain in the upper or middle part of your tummy (puku) just below your ribs. This pain often gets worse, and it sometimes moves towards your back or to just below your left shoulder blade. You may feel worse when you eat or drink, especially fatty foods. Lying flat on your back often makes the pain worse. Leaning forward or curling into a ball may help to relieve the pain. You may also experience: feeling sick (nausea) or being sick (vomiting) a high temperature (fever) your abdomen swelling diarrhoea (runny poo). You will be admitted to hospital where doctors will look for the cause of your severe abdominal pain and vomiting. You are likely to have blood tests, anultrasound, or aCT scanof your tummy. If you experience severe pain, you will be admitted to hospital, wher",
+              "original_text": "very high blood levels of calcium or triglycerides (fats). The following video is about acute pancreatitis. It may take a few moments to load. (The National Pancreas Foundation, US, 2013) The main symptom of acute pancreatitis is sudden, severe pain in the upper or middle part of your tummy (puku) just below your ribs. This pain often gets worse, and it sometimes moves towards your back or to just below your left shoulder blade. You may feel worse when you eat or drink, especially fatty foods. Lying flat on your back often makes the pain worse. Leaning forward or curling into a ball may help to relieve the pain. You may also experience: feeling sick (nausea) or being sick (vomiting) a high temperature (fever) your abdomen swelling diarrhoea (runny poo). You will be admitted to hospital where doctors will look for the cause of your severe abdominal pain and vomiting. You are likely to have blood tests, anultrasound, or aCT scanof your tummy. If you experience severe pain, you will be admitted to hospital, wher",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Acute_pancreatitis__Mate_repe_huka_k\u014dpauku.txt",
+              "source_char_start": 2622,
+              "source_char_end": 3646,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_10171",
+                "text": "very high blood levels of calcium or triglycerides (fats). The following video is about acute pancreatitis. It may take a few moments to load. (The National Pancreas Foundation, US, 2013) The main symptom of acute pancreatitis is sudden, severe pain in the upper or middle part of your tummy (puku) just below your ribs. This pain often gets worse, and it sometimes moves towards your back or to just below your left shoulder blade. You may feel worse when you eat or drink, especially fatty foods. Lying flat on your back often makes the pain worse. Leaning forward or curling into a ball may help to relieve the pain. You may also experience: feeling sick (nausea) or being sick (vomiting) a high temperature (fever) your abdomen swelling diarrhoea (runny poo). You will be admitted to hospital where doctors will look for the cause of your severe abdominal pain and vomiting. You are likely to have blood tests, anultrasound, or aCT scanof your tummy. If you experience severe pain, you will be admitted to hospital, wher",
+                "source_document": "Acute_pancreatitis__Mate_repe_huka_k\u014dpauku.txt",
+                "source_char_start": 2622,
+                "source_char_end": 3646
+              }
+            },
+            "fusion_score": 0.01111111111111111,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 38.495911949685535,
+          "rerank_method": "feature",
+          "search_time": 0.15367889404296875,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_9547",
+              "text": "ment. your discharge changes colour, smell or texture you produce more discharge than usual you feel itchy or sore you bleed between periods or after sex you get pain when peeing or with sex you get pain in your lower belly (pelvic pain) you have redness, pain, or swelling around the vulva (the area of skin around the outside of your vagina) you're feeling unwell with a fever. Sexual Wellbeing Aotearoa and sexual health clinics have doctors and nurses who can treat problems with your genitals and urinary system. Most clinics offer a walk-in service, where you don't need an appointment, but you may need to wait for a while to be seen. Find a clinic by clicking on the links below. Sexual Wellbeing Aotearoa clinic(external link)Sexual health clinic(external link) To help prevent irritation, soreness, or dryness: Do wash your vulva (the area of skin around the outside of the vagina) gently every day \u2013 it's easily cleaned by running water over it in the shower. Do use water only to clean your vulva \u2013 avoid soaps a",
+              "original_text": "ment. your discharge changes colour, smell or texture you produce more discharge than usual you feel itchy or sore you bleed between periods or after sex you get pain when peeing or with sex you get pain in your lower belly (pelvic pain) you have redness, pain, or swelling around the vulva (the area of skin around the outside of your vagina) you're feeling unwell with a fever. Sexual Wellbeing Aotearoa and sexual health clinics have doctors and nurses who can treat problems with your genitals and urinary system. Most clinics offer a walk-in service, where you don't need an appointment, but you may need to wait for a while to be seen. Find a clinic by clicking on the links below. Sexual Wellbeing Aotearoa clinic(external link)Sexual health clinic(external link) To help prevent irritation, soreness, or dryness: Do wash your vulva (the area of skin around the outside of the vagina) gently every day \u2013 it's easily cleaned by running water over it in the shower. Do use water only to clean your vulva \u2013 avoid soaps a",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Vaginal_discharge.txt",
+              "source_char_start": 1748,
+              "source_char_end": 2772,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_9547",
+                "text": "ment. your discharge changes colour, smell or texture you produce more discharge than usual you feel itchy or sore you bleed between periods or after sex you get pain when peeing or with sex you get pain in your lower belly (pelvic pain) you have redness, pain, or swelling around the vulva (the area of skin around the outside of your vagina) you're feeling unwell with a fever. Sexual Wellbeing Aotearoa and sexual health clinics have doctors and nurses who can treat problems with your genitals and urinary system. Most clinics offer a walk-in service, where you don't need an appointment, but you may need to wait for a while to be seen. Find a clinic by clicking on the links below. Sexual Wellbeing Aotearoa clinic(external link)Sexual health clinic(external link) To help prevent irritation, soreness, or dryness: Do wash your vulva (the area of skin around the outside of the vagina) gently every day \u2013 it's easily cleaned by running water over it in the shower. Do use water only to clean your vulva \u2013 avoid soaps a",
+                "source_document": "Vaginal_discharge.txt",
+                "source_char_start": 1748,
+                "source_char_end": 2772
+              }
+            },
+            "fusion_score": 0.003846153846153846,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 36.47197452229299,
+          "rerank_method": "feature",
+          "search_time": 0.15367889404296875,
+          "total_chunks": 13272
+        }
+      ]
+    },
+    {
+      "test_case": "TestCase(symptom='Abdominal_aortic_aneurysm (Case 2)', patient_query=\"Kia ora, I'm a 45-year-old P\u0101keh\u0101 man from a small town in the Waikato, and I've been having this deep, constant pain in my belly area and side, it's been going on for a few hours now, and I also have a throbbing feeling near my belly button.\", patient_response=\"Yes, the pain is really bad and it came on suddenly, I also have back pain and I'm feeling a bit lightheaded, my skin feels pale and I'm getting a bit worried.\", final_triage_decision='ED', next_step='Call 111 immediately and request an ambulance, as you may need urgent medical attention for a potential abdominal aortic aneurysm.', reasoning_question=\"The patient's symptoms of deep, constant belly pain and throbbing feeling near the belly button are concerning for an abdominal aortic aneurysm, and clarifying the severity and acuity of the pain, as well as screening for other red-flag symptoms like back pain or difficulty breathing, is crucial to determine the urgency of the situation.\", reasoning_decision=\"The patient's symptoms are consistent with a potential abdominal aortic aneurysm, which is a medical emergency requiring immediate attention, therefore, emergency department care is essential to prevent potential rupture and other complications.\", clarifying_question='Can you tell me more about the pain, is it sudden and severe, and are you experiencing any other symptoms like back pain or difficulty breathing?', generation_timestamp=1758429948.6866932)",
+      "query": "Kia ora, I'm a 45-year-old P\u0101keh\u0101 man from a small town in the Waikato, and I've been having this deep, constant pain in my belly area and side, it's been going on for a few hours now, and I also have a throbbing feeling near my belly button. Yes, the pain is really bad and it came on suddenly, I also have back pain and I'm feeling a bit lightheaded, my skin feels pale and I'm getting a bit worried.",
+      "results": {
+        "pass_at_5": false,
+        "pass_at_10": false,
+        "pass_at_20": false
+      },
+      "retrieval_time": 0.1408698558807373,
+      "top_retrieved": [
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_10766",
+              "text": "re not getting better. We finally called an ambulance and around 4pm I was taken to the hospital. \" (Continue reading Prerna's story here(external link)) I was diagnosed with trigeminal neuralgia (TN) 11 years ago, at the age of 32. At that time my daughter with special needs was 10 and my younger daughter was almost six. I am a solo mum. My GP diagnosed it immediately but she referred me to the maxillofacial surgeon at the hospital for an expert diagnosis. This was a humiliating experience that resulted in a complaint through the Health and Disability Commissioner. Having been in excruciating pain, I had been unable to keep up my oral health which is very normal when living with TN. The surgeon examined me, asked me if I actually owned a toothbrush, then told me I don\u2019t have TN, just poor dental hygiene. Thankfully, my GP continued to treat it as TN despite this. I had long periods in remission until 2018 when the pain came back with a vengeance and without any more remissions. My GP got the pain largely und",
+              "original_text": "re not getting better. We finally called an ambulance and around 4pm I was taken to the hospital. \" (Continue reading Prerna's story here(external link)) I was diagnosed with trigeminal neuralgia (TN) 11 years ago, at the age of 32. At that time my daughter with special needs was 10 and my younger daughter was almost six. I am a solo mum. My GP diagnosed it immediately but she referred me to the maxillofacial surgeon at the hospital for an expert diagnosis. This was a humiliating experience that resulted in a complaint through the Health and Disability Commissioner. Having been in excruciating pain, I had been unable to keep up my oral health which is very normal when living with TN. The surgeon examined me, asked me if I actually owned a toothbrush, then told me I don\u2019t have TN, just poor dental hygiene. Thankfully, my GP continued to treat it as TN despite this. I had long periods in remission until 2018 when the pain came back with a vengeance and without any more remissions. My GP got the pain largely und",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Rare_disorders.txt",
+              "source_char_start": 10488,
+              "source_char_end": 11512,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_10766",
+                "text": "re not getting better. We finally called an ambulance and around 4pm I was taken to the hospital. \" (Continue reading Prerna's story here(external link)) I was diagnosed with trigeminal neuralgia (TN) 11 years ago, at the age of 32. At that time my daughter with special needs was 10 and my younger daughter was almost six. I am a solo mum. My GP diagnosed it immediately but she referred me to the maxillofacial surgeon at the hospital for an expert diagnosis. This was a humiliating experience that resulted in a complaint through the Health and Disability Commissioner. Having been in excruciating pain, I had been unable to keep up my oral health which is very normal when living with TN. The surgeon examined me, asked me if I actually owned a toothbrush, then told me I don\u2019t have TN, just poor dental hygiene. Thankfully, my GP continued to treat it as TN despite this. I had long periods in remission until 2018 when the pain came back with a vengeance and without any more remissions. My GP got the pain largely und",
+                "source_document": "Rare_disorders.txt",
+                "source_char_start": 10488,
+                "source_char_end": 11512
+              }
+            },
+            "fusion_score": 0.004918032786885246,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 34.46842927264614,
+          "rerank_method": "feature",
+          "search_time": 0.14086604118347168,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_4101",
+              "text": " redness or swelling on your back. You have weakness or numbness (can't feel a pin prick) in your leg. You have shooting pain in your calf that's worse than the pain in your back. You have difficulty walking. You have constant pain \u2013 especially at night. Your pain is getting much worse, or spreading up your spine. You have a rash in the same area as your pain. Your back pain is severe, disabling or distressing You're unable to work because of your pain. You are worrying a lot about your back pain. You have back pain that's not getting better after a few weeks of trying self-care. Read more aboutself-care for back pain. Most back pain isn't due to any serious injury or disease. People often have back pain for no apparent reason or after a minor or common movement. This means that there hasn't been any injury. Sometimes back pain starts after you use your back differently or more than normal (eg, heavy lifting), this doesn't necessarily mean that you're injured. Back pain can also start after something traumati",
+              "original_text": " redness or swelling on your back. You have weakness or numbness (can't feel a pin prick) in your leg. You have shooting pain in your calf that's worse than the pain in your back. You have difficulty walking. You have constant pain \u2013 especially at night. Your pain is getting much worse, or spreading up your spine. You have a rash in the same area as your pain. Your back pain is severe, disabling or distressing You're unable to work because of your pain. You are worrying a lot about your back pain. You have back pain that's not getting better after a few weeks of trying self-care. Read more aboutself-care for back pain. Most back pain isn't due to any serious injury or disease. People often have back pain for no apparent reason or after a minor or common movement. This means that there hasn't been any injury. Sometimes back pain starts after you use your back differently or more than normal (eg, heavy lifting), this doesn't necessarily mean that you're injured. Back pain can also start after something traumati",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Back_pain.txt",
+              "source_char_start": 2622,
+              "source_char_end": 3646,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_4101",
+                "text": " redness or swelling on your back. You have weakness or numbness (can't feel a pin prick) in your leg. You have shooting pain in your calf that's worse than the pain in your back. You have difficulty walking. You have constant pain \u2013 especially at night. Your pain is getting much worse, or spreading up your spine. You have a rash in the same area as your pain. Your back pain is severe, disabling or distressing You're unable to work because of your pain. You are worrying a lot about your back pain. You have back pain that's not getting better after a few weeks of trying self-care. Read more aboutself-care for back pain. Most back pain isn't due to any serious injury or disease. People often have back pain for no apparent reason or after a minor or common movement. This means that there hasn't been any injury. Sometimes back pain starts after you use your back differently or more than normal (eg, heavy lifting), this doesn't necessarily mean that you're injured. Back pain can also start after something traumati",
+                "source_document": "Back_pain.txt",
+                "source_char_start": 2622,
+                "source_char_end": 3646
+              }
+            },
+            "fusion_score": 0.008333333333333331,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 32.46181353767561,
+          "rerank_method": "feature",
+          "search_time": 0.14086604118347168,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_4273",
+              "text": "hard and sore to touch) Heavy arm This is quite common after having the vaccination. It usually starts a few hours after getting the injection and settles within a few days. Read more:After your immunisation. (external link) Fever It is quite common and can happen between a week or 2 after having the vaccine. Tell your doctor if the fever persists. Generally feeling a bit unwell Headache Feeling faint Nausea (feeling sick) These are quite common for the first 1 or 2 days after receiving the injection. It usually settles within a few days. Tell your doctor if these side effects bother you. Read more:After your immunisation(external link) Read more aboutmedicines and side effectsandreporting a reaction you think might be a side effect. Vaccines do not cause autism. The confusion came about because in 1998 a British doctor thought there was a link between the MMR vaccine and autism. It has since been found that the doctor had changed the patient data and the laboratory reports were incorrect. The study was remov",
+              "original_text": "hard and sore to touch) Heavy arm This is quite common after having the vaccination. It usually starts a few hours after getting the injection and settles within a few days. Read more:After your immunisation. (external link) Fever It is quite common and can happen between a week or 2 after having the vaccine. Tell your doctor if the fever persists. Generally feeling a bit unwell Headache Feeling faint Nausea (feeling sick) These are quite common for the first 1 or 2 days after receiving the injection. It usually settles within a few days. Tell your doctor if these side effects bother you. Read more:After your immunisation(external link) Read more aboutmedicines and side effectsandreporting a reaction you think might be a side effect. Vaccines do not cause autism. The confusion came about because in 1998 a British doctor thought there was a link between the MMR vaccine and autism. It has since been found that the doctor had changed the patient data and the laboratory reports were incorrect. The study was remov",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Measles,_mumps_and_rubella_(MMR)_vaccine.txt",
+              "source_char_start": 6992,
+              "source_char_end": 8016,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_4273",
+                "text": "hard and sore to touch) Heavy arm This is quite common after having the vaccination. It usually starts a few hours after getting the injection and settles within a few days. Read more:After your immunisation. (external link) Fever It is quite common and can happen between a week or 2 after having the vaccine. Tell your doctor if the fever persists. Generally feeling a bit unwell Headache Feeling faint Nausea (feeling sick) These are quite common for the first 1 or 2 days after receiving the injection. It usually settles within a few days. Tell your doctor if these side effects bother you. Read more:After your immunisation(external link) Read more aboutmedicines and side effectsandreporting a reaction you think might be a side effect. Vaccines do not cause autism. The confusion came about because in 1998 a British doctor thought there was a link between the MMR vaccine and autism. It has since been found that the doctor had changed the patient data and the laboratory reports were incorrect. The study was remov",
+                "source_document": "Measles,_mumps_and_rubella_(MMR)_vaccine.txt",
+                "source_char_start": 6992,
+                "source_char_end": 8016
+              }
+            },
+            "fusion_score": 0.004,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 32.460679857940136,
+          "rerank_method": "feature",
+          "search_time": 0.14086604118347168,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_376",
+              "text": "er or a high temperature feeling unwell generally aches and pain all over your body lower back pain you have had antibiotics for acute prostatitis but your symptoms don't get better. The prostate is a small gland found in men. It's about the size of a walnut, lies just below your bladder and surrounds the tube (urethra) that drains urine (pee) from your bladder. Its job is to secrete a milky fluid, which becomes part of the semen and nourishes the sperm. There are 2 types of prostatitis: Chronic prostatitis\u2013 this is the most common type of prostatitis and symptoms come and go and last more than 3 months. Acute prostatitis\u2013 this is less common, but symptoms can be more serious, come on suddenly and last for a shorter time. The cause of chronic prostatitis is usually not known. However, it can be caused by a previous or current infection that has spread from your urinary tract or other parts of your body. Or it can become inflamed without any infection. Sometimes, the infection can be caused by a bladder obstru",
+              "original_text": "er or a high temperature feeling unwell generally aches and pain all over your body lower back pain you have had antibiotics for acute prostatitis but your symptoms don't get better. The prostate is a small gland found in men. It's about the size of a walnut, lies just below your bladder and surrounds the tube (urethra) that drains urine (pee) from your bladder. Its job is to secrete a milky fluid, which becomes part of the semen and nourishes the sperm. There are 2 types of prostatitis: Chronic prostatitis\u2013 this is the most common type of prostatitis and symptoms come and go and last more than 3 months. Acute prostatitis\u2013 this is less common, but symptoms can be more serious, come on suddenly and last for a shorter time. The cause of chronic prostatitis is usually not known. However, it can be caused by a previous or current infection that has spread from your urinary tract or other parts of your body. Or it can become inflamed without any infection. Sometimes, the infection can be caused by a bladder obstru",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Prostatitis.txt",
+              "source_char_start": 874,
+              "source_char_end": 1898,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_376",
+                "text": "er or a high temperature feeling unwell generally aches and pain all over your body lower back pain you have had antibiotics for acute prostatitis but your symptoms don't get better. The prostate is a small gland found in men. It's about the size of a walnut, lies just below your bladder and surrounds the tube (urethra) that drains urine (pee) from your bladder. Its job is to secrete a milky fluid, which becomes part of the semen and nourishes the sperm. There are 2 types of prostatitis: Chronic prostatitis\u2013 this is the most common type of prostatitis and symptoms come and go and last more than 3 months. Acute prostatitis\u2013 this is less common, but symptoms can be more serious, come on suddenly and last for a shorter time. The cause of chronic prostatitis is usually not known. However, it can be caused by a previous or current infection that has spread from your urinary tract or other parts of your body. Or it can become inflamed without any infection. Sometimes, the infection can be caused by a bladder obstru",
+                "source_document": "Prostatitis.txt",
+                "source_char_start": 874,
+                "source_char_end": 1898
+              }
+            },
+            "fusion_score": 0.009348739495798317,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 32.44916253833451,
+          "rerank_method": "feature",
+          "search_time": 0.14086604118347168,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_4098",
+              "text": "Back pain can be scary, disabling and distressing. It's common and usually occurs in the lower part of the back. Most back pain isn't serious and will improve over time \u2013 each person's journey is different. Most people will do well with self-care strategies, some will benefit from seeking help from a healthcare provider. Rarely, back pain is a sign of a more serious problem. There are key signs to check for (see below). (Healthify He Puna Waiora, 2025) Back pain can start suddenly or it can come on slowly over a few days or weeks. Most episodes are short term (acute back pain). These episodes often improve a lot over the first 2 weeks, then settle further over the following months. Don't be concerned if you continue to have low level discomfort. Sometimes back pain can last longer than 3 months (persistent back pain). This doesn't mean that there's a serious problem. Persistent pain also tends to get better over time. Read more aboutchronic pain. It's not uncommon to have further episodes of back pain (recurr",
+              "original_text": "Back pain can be scary, disabling and distressing. It's common and usually occurs in the lower part of the back. Most back pain isn't serious and will improve over time \u2013 each person's journey is different. Most people will do well with self-care strategies, some will benefit from seeking help from a healthcare provider. Rarely, back pain is a sign of a more serious problem. There are key signs to check for (see below). (Healthify He Puna Waiora, 2025) Back pain can start suddenly or it can come on slowly over a few days or weeks. Most episodes are short term (acute back pain). These episodes often improve a lot over the first 2 weeks, then settle further over the following months. Don't be concerned if you continue to have low level discomfort. Sometimes back pain can last longer than 3 months (persistent back pain). This doesn't mean that there's a serious problem. Persistent pain also tends to get better over time. Read more aboutchronic pain. It's not uncommon to have further episodes of back pain (recurr",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Back_pain.txt",
+              "source_char_start": 0,
+              "source_char_end": 1024,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_4098",
+                "text": "Back pain can be scary, disabling and distressing. It's common and usually occurs in the lower part of the back. Most back pain isn't serious and will improve over time \u2013 each person's journey is different. Most people will do well with self-care strategies, some will benefit from seeking help from a healthcare provider. Rarely, back pain is a sign of a more serious problem. There are key signs to check for (see below). (Healthify He Puna Waiora, 2025) Back pain can start suddenly or it can come on slowly over a few days or weeks. Most episodes are short term (acute back pain). These episodes often improve a lot over the first 2 weeks, then settle further over the following months. Don't be concerned if you continue to have low level discomfort. Sometimes back pain can last longer than 3 months (persistent back pain). This doesn't mean that there's a serious problem. Persistent pain also tends to get better over time. Read more aboutchronic pain. It's not uncommon to have further episodes of back pain (recurr",
+                "source_document": "Back_pain.txt",
+                "source_char_start": 0,
+                "source_char_end": 1024
+              }
+            },
+            "fusion_score": 0.007070707070707071,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 32.446296296296296,
+          "rerank_method": "feature",
+          "search_time": 0.14086604118347168,
+          "total_chunks": 13272
+        }
+      ]
+    },
+    {
+      "test_case": "TestCase(symptom='Acute_myocardial_infarction (Case 1)', patient_query=\"I'm a 55-year-old man and I'm having severe chest pain that started about 30 minutes ago. The pain is crushing and feels like an elephant is sitting on my chest. It's radiating down my left arm.\", patient_response=\"Yes, I'm sweating profusely and feeling nauseous. I'm also having trouble breathing. I had a heart attack 5 years ago and I'm on medication for high blood pressure.\", final_triage_decision='ED', next_step='Call 111 immediately and request an ambulance. This appears to be a heart attack requiring emergency treatment.', reasoning_question='The patient presents with classic symptoms of myocardial infarction including severe crushing chest pain radiating to the arm. Additional symptoms and cardiac history need to be assessed to confirm urgency.', reasoning_decision='The combination of severe chest pain, arm radiation, sweating, nausea, breathing difficulty, and previous cardiac history strongly suggests acute myocardial infarction requiring immediate emergency intervention.', clarifying_question='Are you experiencing any other symptoms like shortness of breath, nausea, sweating, or dizziness? Have you had heart problems before?', generation_timestamp=1758449809.750725)",
+      "query": "I'm a 55-year-old man and I'm having severe chest pain that started about 30 minutes ago. The pain is crushing and feels like an elephant is sitting on my chest. It's radiating down my left arm. Yes, I'm sweating profusely and feeling nauseous. I'm also having trouble breathing. I had a heart attack 5 years ago and I'm on medication for high blood pressure.",
+      "results": {
+        "pass_at_5": false,
+        "pass_at_10": false,
+        "pass_at_20": false
+      },
+      "retrieval_time": 0.1138601303100586,
+      "top_retrieved": [
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_4920",
+              "text": "Chest pain means any pain, tightness or discomfort felt in your chest area. There are many causes of chest pain. Most of the time, it's not caused by heart problems, especially if you are younger than 40 and otherwise well. But chest pain can be a sign of something serious. If you have new symptoms of chest pain and you smoke, havehigh blood pressure, diabetes, high cholesterol or are more than 50 years old, you are more likely to haveheart problems. Don\u2019t try to diagnose yourself, you need to talk to a healthcare professional who can give you proper advice. Treatment will depend on what is causing your chest pain. Call 111 immediately if you have chest pain that: lasts more than 10 minutes or spreads to your arms, back, neck or jaw or feels like crushing pain, heaviness, tightness or pressure in your chest or is accompanied by nausea (feeling sick), sweating, dizziness or shortness of breath. You could be having aheart attack. Stop, rest andcall 111 for an ambulance straight awayas you need immediate treatme",
+              "original_text": "Chest pain means any pain, tightness or discomfort felt in your chest area. There are many causes of chest pain. Most of the time, it's not caused by heart problems, especially if you are younger than 40 and otherwise well. But chest pain can be a sign of something serious. If you have new symptoms of chest pain and you smoke, havehigh blood pressure, diabetes, high cholesterol or are more than 50 years old, you are more likely to haveheart problems. Don\u2019t try to diagnose yourself, you need to talk to a healthcare professional who can give you proper advice. Treatment will depend on what is causing your chest pain. Call 111 immediately if you have chest pain that: lasts more than 10 minutes or spreads to your arms, back, neck or jaw or feels like crushing pain, heaviness, tightness or pressure in your chest or is accompanied by nausea (feeling sick), sweating, dizziness or shortness of breath. You could be having aheart attack. Stop, rest andcall 111 for an ambulance straight awayas you need immediate treatme",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Chest_pain.txt",
+              "source_char_start": 0,
+              "source_char_end": 1024,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_4920",
+                "text": "Chest pain means any pain, tightness or discomfort felt in your chest area. There are many causes of chest pain. Most of the time, it's not caused by heart problems, especially if you are younger than 40 and otherwise well. But chest pain can be a sign of something serious. If you have new symptoms of chest pain and you smoke, havehigh blood pressure, diabetes, high cholesterol or are more than 50 years old, you are more likely to haveheart problems. Don\u2019t try to diagnose yourself, you need to talk to a healthcare professional who can give you proper advice. Treatment will depend on what is causing your chest pain. Call 111 immediately if you have chest pain that: lasts more than 10 minutes or spreads to your arms, back, neck or jaw or feels like crushing pain, heaviness, tightness or pressure in your chest or is accompanied by nausea (feeling sick), sweating, dizziness or shortness of breath. You could be having aheart attack. Stop, rest andcall 111 for an ambulance straight awayas you need immediate treatme",
+                "source_document": "Chest_pain.txt",
+                "source_char_start": 0,
+                "source_char_end": 1024
+              }
+            },
+            "fusion_score": 0.01564207650273224,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 38.56129074146215,
+          "rerank_method": "feature",
+          "search_time": 0.11385703086853027,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_9477",
+              "text": "hings that can increase your risk of atherosclerosis include: getting older an unhealthy diet a lack of exercise being overweight regularly drinking excessive amounts of alcohol smoking other conditions, includinghigh blood pressure, high cholesterolanddiabetes a family history of atherosclerosis or heart problems. The main symptom of angina is chest pain. The pain may feel tight, dull or heavy and is usually felt across the centre of your chest. It may also be felt in either or both shoulders, your neck or jaw, down one or both arms and in your hands. Some people experience it in only one of these areas and not in the chest at all. Angina is usually brought on by physical exertion or stress. Angina usually stops within a few minutes of resting or taking angina medicines. Angina can also cause breathlessness, feeling sick (nausea), pain in your lower chest or belly that is similar to indigestion and fatigue. Women and older people are more likely to present with these symptoms. Some people have these symptoms",
+              "original_text": "hings that can increase your risk of atherosclerosis include: getting older an unhealthy diet a lack of exercise being overweight regularly drinking excessive amounts of alcohol smoking other conditions, includinghigh blood pressure, high cholesterolanddiabetes a family history of atherosclerosis or heart problems. The main symptom of angina is chest pain. The pain may feel tight, dull or heavy and is usually felt across the centre of your chest. It may also be felt in either or both shoulders, your neck or jaw, down one or both arms and in your hands. Some people experience it in only one of these areas and not in the chest at all. Angina is usually brought on by physical exertion or stress. Angina usually stops within a few minutes of resting or taking angina medicines. Angina can also cause breathlessness, feeling sick (nausea), pain in your lower chest or belly that is similar to indigestion and fatigue. Women and older people are more likely to present with these symptoms. Some people have these symptoms",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Angina.txt",
+              "source_char_start": 1748,
+              "source_char_end": 2772,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_9477",
+                "text": "hings that can increase your risk of atherosclerosis include: getting older an unhealthy diet a lack of exercise being overweight regularly drinking excessive amounts of alcohol smoking other conditions, includinghigh blood pressure, high cholesterolanddiabetes a family history of atherosclerosis or heart problems. The main symptom of angina is chest pain. The pain may feel tight, dull or heavy and is usually felt across the centre of your chest. It may also be felt in either or both shoulders, your neck or jaw, down one or both arms and in your hands. Some people experience it in only one of these areas and not in the chest at all. Angina is usually brought on by physical exertion or stress. Angina usually stops within a few minutes of resting or taking angina medicines. Angina can also cause breathlessness, feeling sick (nausea), pain in your lower chest or belly that is similar to indigestion and fatigue. Women and older people are more likely to present with these symptoms. Some people have these symptoms",
+                "source_document": "Angina.txt",
+                "source_char_start": 1748,
+                "source_char_end": 2772
+              }
+            },
+            "fusion_score": 0.01409443269908386,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 34.50919540229885,
+          "rerank_method": "feature",
+          "search_time": 0.11385703086853027,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_9475",
+              "text": "Angina is chest pain that occurs when the blood supply to the muscles of your heart is restricted. This may be felt as an unpleasant feeling, tightness, pressure or weight on your chest and sometimes a feeling of breathlessness. While it's not usually life-threatening, it is a warning sign that you could be at risk of a heart attack or stroke. It usually only lasts a few minutes and can be relieved by rest and/or medicine. If your angina is not relieved after rest and 2 doses of your medication5 minutes apart, after another 5 minutes call111 and ask for an ambulance immediately. Stop what you are doing and rest, tell someone how you are feeling and use your glyceryl trinitrate (GTN) medicine \u2013 take 1 puff of your GTN spray or put 1 tablet under your tongue. If you still have symptoms after 5 minutes, take 1 more puff of your GTN spray. If you still have symptoms 5 minutes after taking the second dose, call 111 and ask for an ambulance. Chew an aspirin while you wait if advised to by a paramedic. If your sympt",
+              "original_text": "Angina is chest pain that occurs when the blood supply to the muscles of your heart is restricted. This may be felt as an unpleasant feeling, tightness, pressure or weight on your chest and sometimes a feeling of breathlessness. While it's not usually life-threatening, it is a warning sign that you could be at risk of a heart attack or stroke. It usually only lasts a few minutes and can be relieved by rest and/or medicine. If your angina is not relieved after rest and 2 doses of your medication5 minutes apart, after another 5 minutes call111 and ask for an ambulance immediately. Stop what you are doing and rest, tell someone how you are feeling and use your glyceryl trinitrate (GTN) medicine \u2013 take 1 puff of your GTN spray or put 1 tablet under your tongue. If you still have symptoms after 5 minutes, take 1 more puff of your GTN spray. If you still have symptoms 5 minutes after taking the second dose, call 111 and ask for an ambulance. Chew an aspirin while you wait if advised to by a paramedic. If your sympt",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Angina.txt",
+              "source_char_start": 0,
+              "source_char_end": 1024,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_9475",
+                "text": "Angina is chest pain that occurs when the blood supply to the muscles of your heart is restricted. This may be felt as an unpleasant feeling, tightness, pressure or weight on your chest and sometimes a feeling of breathlessness. While it's not usually life-threatening, it is a warning sign that you could be at risk of a heart attack or stroke. It usually only lasts a few minutes and can be relieved by rest and/or medicine. If your angina is not relieved after rest and 2 doses of your medication5 minutes apart, after another 5 minutes call111 and ask for an ambulance immediately. Stop what you are doing and rest, tell someone how you are feeling and use your glyceryl trinitrate (GTN) medicine \u2013 take 1 puff of your GTN spray or put 1 tablet under your tongue. If you still have symptoms after 5 minutes, take 1 more puff of your GTN spray. If you still have symptoms 5 minutes after taking the second dose, call 111 and ask for an ambulance. Chew an aspirin while you wait if advised to by a paramedic. If your sympt",
+                "source_document": "Angina.txt",
+                "source_char_start": 0,
+                "source_char_end": 1024
+              }
+            },
+            "fusion_score": 0.004,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 34.50799086757991,
+          "rerank_method": "feature",
+          "search_time": 0.11385703086853027,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_10033",
+              "text": "led 'brain fog' shaking and sweating weakness and fatigue (tiredness) headaches poor sleep chest pain feeling nauseated (sick) shortness of breath a sense of panic. Some people notice that feeling hot, eating a big meal, strenuous exercise, a hot shower or having a menstrual period can make their symptoms worse. POTS may be suspected if: your heart rate increases by 30 beats a minute (bpm) or more, usually within 10 minutes of standing (40bpm in those aged 12 to 19) this continues for more than 30 seconds it is accompanied by other symptoms of POTS. You may have a range of tests to confirm a diagnosis and rule out other conditions, including: a tilt table test \u2013 your heart rate and blood pressure are measured while you lie on a specially designed bed that can be titled upright. The measurements are taken several more times while the bed is slowly tilted into a more upright position. an active stand test \u2013 your heart rate and blood pressure are measured after lying down, immediately upon standing, then after 2",
+              "original_text": "led 'brain fog' shaking and sweating weakness and fatigue (tiredness) headaches poor sleep chest pain feeling nauseated (sick) shortness of breath a sense of panic. Some people notice that feeling hot, eating a big meal, strenuous exercise, a hot shower or having a menstrual period can make their symptoms worse. POTS may be suspected if: your heart rate increases by 30 beats a minute (bpm) or more, usually within 10 minutes of standing (40bpm in those aged 12 to 19) this continues for more than 30 seconds it is accompanied by other symptoms of POTS. You may have a range of tests to confirm a diagnosis and rule out other conditions, including: a tilt table test \u2013 your heart rate and blood pressure are measured while you lie on a specially designed bed that can be titled upright. The measurements are taken several more times while the bed is slowly tilted into a more upright position. an active stand test \u2013 your heart rate and blood pressure are measured after lying down, immediately upon standing, then after 2",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Postural_orthostatic_tachycardia_syndrome_(POTS).txt",
+              "source_char_start": 2622,
+              "source_char_end": 3646,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_10033",
+                "text": "led 'brain fog' shaking and sweating weakness and fatigue (tiredness) headaches poor sleep chest pain feeling nauseated (sick) shortness of breath a sense of panic. Some people notice that feeling hot, eating a big meal, strenuous exercise, a hot shower or having a menstrual period can make their symptoms worse. POTS may be suspected if: your heart rate increases by 30 beats a minute (bpm) or more, usually within 10 minutes of standing (40bpm in those aged 12 to 19) this continues for more than 30 seconds it is accompanied by other symptoms of POTS. You may have a range of tests to confirm a diagnosis and rule out other conditions, including: a tilt table test \u2013 your heart rate and blood pressure are measured while you lie on a specially designed bed that can be titled upright. The measurements are taken several more times while the bed is slowly tilted into a more upright position. an active stand test \u2013 your heart rate and blood pressure are measured after lying down, immediately upon standing, then after 2",
+                "source_document": "Postural_orthostatic_tachycardia_syndrome_(POTS).txt",
+                "source_char_start": 2622,
+                "source_char_end": 3646
+              }
+            },
+            "fusion_score": 0.003846153846153846,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 34.489775051124745,
+          "rerank_method": "feature",
+          "search_time": 0.11385703086853027,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_9398",
+              "text": "Bisoprolol is used to treat heart failure, high blood pressure and angina. Bisoprolol works by slowing down your heart rate and making it easier for your heart to pump blood around your body. Find out how to take it safely and possible side effects. Bisoprolol is used to treat high blood pressure (hypertension) or to prevent chest pain (angina). It's also used with other medicines to treat heart failure. Bisoprolol works by slowing down your heart rate and making it easier for your heart to pump blood around your body. Read more aboutheart failure, high blood pressureandchest pain. In Aotearoa New Zealand bisoprolol comes as tablets (2. 5 mg, 5 mg and 10 mg). The usual dose of bisoprolol for angina or high blood pressure is 10 milligrams (mg) once a day. If you're taking bisoprolol for heart failure, you will usually be started on a very low dose which will be increased slowly over a few months. This allows your body to get used to the medicine and reduces side effects. For example, you will be started on 1. ",
+              "original_text": "Bisoprolol is used to treat heart failure, high blood pressure and angina. Bisoprolol works by slowing down your heart rate and making it easier for your heart to pump blood around your body. Find out how to take it safely and possible side effects. Bisoprolol is used to treat high blood pressure (hypertension) or to prevent chest pain (angina). It's also used with other medicines to treat heart failure. Bisoprolol works by slowing down your heart rate and making it easier for your heart to pump blood around your body. Read more aboutheart failure, high blood pressureandchest pain. In Aotearoa New Zealand bisoprolol comes as tablets (2. 5 mg, 5 mg and 10 mg). The usual dose of bisoprolol for angina or high blood pressure is 10 milligrams (mg) once a day. If you're taking bisoprolol for heart failure, you will usually be started on a very low dose which will be increased slowly over a few months. This allows your body to get used to the medicine and reduces side effects. For example, you will be started on 1. ",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Bisoprolol.txt",
+              "source_char_start": 0,
+              "source_char_end": 1024,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_9398",
+                "text": "Bisoprolol is used to treat heart failure, high blood pressure and angina. Bisoprolol works by slowing down your heart rate and making it easier for your heart to pump blood around your body. Find out how to take it safely and possible side effects. Bisoprolol is used to treat high blood pressure (hypertension) or to prevent chest pain (angina). It's also used with other medicines to treat heart failure. Bisoprolol works by slowing down your heart rate and making it easier for your heart to pump blood around your body. Read more aboutheart failure, high blood pressureandchest pain. In Aotearoa New Zealand bisoprolol comes as tablets (2. 5 mg, 5 mg and 10 mg). The usual dose of bisoprolol for angina or high blood pressure is 10 milligrams (mg) once a day. If you're taking bisoprolol for heart failure, you will usually be started on a very low dose which will be increased slowly over a few months. This allows your body to get used to the medicine and reduces side effects. For example, you will be started on 1. ",
+                "source_document": "Bisoprolol.txt",
+                "source_char_start": 0,
+                "source_char_end": 1024
+              }
+            },
+            "fusion_score": 0.004225352112676056,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 32.49417661801563,
+          "rerank_method": "feature",
+          "search_time": 0.11385703086853027,
+          "total_chunks": 13272
+        }
+      ]
+    },
+    {
+      "test_case": "TestCase(symptom='Asthma (Case 1)', patient_query=\"I'm a 25-year-old woman and I'm having trouble breathing. My chest feels tight and I'm wheezing. I have asthma but my inhaler isn't helping much today.\", patient_response=\"It's about a 7 out of 10. I can only speak a few words at a time. I used my inhaler 20 minutes ago but it's not working like it usually does.\", final_triage_decision='ED', next_step='Go to the emergency department immediately. This appears to be a severe asthma attack that requires urgent medical attention.', reasoning_question='Severe asthma symptoms with poor response to rescue medication need immediate assessment to determine if this represents a severe exacerbation requiring emergency treatment.', reasoning_decision=\"The patient's inability to speak in full sentences, high symptom severity score, and poor response to rescue inhaler indicate a severe asthma exacerbation requiring immediate emergency care.\", clarifying_question='How severe is your breathing difficulty on a scale of 1-10? Are you able to speak in full sentences? When did you last use your inhaler?', generation_timestamp=1758449809.750725)",
+      "query": "I'm a 25-year-old woman and I'm having trouble breathing. My chest feels tight and I'm wheezing. I have asthma but my inhaler isn't helping much today. It's about a 7 out of 10. I can only speak a few words at a time. I used my inhaler 20 minutes ago but it's not working like it usually does.",
+      "results": {
+        "pass_at_5": false,
+        "pass_at_10": false,
+        "pass_at_20": false
+      },
+      "retrieval_time": 0.09597206115722656,
+      "top_retrieved": [
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_11562",
+              "text": " to develop. Symptoms may be mild or moderate and can quickly get worse so it's important to act fast. If you have an asthma action plan follow the instructions on there. Early signs that asthma may be getting worse can include feeling breathless, chest tightness, cough and mild wheeze especially morning and night or when you're exercising or excited. When asthma becomes more serious, your symptoms may include: worse cough or wheeze difficulty breathing difficulty talking, you can only talk in short sentences your reliever inhaler only works for a few hours. you're gasping for breath you can't speak a full sentence in 1 breath you're blue around the mouth you've used a reliever inhaler but it's not helping much. If you or someone near you is having an asthma attack, follow the ASTHMA acronym. Someone having an asthma attack may not be able to follow asthma first aid themselves \u2013 they are relying on you to help. Assess whether the person's asthma attack is mild, moderate or severe. If the person hassevere asth",
+              "original_text": " to develop. Symptoms may be mild or moderate and can quickly get worse so it's important to act fast. If you have an asthma action plan follow the instructions on there. Early signs that asthma may be getting worse can include feeling breathless, chest tightness, cough and mild wheeze especially morning and night or when you're exercising or excited. When asthma becomes more serious, your symptoms may include: worse cough or wheeze difficulty breathing difficulty talking, you can only talk in short sentences your reliever inhaler only works for a few hours. you're gasping for breath you can't speak a full sentence in 1 breath you're blue around the mouth you've used a reliever inhaler but it's not helping much. If you or someone near you is having an asthma attack, follow the ASTHMA acronym. Someone having an asthma attack may not be able to follow asthma first aid themselves \u2013 they are relying on you to help. Assess whether the person's asthma attack is mild, moderate or severe. If the person hassevere asth",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Asthma_\u2013_first_aid.txt",
+              "source_char_start": 874,
+              "source_char_end": 1898,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_11562",
+                "text": " to develop. Symptoms may be mild or moderate and can quickly get worse so it's important to act fast. If you have an asthma action plan follow the instructions on there. Early signs that asthma may be getting worse can include feeling breathless, chest tightness, cough and mild wheeze especially morning and night or when you're exercising or excited. When asthma becomes more serious, your symptoms may include: worse cough or wheeze difficulty breathing difficulty talking, you can only talk in short sentences your reliever inhaler only works for a few hours. you're gasping for breath you can't speak a full sentence in 1 breath you're blue around the mouth you've used a reliever inhaler but it's not helping much. If you or someone near you is having an asthma attack, follow the ASTHMA acronym. Someone having an asthma attack may not be able to follow asthma first aid themselves \u2013 they are relying on you to help. Assess whether the person's asthma attack is mild, moderate or severe. If the person hassevere asth",
+                "source_document": "Asthma_\u2013_first_aid.txt",
+                "source_char_start": 874,
+                "source_char_end": 1898
+              }
+            },
+            "fusion_score": 0.015179113539769277,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 32.53073803730738,
+          "rerank_method": "feature",
+          "search_time": 0.09596920013427734,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_5938",
+              "text": "s, because anyone with asthma can have a severe asthma attack. An asthma attack may be mild, moderate or severe and can take anything from a few minutes to a few days to develop. Symptoms may be mild or moderate and can quickly get worse so it's important to act fast. Use 1 puff initially and repeat if needed, up to 12 puffs daily. These inhalers quickly reduce inflammation of your airways and help you to breathe more easily. If you have an asthma action plan follow the instructions on there. you're gasping for breath you can't speak a full sentence in 1 breath you're blue around the mouth your peak flow reading's getting worse (if checked) you've used a reliever inhaler but it's not helping much. Continue to use your inhaler every few minutes until the ambulance arrives. Read more aboutasthma first aid. Asthma topics | Mate huangoBudesonide + formoterolSymbicortAsthma first aid AIR Asthma Action Plan for Turbuhaler, Asthma and Respiratory Foundation, NZ, 2025 AIR Asthma Action Plan for Spiromax(external link",
+              "original_text": "s, because anyone with asthma can have a severe asthma attack. An asthma attack may be mild, moderate or severe and can take anything from a few minutes to a few days to develop. Symptoms may be mild or moderate and can quickly get worse so it's important to act fast. Use 1 puff initially and repeat if needed, up to 12 puffs daily. These inhalers quickly reduce inflammation of your airways and help you to breathe more easily. If you have an asthma action plan follow the instructions on there. you're gasping for breath you can't speak a full sentence in 1 breath you're blue around the mouth your peak flow reading's getting worse (if checked) you've used a reliever inhaler but it's not helping much. Continue to use your inhaler every few minutes until the ambulance arrives. Read more aboutasthma first aid. Asthma topics | Mate huangoBudesonide + formoterolSymbicortAsthma first aid AIR Asthma Action Plan for Turbuhaler, Asthma and Respiratory Foundation, NZ, 2025 AIR Asthma Action Plan for Spiromax(external link",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "AIR_(anti-inflammatory_reliever)_asthma_therapy.txt",
+              "source_char_start": 6118,
+              "source_char_end": 7142,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_5938",
+                "text": "s, because anyone with asthma can have a severe asthma attack. An asthma attack may be mild, moderate or severe and can take anything from a few minutes to a few days to develop. Symptoms may be mild or moderate and can quickly get worse so it's important to act fast. Use 1 puff initially and repeat if needed, up to 12 puffs daily. These inhalers quickly reduce inflammation of your airways and help you to breathe more easily. If you have an asthma action plan follow the instructions on there. you're gasping for breath you can't speak a full sentence in 1 breath you're blue around the mouth your peak flow reading's getting worse (if checked) you've used a reliever inhaler but it's not helping much. Continue to use your inhaler every few minutes until the ambulance arrives. Read more aboutasthma first aid. Asthma topics | Mate huangoBudesonide + formoterolSymbicortAsthma first aid AIR Asthma Action Plan for Turbuhaler, Asthma and Respiratory Foundation, NZ, 2025 AIR Asthma Action Plan for Spiromax(external link",
+                "source_document": "AIR_(anti-inflammatory_reliever)_asthma_therapy.txt",
+                "source_char_start": 6118,
+                "source_char_end": 7142
+              }
+            },
+            "fusion_score": 0.013896103896103894,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 30.487442922374427,
+          "rerank_method": "feature",
+          "search_time": 0.09596920013427734,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_12746",
+              "text": "hlessness that develops over hours or days you feel short of breath at rest severe breathlessness causing inability to speak in full sentences confusion or drowsiness your chest feels tight or having sudden chest pain at rest. If you have an underlying lung condition that makes you breathless from time to time, such as asthma or COPD, use your reliever inhaler immediately and follow the action plan written by your doctor or nurse. Read more aboutasthmaandCOPD. If your breathlessness has come on slowly and has been happening for more than a month, it is a good idea to see your GP and get checked to make sure it is nothing serious. If you have COVID-19 symptoms (fever, coughing, sore throat, difficulty breathing) test for COVID-19. If you test positive, don't go to a medical clinic without phoning first\u2013 you may infect other people. If it's an emergency, phone 111 or go to your nearest hospital emergency department. If you are a carer of a person with breathlessness, you can understand what breathlessness feels",
+              "original_text": "hlessness that develops over hours or days you feel short of breath at rest severe breathlessness causing inability to speak in full sentences confusion or drowsiness your chest feels tight or having sudden chest pain at rest. If you have an underlying lung condition that makes you breathless from time to time, such as asthma or COPD, use your reliever inhaler immediately and follow the action plan written by your doctor or nurse. Read more aboutasthmaandCOPD. If your breathlessness has come on slowly and has been happening for more than a month, it is a good idea to see your GP and get checked to make sure it is nothing serious. If you have COVID-19 symptoms (fever, coughing, sore throat, difficulty breathing) test for COVID-19. If you test positive, don't go to a medical clinic without phoning first\u2013 you may infect other people. If it's an emergency, phone 111 or go to your nearest hospital emergency department. If you are a carer of a person with breathlessness, you can understand what breathlessness feels",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Breathlessness.txt",
+              "source_char_start": 874,
+              "source_char_end": 1898,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_12746",
+                "text": "hlessness that develops over hours or days you feel short of breath at rest severe breathlessness causing inability to speak in full sentences confusion or drowsiness your chest feels tight or having sudden chest pain at rest. If you have an underlying lung condition that makes you breathless from time to time, such as asthma or COPD, use your reliever inhaler immediately and follow the action plan written by your doctor or nurse. Read more aboutasthmaandCOPD. If your breathlessness has come on slowly and has been happening for more than a month, it is a good idea to see your GP and get checked to make sure it is nothing serious. If you have COVID-19 symptoms (fever, coughing, sore throat, difficulty breathing) test for COVID-19. If you test positive, don't go to a medical clinic without phoning first\u2013 you may infect other people. If it's an emergency, phone 111 or go to your nearest hospital emergency department. If you are a carer of a person with breathlessness, you can understand what breathlessness feels",
+                "source_document": "Breathlessness.txt",
+                "source_char_start": 874,
+                "source_char_end": 1898
+              }
+            },
+            "fusion_score": 0.01080018501387604,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 30.479437229437227,
+          "rerank_method": "feature",
+          "search_time": 0.09596920013427734,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_3289",
+              "text": " the other symptoms of COPD and chronic bronchitis. Image credit:Blausen Medical Communications, Inc. (external link)Wikimedia Commons The main symptoms are: being short of breath having a chronic cough, eg, a \"smoker's\" cough for some people longer than usual out-breaths and possibly wheezing more rapid breathing finding it hard to breathe even when you're sitting or lying down. The diagnosis of emphysema orCOPDcan't be made solely on symptoms. Several tests are used to make the diagnosis, such as: A breathing test, called spirometry. Depending on where you live, this may be done at your local medical centre but may need a referral. For some people this may still be normal as spirometry only picks up 'wheezy lungs' as part of COPD. Additional breathing tests are then needed. Blood tests are generally only useful if you have a family history of alpha-1 antitrypsin deficiency or if there is a concern about asthma. Achest X-rayis important for ruling out other lung conditions. It's not a good way to diagnose em",
+              "original_text": " the other symptoms of COPD and chronic bronchitis. Image credit:Blausen Medical Communications, Inc. (external link)Wikimedia Commons The main symptoms are: being short of breath having a chronic cough, eg, a \"smoker's\" cough for some people longer than usual out-breaths and possibly wheezing more rapid breathing finding it hard to breathe even when you're sitting or lying down. The diagnosis of emphysema orCOPDcan't be made solely on symptoms. Several tests are used to make the diagnosis, such as: A breathing test, called spirometry. Depending on where you live, this may be done at your local medical centre but may need a referral. For some people this may still be normal as spirometry only picks up 'wheezy lungs' as part of COPD. Additional breathing tests are then needed. Blood tests are generally only useful if you have a family history of alpha-1 antitrypsin deficiency or if there is a concern about asthma. Achest X-rayis important for ruling out other lung conditions. It's not a good way to diagnose em",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Emphysema.txt",
+              "source_char_start": 1748,
+              "source_char_end": 2772,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_3289",
+                "text": " the other symptoms of COPD and chronic bronchitis. Image credit:Blausen Medical Communications, Inc. (external link)Wikimedia Commons The main symptoms are: being short of breath having a chronic cough, eg, a \"smoker's\" cough for some people longer than usual out-breaths and possibly wheezing more rapid breathing finding it hard to breathe even when you're sitting or lying down. The diagnosis of emphysema orCOPDcan't be made solely on symptoms. Several tests are used to make the diagnosis, such as: A breathing test, called spirometry. Depending on where you live, this may be done at your local medical centre but may need a referral. For some people this may still be normal as spirometry only picks up 'wheezy lungs' as part of COPD. Additional breathing tests are then needed. Blood tests are generally only useful if you have a family history of alpha-1 antitrypsin deficiency or if there is a concern about asthma. Achest X-rayis important for ruling out other lung conditions. It's not a good way to diagnose em",
+                "source_document": "Emphysema.txt",
+                "source_char_start": 1748,
+                "source_char_end": 2772
+              }
+            },
+            "fusion_score": 0.006194690265486726,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 28.444869072894548,
+          "rerank_method": "feature",
+          "search_time": 0.09596920013427734,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_1802",
+              "text": "Asthma (mate huango) is a common lung condition that affects the breathing tubes (airways) that carry air in and out of your lungs. Asthma causes wheeze, a tight chest and cough, and can make it difficult to breathe. Although asthma can't be cured, it can be well managed with self-care and appropriate use of medicines. This page focuses on asthma in adults. For information about children with asthma, see the asthma in children page. Aotearoa New Zealand has one of the highest rates of asthma in the world \u2013 asthma affects up to 1 in 7 children and 1 in 8 adults. It's more common among M\u0101ori adults and tamariki. If you have asthma, your airways are sensitive and react to certain triggers such as allergens (substances that cause an allergic reaction), viruses, cold or humid weather, exercise and air pollutants such as cigarette smoke. These triggers cause your air passages to tighten up, swell on the inside (become inflamed) and produce more mucus. As a result, the airways become narrower, making it difficult fo",
+              "original_text": "Asthma (mate huango) is a common lung condition that affects the breathing tubes (airways) that carry air in and out of your lungs. Asthma causes wheeze, a tight chest and cough, and can make it difficult to breathe. Although asthma can't be cured, it can be well managed with self-care and appropriate use of medicines. This page focuses on asthma in adults. For information about children with asthma, see the asthma in children page. Aotearoa New Zealand has one of the highest rates of asthma in the world \u2013 asthma affects up to 1 in 7 children and 1 in 8 adults. It's more common among M\u0101ori adults and tamariki. If you have asthma, your airways are sensitive and react to certain triggers such as allergens (substances that cause an allergic reaction), viruses, cold or humid weather, exercise and air pollutants such as cigarette smoke. These triggers cause your air passages to tighten up, swell on the inside (become inflamed) and produce more mucus. As a result, the airways become narrower, making it difficult fo",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Asthma_in_adults.txt",
+              "source_char_start": 0,
+              "source_char_end": 1024,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_1802",
+                "text": "Asthma (mate huango) is a common lung condition that affects the breathing tubes (airways) that carry air in and out of your lungs. Asthma causes wheeze, a tight chest and cough, and can make it difficult to breathe. Although asthma can't be cured, it can be well managed with self-care and appropriate use of medicines. This page focuses on asthma in adults. For information about children with asthma, see the asthma in children page. Aotearoa New Zealand has one of the highest rates of asthma in the world \u2013 asthma affects up to 1 in 7 children and 1 in 8 adults. It's more common among M\u0101ori adults and tamariki. If you have asthma, your airways are sensitive and react to certain triggers such as allergens (substances that cause an allergic reaction), viruses, cold or humid weather, exercise and air pollutants such as cigarette smoke. These triggers cause your air passages to tighten up, swell on the inside (become inflamed) and produce more mucus. As a result, the airways become narrower, making it difficult fo",
+                "source_document": "Asthma_in_adults.txt",
+                "source_char_start": 0,
+                "source_char_end": 1024
+              }
+            },
+            "fusion_score": 0.008160828025477707,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 26.420645645645646,
+          "rerank_method": "feature",
+          "search_time": 0.09596920013427734,
+          "total_chunks": 13272
+        }
+      ]
+    },
+    {
+      "test_case": "TestCase(symptom='Migraine (Case 1)', patient_query=\"I'm a 30-year-old woman and I have a severe headache that started this morning. It's throbbing on the right side of my head and I'm sensitive to light and sound.\", patient_response=\"Yes, I get migraines occasionally but this one feels worse than usual. I'm feeling nauseous and had to vomit once. No vision changes though.\", final_triage_decision='Self-care', next_step='Try rest in a dark, quiet room, over-the-counter pain medication, and plenty of fluids. If symptoms worsen significantly, seek medical attention.', reasoning_question=\"Need to differentiate between typical migraine and more serious headache causes by assessing associated symptoms and comparing to patient's usual pattern.\", reasoning_decision='This appears to be a typical migraine episode, albeit more severe than usual. The absence of concerning neurological symptoms allows for initial self-care management with safety netting.', clarifying_question='Have you experienced headaches like this before? Are you experiencing any vision changes, nausea, or vomiting?', generation_timestamp=1758449809.750725)",
+      "query": "I'm a 30-year-old woman and I have a severe headache that started this morning. It's throbbing on the right side of my head and I'm sensitive to light and sound. Yes, I get migraines occasionally but this one feels worse than usual. I'm feeling nauseous and had to vomit once. No vision changes though.",
+      "results": {
+        "pass_at_5": false,
+        "pass_at_10": false,
+        "pass_at_20": false
+      },
+      "retrieval_time": 0.09296679496765137,
+      "top_retrieved": [
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_3701",
+              "text": "n frequent, persistent or worsen you get no relief from simple pain relievers you take simple pain relievers more than twice a week you were headache-free but now get them your headache is triggered by standing up, coughing, straining, physical exertion or sexual intercourse you are over 50 and start to get regular headaches or there is face or jaw pain. a really severe headache comes on suddenly and gets worse within minutes you have changes in your vision or eyesight or changes in consciousness you're feeling sick (nausea), have a stiff neck, rash, fever, shakes or sensitivity to light (these are warning signs ofmeningococcal disease or meningitis) you have red eye, are feeling sick (nausea) or being sick (vomiting) \u2013 these are signs of some types ofglaucoma your headache follows ahead injury. There are many types of headaches. These vary in their causes, how they feel, how severe they are, how long they last and how they respond to different treatments. Where is the pain? Is it on one side or both, behind ",
+              "original_text": "n frequent, persistent or worsen you get no relief from simple pain relievers you take simple pain relievers more than twice a week you were headache-free but now get them your headache is triggered by standing up, coughing, straining, physical exertion or sexual intercourse you are over 50 and start to get regular headaches or there is face or jaw pain. a really severe headache comes on suddenly and gets worse within minutes you have changes in your vision or eyesight or changes in consciousness you're feeling sick (nausea), have a stiff neck, rash, fever, shakes or sensitivity to light (these are warning signs ofmeningococcal disease or meningitis) you have red eye, are feeling sick (nausea) or being sick (vomiting) \u2013 these are signs of some types ofglaucoma your headache follows ahead injury. There are many types of headaches. These vary in their causes, how they feel, how severe they are, how long they last and how they respond to different treatments. Where is the pain? Is it on one side or both, behind ",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Headache_\u2013_overview.txt",
+              "source_char_start": 5244,
+              "source_char_end": 6268,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_3701",
+                "text": "n frequent, persistent or worsen you get no relief from simple pain relievers you take simple pain relievers more than twice a week you were headache-free but now get them your headache is triggered by standing up, coughing, straining, physical exertion or sexual intercourse you are over 50 and start to get regular headaches or there is face or jaw pain. a really severe headache comes on suddenly and gets worse within minutes you have changes in your vision or eyesight or changes in consciousness you're feeling sick (nausea), have a stiff neck, rash, fever, shakes or sensitivity to light (these are warning signs ofmeningococcal disease or meningitis) you have red eye, are feeling sick (nausea) or being sick (vomiting) \u2013 these are signs of some types ofglaucoma your headache follows ahead injury. There are many types of headaches. These vary in their causes, how they feel, how severe they are, how long they last and how they respond to different treatments. Where is the pain? Is it on one side or both, behind ",
+                "source_document": "Headache_\u2013_overview.txt",
+                "source_char_start": 5244,
+                "source_char_end": 6268
+              }
+            },
+            "fusion_score": 0.014953886693017126,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 40.65571205007824,
+          "rerank_method": "feature",
+          "search_time": 0.09296393394470215,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_5160",
+              "text": "an occur a few hours to a few days before the headache starts, are called prodromal symptoms. About 8 in 10 people get prodromal symptoms. Examples of prodromal symptoms include: feeling tired, fatigue repeated yawning restlessness or irritability anxiety food cravings, feeling hungry or thirsty difficulty concentrating dizziness sensitivity to light or sound neck pain. Just before the headache starts you may have changes in 1 or more of your senses of sight, smell, hearing and touch. These changes are part of the \"aura\" phase. Only about 1 in 4 people with migraine experience aura, so if you've never had these symptoms it doesn't mean you don't have migraine. Examples of aura symptoms are: problems with vision (seeing zig-zag lines, flashing lights or spots in your vision) hearing loss or a ringing sound in your ears feelings of tingling or numbness in your body. When the headache starts, it's a strong pain, usually on one side of your head. You may feel sick or vomit (be sick), get tingling around your mout",
+              "original_text": "an occur a few hours to a few days before the headache starts, are called prodromal symptoms. About 8 in 10 people get prodromal symptoms. Examples of prodromal symptoms include: feeling tired, fatigue repeated yawning restlessness or irritability anxiety food cravings, feeling hungry or thirsty difficulty concentrating dizziness sensitivity to light or sound neck pain. Just before the headache starts you may have changes in 1 or more of your senses of sight, smell, hearing and touch. These changes are part of the \"aura\" phase. Only about 1 in 4 people with migraine experience aura, so if you've never had these symptoms it doesn't mean you don't have migraine. Examples of aura symptoms are: problems with vision (seeing zig-zag lines, flashing lights or spots in your vision) hearing loss or a ringing sound in your ears feelings of tingling or numbness in your body. When the headache starts, it's a strong pain, usually on one side of your head. You may feel sick or vomit (be sick), get tingling around your mout",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Migraine_disease__M\u0101hunga_\u0101nini.txt",
+              "source_char_start": 874,
+              "source_char_end": 1898,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_5160",
+                "text": "an occur a few hours to a few days before the headache starts, are called prodromal symptoms. About 8 in 10 people get prodromal symptoms. Examples of prodromal symptoms include: feeling tired, fatigue repeated yawning restlessness or irritability anxiety food cravings, feeling hungry or thirsty difficulty concentrating dizziness sensitivity to light or sound neck pain. Just before the headache starts you may have changes in 1 or more of your senses of sight, smell, hearing and touch. These changes are part of the \"aura\" phase. Only about 1 in 4 people with migraine experience aura, so if you've never had these symptoms it doesn't mean you don't have migraine. Examples of aura symptoms are: problems with vision (seeing zig-zag lines, flashing lights or spots in your vision) hearing loss or a ringing sound in your ears feelings of tingling or numbness in your body. When the headache starts, it's a strong pain, usually on one side of your head. You may feel sick or vomit (be sick), get tingling around your mout",
+                "source_document": "Migraine_disease__M\u0101hunga_\u0101nini.txt",
+                "source_char_start": 874,
+                "source_char_end": 1898
+              }
+            },
+            "fusion_score": 0.014559386973180075,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 36.59014084507042,
+          "rerank_method": "feature",
+          "search_time": 0.09296393394470215,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_6931",
+              "text": "that postherpetic neuralgia may be related to the scar tissue next to the nerve or in the nearby part of the spinal cord that may cause pain messages to be sent to the brain. Postherpetic neuralgia is pain that occurs months or years after you have had shingles. It happens in the area of your skin where the shingles infection first occurred. This is most commonly in a band around your body, usually on one side of your body. The pain is described as burning, sharp and jabbing, or deep and aching. People with the condition often can't bear even the touch of clothing on the affected skin as they are sensitive to light touch. Sometimes postherpetic neuralgia can produce an itchy feeling or numbness. You are at greater risk of getting postherpetic neuralgia if you: are older than 50 years \u2013 the older you are, the more likely it is to occur have had shingles on your face or chest area had a severe rash and severe pain during the shingles infection have other illnesses such as diabetes have not had the shingle vacci",
+              "original_text": "that postherpetic neuralgia may be related to the scar tissue next to the nerve or in the nearby part of the spinal cord that may cause pain messages to be sent to the brain. Postherpetic neuralgia is pain that occurs months or years after you have had shingles. It happens in the area of your skin where the shingles infection first occurred. This is most commonly in a band around your body, usually on one side of your body. The pain is described as burning, sharp and jabbing, or deep and aching. People with the condition often can't bear even the touch of clothing on the affected skin as they are sensitive to light touch. Sometimes postherpetic neuralgia can produce an itchy feeling or numbness. You are at greater risk of getting postherpetic neuralgia if you: are older than 50 years \u2013 the older you are, the more likely it is to occur have had shingles on your face or chest area had a severe rash and severe pain during the shingles infection have other illnesses such as diabetes have not had the shingle vacci",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Shingles__Mate_huaketo_hei.txt",
+              "source_char_start": 9614,
+              "source_char_end": 10638,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_6931",
+                "text": "that postherpetic neuralgia may be related to the scar tissue next to the nerve or in the nearby part of the spinal cord that may cause pain messages to be sent to the brain. Postherpetic neuralgia is pain that occurs months or years after you have had shingles. It happens in the area of your skin where the shingles infection first occurred. This is most commonly in a band around your body, usually on one side of your body. The pain is described as burning, sharp and jabbing, or deep and aching. People with the condition often can't bear even the touch of clothing on the affected skin as they are sensitive to light touch. Sometimes postherpetic neuralgia can produce an itchy feeling or numbness. You are at greater risk of getting postherpetic neuralgia if you: are older than 50 years \u2013 the older you are, the more likely it is to occur have had shingles on your face or chest area had a severe rash and severe pain during the shingles infection have other illnesses such as diabetes have not had the shingle vacci",
+                "source_document": "Shingles__Mate_huaketo_hei.txt",
+                "source_char_start": 9614,
+                "source_char_end": 10638
+              }
+            },
+            "fusion_score": 0.003061224489795918,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 34.56123101518785,
+          "rerank_method": "feature",
+          "search_time": 0.09296393394470215,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_3697",
+              "text": "rom migraine. It is common in children, teenagers and young adults, but may begin at any age. Treatment of migraines includes lifestyle changes and using medicines for relief or, in some cases, using preventive medicines to stop a migraine from happening. Cluster headaches often occur at night and usually cause sudden pain on one side of your head \u2013 often around your eye. They can happen several times a day for a period of time, then disappear for months or years. If you get cluster headaches, try to identify the triggers and avoid those things. If they become a problem, see your doctor. Sinus headache is pain around your eyes, forehead, cheeks or teeth that gets worse when leaning forward. It can be dull or severe. It is a secondary headache disorder caused by sinusitis. You often get other symptoms of sinusitis such as a blocked or stuffy nose, feeling of pressure inside your head, mucus from your nose and dripping from your nose. Medication overuse (or rebound) headache is a secondary headache disorder cau",
+              "original_text": "rom migraine. It is common in children, teenagers and young adults, but may begin at any age. Treatment of migraines includes lifestyle changes and using medicines for relief or, in some cases, using preventive medicines to stop a migraine from happening. Cluster headaches often occur at night and usually cause sudden pain on one side of your head \u2013 often around your eye. They can happen several times a day for a period of time, then disappear for months or years. If you get cluster headaches, try to identify the triggers and avoid those things. If they become a problem, see your doctor. Sinus headache is pain around your eyes, forehead, cheeks or teeth that gets worse when leaning forward. It can be dull or severe. It is a secondary headache disorder caused by sinusitis. You often get other symptoms of sinusitis such as a blocked or stuffy nose, feeling of pressure inside your head, mucus from your nose and dripping from your nose. Medication overuse (or rebound) headache is a secondary headache disorder cau",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Headache_\u2013_overview.txt",
+              "source_char_start": 1748,
+              "source_char_end": 2772,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_3697",
+                "text": "rom migraine. It is common in children, teenagers and young adults, but may begin at any age. Treatment of migraines includes lifestyle changes and using medicines for relief or, in some cases, using preventive medicines to stop a migraine from happening. Cluster headaches often occur at night and usually cause sudden pain on one side of your head \u2013 often around your eye. They can happen several times a day for a period of time, then disappear for months or years. If you get cluster headaches, try to identify the triggers and avoid those things. If they become a problem, see your doctor. Sinus headache is pain around your eyes, forehead, cheeks or teeth that gets worse when leaning forward. It can be dull or severe. It is a secondary headache disorder caused by sinusitis. You often get other symptoms of sinusitis such as a blocked or stuffy nose, feeling of pressure inside your head, mucus from your nose and dripping from your nose. Medication overuse (or rebound) headache is a secondary headache disorder cau",
+                "source_document": "Headache_\u2013_overview.txt",
+                "source_char_start": 1748,
+                "source_char_end": 2772
+              }
+            },
+            "fusion_score": 0.013716356107660454,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 34.54665194996321,
+          "rerank_method": "feature",
+          "search_time": 0.09296393394470215,
+          "total_chunks": 13272
+        },
+        {
+          "chunk": {
+            "chunk": {
+              "chunk_id": "healthify_fixed_c1024_o150_chunk_5159",
+              "text": "Migraine disease (m\u0101hunga \u0101nini) is a debilitating condition causing severe headaches, usually on one side of your head. Symptoms include pain, sensitivity to light and noise, nausea and vomiting. Some people have migraine aura beforehand with vision problems, dizziness or pins and needles. About 1 in 7 people have migraine disease \u2013 more women than men. It usually first occurs between 10 and 30 years of age, and can become more or less severe over time. If you are over 50 and a severe headache occurs for the first time, see your healthcare provider. Treatment includes pain relief, migraine-specific therapies and lifestyle changes. A migraine attack can have distinct phases. Image credit: Adapted from Migraine Foundation, NZ with permission Some people can feel early warning signs that tell them a migraine attack might be coming soon. These warning signs, that can occur a few hours to a few days before the headache starts, are called prodromal symptoms. About 8 in 10 people get prodromal symptoms. Examples of",
+              "original_text": "Migraine disease (m\u0101hunga \u0101nini) is a debilitating condition causing severe headaches, usually on one side of your head. Symptoms include pain, sensitivity to light and noise, nausea and vomiting. Some people have migraine aura beforehand with vision problems, dizziness or pins and needles. About 1 in 7 people have migraine disease \u2013 more women than men. It usually first occurs between 10 and 30 years of age, and can become more or less severe over time. If you are over 50 and a severe headache occurs for the first time, see your healthcare provider. Treatment includes pain relief, migraine-specific therapies and lifestyle changes. A migraine attack can have distinct phases. Image credit: Adapted from Migraine Foundation, NZ with permission Some people can feel early warning signs that tell them a migraine attack might be coming soon. These warning signs, that can occur a few hours to a few days before the headache starts, are called prodromal symptoms. About 8 in 10 people get prodromal symptoms. Examples of",
+              "contextual_info": "",
+              "is_contextual": false,
+              "source_document": "Migraine_disease__M\u0101hunga_\u0101nini.txt",
+              "source_char_start": 0,
+              "source_char_end": 1024,
+              "metadata": {
+                "chunk_id": "healthify_fixed_c1024_o150_chunk_5159",
+                "text": "Migraine disease (m\u0101hunga \u0101nini) is a debilitating condition causing severe headaches, usually on one side of your head. Symptoms include pain, sensitivity to light and noise, nausea and vomiting. Some people have migraine aura beforehand with vision problems, dizziness or pins and needles. About 1 in 7 people have migraine disease \u2013 more women than men. It usually first occurs between 10 and 30 years of age, and can become more or less severe over time. If you are over 50 and a severe headache occurs for the first time, see your healthcare provider. Treatment includes pain relief, migraine-specific therapies and lifestyle changes. A migraine attack can have distinct phases. Image credit: Adapted from Migraine Foundation, NZ with permission Some people can feel early warning signs that tell them a migraine attack might be coming soon. These warning signs, that can occur a few hours to a few days before the headache starts, are called prodromal symptoms. About 8 in 10 people get prodromal symptoms. Examples of",
+                "source_document": "Migraine_disease__M\u0101hunga_\u0101nini.txt",
+                "source_char_start": 0,
+                "source_char_end": 1024
+              }
+            },
+            "fusion_score": 0.014701216287678476,
+            "retrieval_method": "hybrid_rrf"
+          },
+          "relevance_score": 32.52107279693487,
+          "rerank_method": "feature",
+          "search_time": 0.09296393394470215,
+          "total_chunks": 13272
+        }
+      ]
+    }
+  ]
+}

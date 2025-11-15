@@ -1,0 +1,57 @@
+[
+  {
+    "config_name": "fixed_c1024_o150_semantic",
+    "chunking_method": "fixed_c1024_o150",
+    "retrieval_type": "semantic",
+    "pass_at_5": 0.0,
+    "pass_at_10": 0.0,
+    "pass_at_20": 0.0,
+    "avg_retrieval_time_ms": 164.89415168762207,
+    "total_test_cases": 5,
+    "successful_retrievals": 0
+  },
+  {
+    "config_name": "fixed_c1024_o150_bm25",
+    "chunking_method": "fixed_c1024_o150",
+    "retrieval_type": "bm25",
+    "pass_at_5": 0.0,
+    "pass_at_10": 0.0,
+    "pass_at_20": 0.0,
+    "avg_retrieval_time_ms": 114.4434928894043,
+    "total_test_cases": 5,
+    "successful_retrievals": 0
+  },
+  {
+    "config_name": "fixed_c1024_o150_hybrid",
+    "chunking_method": "fixed_c1024_o150",
+    "retrieval_type": "hybrid",
+    "pass_at_5": 0.0,
+    "pass_at_10": 0.0,
+    "pass_at_20": 0.0,
+    "avg_retrieval_time_ms": 119.47011947631836,
+    "total_test_cases": 5,
+    "successful_retrievals": 0
+  },
+  {
+    "config_name": "fixed_c1024_o150_semantic",
+    "chunking_method": "fixed_c1024_o150",
+    "retrieval_type": "semantic",
+    "pass_at_5": 0.0,
+    "pass_at_10": 0.0,
+    "pass_at_20": 0.0,
+    "avg_retrieval_time_ms": 173.3339786529541,
+    "total_test_cases": 5,
+    "successful_retrievals": 0
+  },
+  {
+    "config_name": "fixed_c1024_o150_bm25",
+    "chunking_method": "fixed_c1024_o150",
+    "retrieval_type": "bm25",
+    "pass_at_5": 0.0,
+    "pass_at_10": 0.0,
+    "pass_at_20": 0.0,
+    "avg_retrieval_time_ms": 181.3985824584961,
+    "total_test_cases": 5,
+    "successful_retrievals": 0
+  }
+]

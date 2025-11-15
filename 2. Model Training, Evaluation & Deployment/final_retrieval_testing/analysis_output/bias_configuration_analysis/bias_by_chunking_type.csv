@@ -1,0 +1,13 @@
+chunking_type,bias_config,pass_at_5,pass_at_10,pass_at_20
+agent,diverse,0.38,0.4975,0.4975
+agent,healthify_focused,0.3,0.495,0.495
+contextual,diverse,0.4738,0.6075,0.6075
+contextual,healthify_focused,0.3081,0.5894,0.5894
+fixed,diverse,0.4402,0.5754,0.5754
+fixed,healthify_focused,0.3042,0.5577,0.5577
+paragraph,diverse,0.4575,0.595,0.595
+paragraph,healthify_focused,0.3325,0.6075,0.6075
+sentence,diverse,0.4512,0.5962,0.5962
+sentence,healthify_focused,0.3063,0.5796,0.5796
+structured_agent,diverse,0.54,0.6962,0.6962
+structured_agent,healthify_focused,0.3688,0.7012,0.7012

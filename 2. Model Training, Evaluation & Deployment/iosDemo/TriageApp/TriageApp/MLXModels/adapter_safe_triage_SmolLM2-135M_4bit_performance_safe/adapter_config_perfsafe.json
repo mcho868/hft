@@ -1,0 +1,8 @@
+{
+  "fine_tune_type": "lora",
+  "num_layers": 16,
+  "lora_parameters": {
+    "rank": 12,
+    "scale": 12.0
+  }
+}
