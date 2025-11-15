@@ -1391,12 +1391,6 @@ func extract(from text: String) -> (String, String, String) {
 }
 ```
 
-**Safety measures**:
-- Hard-coded disclaimer: "⚠️ Research demo – Not for clinical use"
-- UNKNOWN handling: Display error message, prompt for clarification
-- Uncertainty indicators: Show when model confidence is low
-- Citation display: Show retrieved chunks used in decision
-
 #### Performance Optimization
 
 **Memory Management**:
@@ -1454,18 +1448,9 @@ xcodebuild -scheme TriageApp -configuration Release
 **For Examiners**:
 1. **Launch app** on iPhone/iPad
 2. **Toggle RAG on**: Enable retrieval-augmented generation
-3. **Enter patient info**:
-   - Name: John Smith
-   - Age: 45
-   - Gender: Male
-   - Symptoms: "Crushing chest pain radiating to left arm, started 20 minutes ago"
+3. **Enter patient info**
 4. **Tap "Run Triage"**
-5. **Observe results**:
-   - Triage: **ED** (Emergency Department)
-   - Next steps: "Call 111 immediately and request an ambulance. Do not drive yourself."
-   - Reasoning: "Symptoms indicate possible myocardial infarction (heart attack). Immediate emergency care required."
-   - Latency: ~450ms
-   - Memory: ~320MB
+5. **Observe results**
 6. **View citations**: Tap to see retrieved medical chunks
 7. **Toggle RAG off**: Repeat same query without retrieval
 8. **Compare**: Notice lower confidence without medical context
@@ -1492,53 +1477,6 @@ xcodebuild -scheme TriageApp -configuration Release
 3. **Multi-turn chat**: Follow-up questions and clarifications
 4. **Personalization**: Medical history integration
 5. **Updates**: Over-the-air model and corpus updates
-6. **Telemetry**: Anonymous usage analytics for improvement
-
----
-
-## Key Results
-
-### Retrieval Performance
-
-| Configuration | Pass@5 | Pass@10 | Pass@20 | Avg Time (ms) |
-|---------------|--------|---------|---------|---------------|
-| structured_agent + contextual_rag | 59.5% | 73.2% | 84.1% | 45.2 |
-| structured_agent + pure_rag | 59.0% | 72.8% | 83.5% | 38.7 |
-| contextual_sentence_c1024_o2 | 52.5% | 68.9% | 80.3% | 41.3 |
-
-**Winner**: Structured agent-based chunking with contextual RAG
-
-### Generation Performance (with RAG)
-
-| Model | Adapter | Accuracy | F1 | F2 | ED Recall |
-|-------|---------|----------|----|----|-----------|
-| SmolLM2-360M_8bit | ultra_safe | 84.5% | 83.7% | 85.3% | 96.2% |
-| SmolLM2-360M_4bit | high_capacity_safe | 83.8% | 82.9% | 84.7% | 95.7% |
-| SmolLM2-135M_8bit | balanced_safe | 82.1% | 81.4% | 83.2% | 94.8% |
-
-**Winner**: SmolLM2-360M-8bit with ultra_safe adapter + structured_agent RAG
-
-### Safety Constraints (Top Configurations)
-
-| Metric | Target | SmolLM2-360M_8bit | SmolLM2-135M_8bit |
-|--------|--------|-------------------|-------------------|
-| ED Recall | ≥95% | ✅ 96.2% | ✅ 94.8% |
-| ED F2-Score | ≥90% | ✅ 92.3% | ✅ 91.1% |
-| False Negative Rate | ≤5% | ✅ 3.8% | ✅ 5.2% |
-
-**Result**: Top 2 models pass all safety constraints
-
-### On-Device Performance (iOS)
-
-| Metric | With RAG | Without RAG |
-|--------|----------|-------------|
-| Inference Latency | 450ms | 180ms |
-| Peak Memory | 320MB | 210MB |
-| Storage | 195MB | 110MB |
-| Triage Accuracy | 82.1% | 79.3% |
-
-**Trade-off**: RAG adds +2.8% accuracy for +270ms latency
-
 ---
 
 ## File Structure
