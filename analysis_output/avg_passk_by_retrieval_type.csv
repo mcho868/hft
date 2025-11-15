@@ -1,3 +1,0 @@
-retrieval_type,Pass@1,Pass@2,Pass@3,Pass@4,Pass@5,Pass@10,Pass@20,Avg Time (s),Count
-contextual_rag,0.2124,0.257,0.2826,0.3002,0.3925,0.5985,0.5985,0.6641,72
-pure_rag,0.1981,0.2421,0.2665,0.2879,0.3719,0.5736,0.5736,0.004,72

@@ -1,0 +1,78 @@
+.env
+mlx_models/
+RAGdata/
+RAGdatav3/
+RAGdatav4/
+backup_bin/
+triage_adapters/
+safety_triage_adapters/
+/mlx-swift-examples
+/contextual_retrieval_sample
+venv/
+/venv/
+iosDemo/TriageApp/TriageApp/MLXModels
+
+.DS_Store
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Notebooks
+.ipynb_checkpoints/
+
+# ML models / artifacts / native libs
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+*.arrow
+*.parquet
+*.dylib
+*.metallib
+*.onnx
+
+# Local model/data folders
+mlx_models/
+iosDemo/TriageApp/TriageApp/MLXModels/
+RAGdata*/
+RAGdatav*/
+backup_bin/
+preparing dataset/
+
+# Build
+dist/
+build/
+EOF
+# Vector indices (large files)
+RAGdatav4/indiv_embeddings/*.index
+
+# Backup directories
+backup_bin/RAGdata_v1/
+backup_bin/old_datasets/
+
+# Training datasets (large JSON/JSONL files)
+Final_dataset/
+final_triage_dialogues_mlx/
+
+# LoRA adapters (large model files)
+safety_triage_adapters/
+triage_adapters/
+
+# iOS demo data files (already bundled in app)
+iosDemo/chunks.sqlite
+iosDemo/faiss.index
+iosDemo/ids.bin
+iosDemo/TriageApp/TriageApp/chunks.sqlite
+iosDemo/TriageApp/TriageApp/faiss.index
+iosDemo/TriageApp/TriageApp/ids.bin
+
+# Evaluation results and plots (regeneratable)
+*/results/
+*/plots_unknown_unknown/
+*_results_*.json
+comprehensive_evaluation_results_*.json

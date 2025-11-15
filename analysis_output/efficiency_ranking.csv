@@ -1,7 +1,0 @@
-Efficiency Rank,Transition,Chunks Added,Absolute Gain (%),Gain per Chunk (%)
-1,k=4→k=5,1,8.82,8.82
-2,k=1→k=2,1,4.43,4.43
-3,k=5→k=10,5,20.39,4.08
-4,k=2→k=3,1,2.5,2.5
-5,k=3→k=4,1,1.95,1.95
-6,k=10→k=20,10,0.0,0.0
