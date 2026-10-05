@@ -1,3 +1,4 @@
+
 # Medical Triage RAG System - Complete Workflow Documentation
 
 **A comprehensive on-device medical triage system combining web scraping, document chunking, retrieval-augmented generation (RAG), and fine-tuned small language models for safe medical decision support.**
@@ -38,6 +39,7 @@ This project implements an end-to-end medical triage system designed for deploym
 ### Safety-First Design Philosophy
 
 The system is designed with medical safety as the primary constraint:
+
 - **Safety-oriented LoRA configurations**: Four configurations with varying hyperparameters optimized for safety-performance trade-offs
 - **Post-training selection criteria**: Only adapters meeting ED recall ≥95-98% thresholds are retained
 - **F2-score optimization**: Emphasizes recall over precision (β=2) for medical safety
@@ -116,29 +118,32 @@ The system is designed with medical safety as the primary constraint:
 **Location:** `1. KB and DS construction/webscrapers/`
 
 #### Purpose
+
 Collect high-quality medical information from trusted authoritative sources.
 
 #### Data Sources
 
-1. **NHS Scraper** (`nhs_scraper.py`)
+1. **nNHS Scraper** (`nhs_scraper.py`)
+
    - Source: https://www.nhs.uk/conditions/
    - Coverage: ~800 medical conditions
    - Content: Symptoms, causes, treatments, when to seek help
    - Format: Structured sections with clear hierarchy
-
 2. **Mayo Clinic Scraper** (`mayo_scraper.py`, `mayo_diagnosis_treatment_scraper.py`)
+
    - Source: https://www.mayoclinic.org
    - Coverage: Comprehensive medical encyclopedia
    - Content: Diagnosis, treatment protocols, patient care
    - Format: Detailed clinical information
-
 3. **Healthify Scraper** (`healthify_scraper.py`)
+
    - Source: New Zealand-specific health information
    - Coverage: Local context and Māori/Pasifika health
    - Content: Culturally appropriate triage guidance
    - Format: Patient-friendly language
 
 #### Features
+
 - **Resumable crawling**: Tracks processed URLs to enable interruption and restart
 - **Rate limiting**: Respectful delays (1-3 seconds) between requests
 - **Deduplication**: Automatic detection of already-scraped content
@@ -146,10 +151,12 @@ Collect high-quality medical information from trusted authoritative sources.
 - **Structured parsing**: Extracts titles, sections, and content hierarchy
 
 #### Output
+
 - Individual JSON files per condition in `RAGdatav3/{source}/`
 - Format: `{source: 'nhs', url: '...', title: '...', text: '...'}`
 
 #### Usage
+
 ```bash
 # NHS scraper
 python "1. KB and DS construction/webscrapers/nhs_scraper.py"          # Full scrape
@@ -169,23 +176,27 @@ python "1. KB and DS construction/webscrapers/healthify_scraper.py"
 **Location:** `1. KB and DS construction/preparing dataset/`, `Final_dataset/`
 
 #### Purpose
+
 Transform raw medical documents and generate synthetic triage dialogues for model training.
 
 #### Components
 
 **1. Document Cleaning** (`preparing dataset/simple_deduplicator.py`)
+
 - Removes duplicate content across sources
 - Standardizes formatting and encoding
 - Filters out non-medical content
 - Preserves source attribution
 
 **2. Medical Condition Extraction** (`extract_medical_conditions.py`)
+
 - Identifies unique medical conditions across corpus
 - Normalizes condition names
 - Creates master condition list (~3,500 unique conditions)
 - AI-assisted filtering (`ai_filter_medical_conditions.py`)
 
 **3. Triage Dialogue Generation** (`generate_triage_dialogues.py`)
+
 - **Method**: Synthetic dialogue generation using LLaMA-3.3-70B (TinfoilAgent)
 - **Grounding**: Uses structured medical data from agent-based chunking
 - **Output**: 7 diverse case variations per medical condition
@@ -194,6 +205,7 @@ Transform raw medical documents and generate synthetic triage dialogues for mode
 - **Validation**: Ensures triage consistency and reasoning quality
 
 **Key Features:**
+
 - **Parallel processing**: 10 concurrent workers for efficiency
 - **Triage lookup**: Matches conditions to structured triage data
 - **Averaging logic**: When multiple triage sources exist, uses clinical priority (ED > GP > HOME)
@@ -207,6 +219,7 @@ Transform raw medical documents and generate synthetic triage dialogues for mode
   7. Immunocompromised, complex medical history
 
 **Output Format:**
+
 ```json
 {
   "symptom": "Condition_name (Case 1)",
@@ -221,18 +234,21 @@ Transform raw medical documents and generate synthetic triage dialogues for mode
 ```
 
 **4. MLX Format Conversion** (`preparing dataset/prepare_mlx_dataset.py`, `convert_to_mlx_format.py`)
+
 - Converts dialogues to MLX fine-tuning format (JSONL)
 - Creates train/validation/test splits (70%/15%/15%)
 - Maintains class distribution across splits
 - Adds prompt formatting for triage models
 
 **5. Data Cleaning** (`preparing dataset/clean_triage_data.py`)
+
 - Removes redundant prefixes from prompts
 - Standardizes dialogue format
 - Validates triage decision labels
 - Ensures reasoning sections are complete
 
 #### Statistics
+
 - **Total dialogues generated**: ~13,000 (7 per condition × ~1,900 matched conditions)
 - **Training set**: ~9,100 dialogues (70%)
 - **Validation set**: ~1,975 dialogues (15%)
@@ -240,6 +256,7 @@ Transform raw medical documents and generate synthetic triage dialogues for mode
 - **Triage distribution**: GP (76%), ED (18%), HOME (6%)
 
 #### Usage
+
 ```bash
 # Generate triage dialogues
 python "1. KB and DS construction/generate_triage_dialogues.py"
@@ -258,11 +275,13 @@ python "1. KB and DS construction/convert_to_mlx_format.py"
 **Location:** `RAGdatav3/scripts/`, `1. KB and DS construction/main_chunking_script_v4.py`
 
 #### Purpose
+
 Split medical documents into semantically coherent chunks optimized for retrieval.
 
 #### Chunking Strategies
 
 **1. Fixed-Length Chunking** (`FixedLengthChunker`)
+
 - **Method**: Character-based splitting with overlap
 - **Configurations**: 13 variants
   - Chunk sizes: 256, 384, 448, 512, 640, 768, 1024
@@ -271,6 +290,7 @@ Split medical documents into semantically coherent chunks optimized for retrieva
 - **Example**: `fixed_c512_o100` = 512 chars, 100 char overlap
 
 **2. Sentence-Based Chunking** (`SentenceBasedChunker`)
+
 - **Method**: NLTK sentence tokenization with token targets
 - **Configurations**: 13 variants
   - Token targets: 384, 512, 768, 1024
@@ -279,6 +299,7 @@ Split medical documents into semantically coherent chunks optimized for retrieva
 - **Example**: `sentence_t512_o2` = ~512 tokens, 2-sentence overlap
 
 **3. Paragraph-Based Chunking** (`ParagraphBasedChunker`)
+
 - **Method**: Natural paragraph breaks
 - **Configurations**: 3 variants
   - Minimum lengths: 25, 50, 100 characters
@@ -286,6 +307,7 @@ Split medical documents into semantically coherent chunks optimized for retrieva
 - **Example**: `paragraph_m50` = minimum 50 chars per chunk
 
 **4. Agent-Based Chunking** (`AgentBasedChunker`)
+
 - **Method**: LLM-guided semantic splitting using Qwen-3-4B
 - **Configurations**: Multiple prompts
 - **Prompt example**: "Break down into self-contained, semantically complete chunks"
@@ -293,6 +315,7 @@ Split medical documents into semantically coherent chunks optimized for retrieva
 - **APIs**: LM Studio (local) or TinfoilAgent (batch)
 
 **5. Structured Agent Chunking** (`StructuredAgentChunker`)
+
 - **Method**: LLM extracts structured medical data
 - **Output fields**:
   - `condition`: Medical condition name
@@ -302,6 +325,7 @@ Split medical documents into semantically coherent chunks optimized for retrieva
   - `urgency_markers`: Red flags
 - **Use case**: Structured triage information extraction
 - **Example output**:
+
 ```json
 {
   "condition": "Chest_Pain",
@@ -313,6 +337,7 @@ Split medical documents into semantically coherent chunks optimized for retrieva
 ```
 
 **6. Contextual Retrieval Chunking** (`ContextualRetrievalChunker`)
+
 - **Method**: Anthropic's contextual retrieval approach
 - **Process**:
   1. Create base chunks (fixed or sentence-based)
@@ -327,6 +352,7 @@ Split medical documents into semantically coherent chunks optimized for retrieva
 #### Modular Architecture
 
 All chunkers inherit from `ChunkerBase`:
+
 ```python
 class ChunkerBase:
     def __init__(self, data_dir, base_name, config_name, ...):
@@ -340,6 +366,7 @@ class ChunkerBase:
 ```
 
 Chunk output format:
+
 ```python
 {
     'chunk_id': 'nhs_chunk_001',
@@ -358,14 +385,14 @@ Chunk output format:
 
 Total configurations tested: **~35-40 per source** (NHS, Mayo, Healthify)
 
-| Strategy | Configurations | Total Chunks/Source |
-|----------|---------------|---------------------|
-| Fixed | 13 | ~2,000-5,000 |
-| Sentence | 13 | ~1,500-4,000 |
-| Paragraph | 3 | ~800-2,000 |
-| Agent | 1-3 | ~1,000-3,000 |
-| Structured | 1 | ~1,000-2,500 |
-| Contextual | 2 | ~2,000-4,000 |
+| Strategy   | Configurations | Total Chunks/Source |
+| ---------- | -------------- | ------------------- |
+| Fixed      | 13             | ~2,000-5,000        |
+| Sentence   | 13             | ~1,500-4,000        |
+| Paragraph  | 3              | ~800-2,000          |
+| Agent      | 1-3            | ~1,000-3,000        |
+| Structured | 1              | ~1,000-2,500        |
+| Contextual | 2              | ~2,000-4,000        |
 
 #### Usage
 
@@ -387,6 +414,7 @@ python "1. KB and DS construction/main_chunking_script_v4.py"
 ```
 
 #### Output
+
 - Chunk files: `RAGdatav4/{source}_chunks_{config}.json`
 - Example: `nhs_chunks_fixed_c512_o100.json`
 - Format: JSON array of chunk dictionaries
@@ -398,11 +426,13 @@ python "1. KB and DS construction/main_chunking_script_v4.py"
 **Location:** `1. KB and DS construction/main_build_script_index_only.py`
 
 #### Purpose
+
 Build efficient vector indices for semantic search and hybrid retrieval.
 
 #### Process
 
 **1. Embedding Generation**
+
 - **Model**: `all-MiniLM-L6-v2` (384-dimensional)
 - **Provider**: Sentence-Transformers
 - **Batch size**: 8 chunks per batch
@@ -410,12 +440,14 @@ Build efficient vector indices for semantic search and hybrid retrieval.
 - **Special handling**: Contextual chunks embed `original_text + context`
 
 **2. FAISS Index Creation**
+
 - **Index type**: `IndexFlatIP` (Inner Product for cosine similarity)
 - **Preparation**: Vectors L2-normalized before adding
 - **Format**: Binary `.index` files
 - **Naming**: `{source}_vector_db_{strategy}.index`
 
 **3. Output Structure**
+
 ```
 RAGdatav4/indiv_embeddings/
 ├── nhs_vector_db_fixed_c512_o100.index
@@ -447,12 +479,12 @@ python "1. KB and DS construction/main_build_script_index_only.py"
 
 #### Performance
 
-| Configuration | Chunks | Index Size | Build Time |
-|---------------|--------|------------|------------|
-| fixed_c256_o0 | ~3,000 | 4.5 MB | 15s |
-| fixed_c512_o100 | ~2,500 | 3.8 MB | 12s |
-| sentence_t512_o2 | ~2,200 | 3.3 MB | 11s |
-| contextual_sentence_c1024_o2 | ~1,800 | 2.7 MB | 10s |
+| Configuration                | Chunks | Index Size | Build Time |
+| ---------------------------- | ------ | ---------- | ---------- |
+| fixed_c256_o0                | ~3,000 | 4.5 MB     | 15s        |
+| fixed_c512_o100              | ~2,500 | 3.8 MB     | 12s        |
+| sentence_t512_o2             | ~2,200 | 3.3 MB     | 11s        |
+| contextual_sentence_c1024_o2 | ~1,800 | 2.7 MB     | 10s        |
 
 Total storage: ~500 MB for all indices across 3 sources
 
@@ -463,16 +495,19 @@ Total storage: ~500 MB for all indices across 3 sources
 **Location:** `2. Model Training, Evaluation & Deployment/finetune/safety_enhanced_triage_finetune.py`
 
 #### Purpose
+
 Fine-tune small language models for medical triage using LoRA adapters with safety-oriented configurations and post-training selection criteria.
 
 #### Models
 
 **Base Models** (Quantized for efficiency):
+
 - **SmolLM2-135M** (4-bit, 8-bit) - Ultra-compact
 - **SmolLM2-360M** (4-bit, 8-bit) - Balanced
 - **Gemma-270M** (4-bit, 8-bit) - Google's efficient model
 
 **Model Selection Criteria:**
+
 - <400M parameters (on-device deployment)
 - Quantization support (4-bit/8-bit)
 - MLX-compatible architecture
@@ -481,6 +516,7 @@ Fine-tune small language models for medical triage using LoRA adapters with safe
 #### LoRA Configurations
 
 **1. Ultra Safe Configuration**
+
 ```python
 {
   "name": "ultra_safe",
@@ -496,6 +532,7 @@ Fine-tune small language models for medical triage using LoRA adapters with safe
 ```
 
 **2. Balanced Safe Configuration**
+
 ```python
 {
   "name": "balanced_safe",
@@ -511,6 +548,7 @@ Fine-tune small language models for medical triage using LoRA adapters with safe
 ```
 
 **3. Performance Safe Configuration**
+
 ```python
 {
   "name": "performance_safe",
@@ -526,6 +564,7 @@ Fine-tune small language models for medical triage using LoRA adapters with safe
 ```
 
 **4. High-Capacity Safe Configuration**
+
 ```python
 {
   "name": "high_capacity_safe",
@@ -545,6 +584,7 @@ Fine-tune small language models for medical triage using LoRA adapters with safe
 **1. Configuration-Based Safety**
 
 Each configuration targets different safety-performance trade-offs through hyperparameter selection:
+
 - **Learning rates**: 5e-6 to 2e-5 (conservative to moderate)
 - **LoRA rank**: 4 to 16 (focused to high-capacity adaptations)
 - **Dropout**: 0.08 to 0.15 (for regularization)
@@ -554,6 +594,7 @@ Each configuration targets different safety-performance trade-offs through hyper
 **2. Post-Training Selection Criteria**
 
 Only adapters meeting safety thresholds are retained:
+
 - **ED recall ≥ 95-98%** (configuration-dependent minimum)
 - **Evaluated on validation dataset** (1,975 cases)
 - **F2-score tracking** (recall-weighted, β=2)
@@ -562,6 +603,7 @@ Only adapters meeting safety thresholds are retained:
 **3. F2-Score Evaluation**
 
 F2 score emphasizes recall over precision (β=2):
+
 ```
 F2 = (5 × precision × recall) / (4 × precision + recall)
 ```
@@ -571,11 +613,13 @@ Used for post-training evaluation and adapter selection.
 #### Training Data
 
 **Source**: `Final_dataset/final_triage_dialogues_mlx/`
+
 - **Train**: 9,100 dialogues
 - **Validation**: 1,975 dialogues
 - **Test**: 1,975 dialogues
 
 **Format** (JSONL):
+
 ```json
 {
   "prompt": "Patient query: Kia ora, I'm experiencing...\n\nProvide triage decision, next steps, and reasoning:",
@@ -588,6 +632,7 @@ Used for post-training evaluation and adapter selection.
 **Hardware**: M-series Mac (MLX-optimized)
 
 **Training pipeline**:
+
 1. Load quantized base model
 2. Apply LoRA configuration
 3. Train with standard cross-entropy loss (MLX default)
@@ -596,6 +641,7 @@ Used for post-training evaluation and adapter selection.
 6. Retain only adapters meeting safety criteria (ED recall thresholds)
 
 **Training command**:
+
 ```bash
 cd "2. Model Training, Evaluation & Deployment/finetune"
 python safety_enhanced_triage_finetune.py
@@ -609,6 +655,7 @@ python safety_enhanced_triage_finetune.py
 #### Post-Training Evaluation Metrics
 
 **Per-adapter metrics** (evaluated on validation set):
+
 - Triage accuracy (ED/GP/HOME)
 - F1, F2 scores (overall and per-class)
 - 4×4 Confusion matrix (ED, GP, HOME, UNKNOWN)
@@ -617,6 +664,7 @@ python safety_enhanced_triage_finetune.py
 - UNKNOWN triage rate (reliability indicator)
 
 **Selection criteria** (adapters must meet these thresholds):
+
 - **ultra_safe / high_capacity_safe**: ED recall ≥ 98%
 - **balanced_safe**: ED recall ≥ 96%
 - **performance_safe**: ED recall ≥ 95%
@@ -626,12 +674,14 @@ python safety_enhanced_triage_finetune.py
 **Adapter locations**: `2. Model Training, Evaluation & Deployment/safety_triage_adapters/`
 
 **Results**: `2. Model Training, Evaluation & Deployment/safety_triage_results_{timestamp}/`
+
 - `safety_results_{adapter}.json` - Comprehensive metrics
 - `safety_config_{adapter}.json` - Training configuration
 - `safety_training_log_{adapter}.txt` - Detailed logs
 - `safety_summary.json` - Overall results
 
 **Top adapters** (by ED recall):
+
 ```
 Rank  Adapter                                ED Recall  F2 Score  FN Rate
 1     SmolLM2-360M_8bit_ultra_safe          0.981      0.923     0.019
@@ -646,11 +696,13 @@ Rank  Adapter                                ED Recall  F2 Score  FN Rate
 **Location:** `2. Model Training, Evaluation & Deployment/final_retrieval_testing/`
 
 #### Purpose
+
 Systematically evaluate all chunking strategies and retrieval methods to identify optimal configurations for production deployment.
 
 #### Test Matrix
 
 **Chunking Methods Tested**: 35+ configurations per source
+
 - Fixed: 13 configs
 - Sentence: 13 configs
 - Paragraph: 3 configs
@@ -659,6 +711,7 @@ Systematically evaluate all chunking strategies and retrieval methods to identif
 - Contextual: 2 configs
 
 **Retrieval Methods per Chunking Strategy**:
+
 1. **Semantic**: Pure embedding similarity (FAISS IndexFlatIP)
 2. **BM25**: Keyword-based lexical search
 3. **Hybrid**: Semantic + BM25 with Reciprocal Rank Fusion (RRF)
@@ -669,6 +722,7 @@ Systematically evaluate all chunking strategies and retrieval methods to identif
 #### Evaluation Framework
 
 **Key Scripts**:
+
 - `retrieval_performance_tester.py` - Core testing engine
 - `hybrid_retrieval_evaluator.py` - Hybrid method evaluation
 - `performance_optimized_evaluator.py` - Optimized testing pipeline
@@ -678,11 +732,13 @@ Systematically evaluate all chunking strategies and retrieval methods to identif
 #### Test Data
 
 **Source**: Generated triage dialogues (200 stratified samples)
+
 - **Format**: Medical symptoms as queries
 - **Ground truth**: Source document names
 - **Success criterion**: Retrieved chunk's `source_document` matches symptom
 
 Example test case:
+
 ```json
 {
   "symptom": "Chest_Pain (Case 1)",
@@ -694,12 +750,14 @@ Example test case:
 #### Metrics
 
 **Primary Metrics**:
+
 - **Pass@5**: % of queries where correct document appears in top 5
 - **Pass@10**: % of queries where correct document appears in top 10
 - **Pass@20**: % of queries where correct document appears in top 20
 - **Retrieval Time**: Average milliseconds per query
 
 **Secondary Metrics**:
+
 - Mean Reciprocal Rank (MRR)
 - Success rate
 - Precision@K
@@ -708,6 +766,7 @@ Example test case:
 #### Hybrid Retrieval (RRF)
 
 **Reciprocal Rank Fusion formula**:
+
 ```
 RRF(d) = α × 1/(k + rank_semantic(d)) + (1-α) × 1/(k + rank_bm25(d))
 
@@ -717,6 +776,7 @@ Where:
 ```
 
 **Process**:
+
 1. Get top-M results from semantic search (M=50)
 2. Get top-M results from BM25 search (M=50)
 3. Apply RRF fusion
@@ -726,6 +786,7 @@ Where:
 #### Results Visualization
 
 **Dashboard includes**:
+
 1. **Performance comparison**: Top 10 configurations by Pass@10
 2. **Method comparison**: Performance by chunking strategy
 3. **Retrieval type analysis**: Semantic vs BM25 vs Hybrid
@@ -762,20 +823,21 @@ python visualize_results.py results/
 **Top 3 Configurations** (by Pass@10):
 
 1. **structured_agent_tinfoil_medical + contextual_rag**
+
    - Pass@5: 59.5%
    - Pass@10: 73.2%
    - Pass@20: 84.1%
    - Avg time: 45.2ms
    - Method: Hybrid RRF
-
 2. **structured_agent_tinfoil_medical + pure_rag**
+
    - Pass@5: 59.0%
    - Pass@10: 72.8%
    - Pass@20: 83.5%
    - Avg time: 38.7ms
    - Method: Hybrid RRF
-
 3. **contextual_sentence_c1024_o2_tinfoil**
+
    - Pass@5: 52.5%
    - Pass@10: 68.9%
    - Pass@20: 80.3%
@@ -783,6 +845,7 @@ python visualize_results.py results/
    - Method: Contextual hybrid
 
 **Insights**:
+
 - **Structured chunking** outperforms all other methods
 - **Hybrid retrieval** beats pure semantic by ~8-12%
 - **Contextual chunks** improve retrieval by ~5-7%
@@ -796,11 +859,13 @@ python visualize_results.py results/
 **Location:** `2. Model Training, Evaluation & Deployment/evaluation_framework_final/`
 
 #### Purpose
+
 Comprehensive end-to-end evaluation of fine-tuned models with RAG integration to identify production-ready configurations.
 
 #### Test Matrix
 
 **Models Evaluated**: 96 configurations
+
 - **6 base models**: SmolLM2-135M (4/8-bit), SmolLM2-360M (4/8-bit), Gemma-270M (4/8-bit)
 - **4 adapters per model**: ultra_safe, balanced_safe, performance_safe, high_capacity_safe
 - **4 RAG conditions per adapter**:
@@ -812,6 +877,7 @@ Comprehensive end-to-end evaluation of fine-tuned models with RAG integration to
 #### RAG Configurations Tested
 
 From retrieval testing winners:
+
 1. **structured_agent_tinfoil_medical + contextual_rag + diverse**
 2. **structured_agent_tinfoil_medical + pure_rag + diverse**
 3. **contextual_sentence_c1024_o2_tinfoil + contextual_rag + diverse**
@@ -819,11 +885,13 @@ From retrieval testing winners:
 #### Evaluation Data
 
 **Source**: `Final_dataset/simplified_triage_dialogues_val.json`
+
 - **Total validation set**: 1,975 dialogues
 - **Stratified sample**: 200 cases (maintains distribution)
 - **Distribution**: GP (76%), ED (18%), HOME (6%)
 
 **Test case format**:
+
 ```json
 {
   "patient_query": "Kia ora, I'm a 35-year-old...",
@@ -838,6 +906,7 @@ From retrieval testing winners:
 #### Evaluation Pipeline
 
 **Key Scripts**:
+
 - `comprehensive_triage_evaluator_unknown_label.py` - Main evaluation engine with UNKNOWN tracking
 - `evaluation_core.py` - Core inference and metrics computation
 - `analysis_dashboard_unknown_tracking.py` - Results visualization with UNKNOWN analysis
@@ -845,6 +914,7 @@ From retrieval testing winners:
 - `comprehensive_missing_analysis.py` - Error analysis
 
 **Pipeline stages**:
+
 1. **Load model** (with or without adapter)
 2. **Build RAG retriever** (if RAG enabled)
 3. **Generate triage decision** for each test case
@@ -856,6 +926,7 @@ From retrieval testing winners:
 #### Metrics
 
 **Classification Metrics**:
+
 - **Triage Accuracy**: Overall correct ED/GP/HOME decisions (excludes UNKNOWN)
 - **F1 Score**: Harmonic mean of precision and recall
 - **F2 Score**: Recall-weighted (β=2) for medical safety
@@ -866,6 +937,7 @@ From retrieval testing winners:
   - Critical for reliability assessment and model confidence evaluation
 
 **Performance Metrics**:
+
 - **Total inference time**: Cumulative time for all cases
 - **Average time per case**: Mean inference latency
 - **Success count**: Cases with valid triage extraction
@@ -875,6 +947,7 @@ From retrieval testing winners:
 - **UNKNOWN rate**: Proportion of cases with failed/unreliable triage decisions
 
 **Safety Metrics** (for ED class):
+
 - **ED Recall**: ≥95% target
 - **False Negative Rate**: ≤5% target
 - **False Positives**: Over-triage to ED (acceptable)
@@ -882,6 +955,7 @@ From retrieval testing winners:
 #### Output Format
 
 **Per-configuration results** (4×4 confusion matrix with UNKNOWN tracking):
+
 ```json
 {
   "config": {
@@ -923,29 +997,31 @@ From retrieval testing winners:
 #### Visualization & Analysis
 
 **Analysis Dashboard** (`analysis_dashboard_unknown_tracking.py`):
+
 1. **Overall performance summary**:
+
    - Best configurations table
    - Model comparison
    - Adapter comparison
    - RAG impact analysis
-
 2. **Classification performance**:
+
    - 4×4 confusion matrix heatmap per config
    - Precision-recall curves
    - F1/F2 score distributions
-
 3. **Safety analysis**:
+
    - ED recall distribution
    - False negative rate tracking
    - Dangerous misclassifications (ED→HOME, ED→GP)
-
 4. **UNKNOWN tracking**:
+
    - UNKNOWN rate per configuration
    - Failed extraction patterns
    - Model reliability assessment
    - UNKNOWN vs accuracy correlation
-
 5. **Efficiency analysis**:
+
    - Inference time distributions
    - Speed-accuracy tradeoff
    - Model size vs performance
@@ -975,15 +1051,16 @@ python comprehensive_missing_analysis.py
 
 **Top 5 Configurations** (by F2 score, emphasizing recall):
 
-| Rank | Configuration | Accuracy | F1 | F2 | ED Recall | Avg Time (s) |
-|------|--------------|----------|----|----|-----------|--------------|
-| 1 | SmolLM2-360M_8bit_ultra_safe + RAG_top1 | 84.5% | 83.7% | 85.3% | 96.2% | 0.28 |
-| 2 | SmolLM2-360M_4bit_high_capacity + RAG_top1 | 83.8% | 82.9% | 84.7% | 95.7% | 0.21 |
-| 3 | SmolLM2-135M_8bit_balanced_safe + RAG_top2 | 82.1% | 81.4% | 83.2% | 94.8% | 0.18 |
-| 4 | Gemma-270M_4bit_performance_safe + RAG_top1 | 81.7% | 80.8% | 82.5% | 94.2% | 0.24 |
-| 5 | SmolLM2-135M_4bit_balanced_safe (no RAG) | 79.3% | 78.5% | 80.1% | 92.7% | 0.15 |
+| Rank | Configuration                               | Accuracy | F1    | F2    | ED Recall | Avg Time (s) |
+| ---- | ------------------------------------------- | -------- | ----- | ----- | --------- | ------------ |
+| 1    | SmolLM2-360M_8bit_ultra_safe + RAG_top1     | 84.5%    | 83.7% | 85.3% | 96.2%     | 0.28         |
+| 2    | SmolLM2-360M_4bit_high_capacity + RAG_top1  | 83.8%    | 82.9% | 84.7% | 95.7%     | 0.21         |
+| 3    | SmolLM2-135M_8bit_balanced_safe + RAG_top2  | 82.1%    | 81.4% | 83.2% | 94.8%     | 0.18         |
+| 4    | Gemma-270M_4bit_performance_safe + RAG_top1 | 81.7%    | 80.8% | 82.5% | 94.2%     | 0.24         |
+| 5    | SmolLM2-135M_4bit_balanced_safe (no RAG)    | 79.3%    | 78.5% | 80.1% | 92.7%     | 0.15         |
 
 **Insights**:
+
 - **Fine-tuning essential**: Base models achieve <50% accuracy on triage
 - **RAG improves accuracy**: +3-7% absolute improvement over no-RAG
 - **Structured RAG wins**: structured_agent configs outperform others
@@ -992,6 +1069,7 @@ python comprehensive_missing_analysis.py
 - **Quantization tradeoff**: 8-bit slightly better than 4-bit (~2-3%) but slower
 
 **Production recommendation**:
+
 - **Best overall**: SmolLM2-360M_8bit_ultra_safe + structured_agent_contextual_rag
 - **Best for mobile**: SmolLM2-135M_4bit_balanced_safe + structured_agent_pure_rag
 - **Best speed-accuracy**: SmolLM2-135M_8bit_balanced_safe + pure_rag
@@ -1003,11 +1081,13 @@ python comprehensive_missing_analysis.py
 **Location:** `2. Model Training, Evaluation & Deployment/evaluation_framework_final/testing_framework_final/`
 
 #### Purpose
+
 Final evaluation of top-performing configurations on the full held-out test dataset (1,975 cases) to assess production readiness and generalization.
 
 #### Test Scope
 
 **Top 5 Configurations Selected** (from Stage 7 validation results):
+
 1. **SmolLM2-135M_4bit_high_capacity_safe_NoRAG** (68.0% validation accuracy)
 2. **SmolLM2-135M_4bit_balanced_safe_NoRAG** (59.5% validation accuracy)
 3. **SmolLM2-135M_4bit_performance_safe_NoRAG** (57.0% validation accuracy)
@@ -1017,6 +1097,7 @@ Final evaluation of top-performing configurations on the full held-out test data
 #### Test Dataset
 
 **Source**: `Final_dataset/simplified_triage_dialogues_test.json`
+
 - **Total test cases**: 1,975 dialogues (held-out from training/validation)
 - **Distribution**: GP (76%), ED (18%), HOME (6%)
 - **Never seen during training or validation**
@@ -1024,6 +1105,7 @@ Final evaluation of top-performing configurations on the full held-out test data
 #### Testing Pipeline
 
 **Key Scripts**:
+
 - `comprehensive_triage_tester.py` - Main testing engine for top 5 configs
 - `comprehensive_triage_tester_llm_as_judge.py` - LLM-based quality evaluation
 - `testing_core.py` - Core inference and metrics (same as validation)
@@ -1036,6 +1118,7 @@ Final evaluation of top-performing configurations on the full held-out test data
 **Purpose**: Beyond accuracy metrics, assess response quality using LLM evaluation
 
 **Quality Judge** (`llm_quality_judge.py`):
+
 - **Model**: GPT-4 / Claude (external API)
 - **Criteria**:
   - Medical accuracy (clinical correctness)
@@ -1045,6 +1128,7 @@ Final evaluation of top-performing configurations on the full held-out test data
   - Language quality (clear, professional communication)
 
 **Quality Metrics**:
+
 ```json
 {
   "quality_score": 0.85,        // Overall quality (0-1)
@@ -1059,6 +1143,7 @@ Final evaluation of top-performing configurations on the full held-out test data
 #### Parallel Processing
 
 **`parallel_llm_judge.py`**: Concurrent LLM judge evaluation
+
 - **Workers**: 5-10 parallel API calls
 - **Rate limiting**: Respects API constraints
 - **Progress tracking**: Real-time updates
@@ -1085,6 +1170,7 @@ python test_tinfoil_vs_rule_based_rag.py
 #### Output
 
 **Test Results** (`final_test_results_{timestamp}.json`):
+
 - Complete metrics for all 5 configurations
 - 4×4 confusion matrices
 - Per-class performance (ED, GP, HOME, UNKNOWN)
@@ -1092,6 +1178,7 @@ python test_tinfoil_vs_rule_based_rag.py
 - Full test set coverage (1,975 cases)
 
 **LLM Judge Results** (`llm_judge_plots/`):
+
 - Quality score distributions
 - Quality vs accuracy correlations
 - Configuration quality rankings
@@ -1102,12 +1189,13 @@ python test_tinfoil_vs_rule_based_rag.py
 
 **Test Set Performance** (top configuration):
 
-| Configuration | Test Accuracy | Test F2 | ED Recall | Avg Time (s) |
-|--------------|---------------|---------|-----------|--------------|
-| SmolLM2-135M_4bit_high_capacity_safe_NoRAG | 66.2% | 64.8% | 92.5% | 0.15 |
-| SmolLM2-135M_4bit_balanced_safe_NoRAG | 58.1% | 57.3% | 90.1% | 0.14 |
+| Configuration                              | Test Accuracy | Test F2 | ED Recall | Avg Time (s) |
+| ------------------------------------------ | ------------- | ------- | --------- | ------------ |
+| SmolLM2-135M_4bit_high_capacity_safe_NoRAG | 66.2%         | 64.8%   | 92.5%     | 0.15         |
+| SmolLM2-135M_4bit_balanced_safe_NoRAG      | 58.1%         | 57.3%   | 90.1%     | 0.14         |
 
 **Insights**:
+
 - **Generalization**: ~2-3% drop from validation to test (expected)
 - **ED recall maintained**: >90% on unseen test data (safety preserved)
 - **NoRAG outperforms RAG**: On this test set, fine-tuned models without RAG perform better
@@ -1115,6 +1203,7 @@ python test_tinfoil_vs_rule_based_rag.py
 - **Production-ready**: Top configurations meet safety thresholds on held-out data
 
 **LLM Judge Insights**:
+
 - **Quality-accuracy correlation**: r=0.72 (high-quality responses tend to be accurate)
 - **Safety awareness**: Top configs score >85% on safety-awareness criteria
 - **Best quality**: high_capacity_safe achieves 0.85 overall quality score
@@ -1127,11 +1216,13 @@ python test_tinfoil_vs_rule_based_rag.py
 **Location:** `2. Model Training, Evaluation & Deployment/iosDemo/`
 
 #### Purpose
+
 Deploy the complete medical triage system as an on-device iOS application with <400MB memory footprint and <1s inference latency.
 
 #### Architecture
 
 **Tech Stack**:
+
 - **UI Framework**: SwiftUI
 - **LLM Runtime**: MLX (Apple's ML framework, optimized for M-series)
 - **Embedding Model**: all-MiniLM-L6-v2 (384-d, CoreML)
@@ -1142,6 +1233,7 @@ Deploy the complete medical triage system as an on-device iOS application with <
 #### RAG Implementation Status
 
 **Real RAG (Not Mock)**:
+
 - **Default state**: RAG toggle OFF for faster inference (<200ms vs <500ms)
 - **When enabled**: Full hybrid retrieval (FAISS + BM25 + RRF fusion)
 - **Retrieval process**:
@@ -1152,6 +1244,7 @@ Deploy the complete medical triage system as an on-device iOS application with <
 - **Performance trade-off**: +2.8% accuracy improvement when RAG enabled, +270ms latency
 
 **Why RAG defaults to OFF**:
+
 - Faster initial response time for demos
 - Showcases that fine-tuned models can work standalone
 - Allows users to compare with/without RAG side-by-side
@@ -1159,6 +1252,7 @@ Deploy the complete medical triage system as an on-device iOS application with <
 #### On-Device Assets
 
 **1. Chunk Database** (`chunks.sqlite`)
+
 - **Schema**:
   ```sql
   CREATE TABLE chunks (
@@ -1180,6 +1274,7 @@ Deploy the complete medical triage system as an on-device iOS application with <
 - **Purpose**: Store medical chunks for retrieval and display
 
 **2. FAISS Index** (`faiss.index`)
+
 - **Type**: IndexFlatIP (cosine similarity)
 - **Dimensions**: 384 (all-MiniLM-L6-v2)
 - **Vectors**: L2-normalized
@@ -1187,6 +1282,7 @@ Deploy the complete medical triage system as an on-device iOS application with <
 - **Companion**: `ids.bin` (chunk ID mapping)
 
 **3. LLM Model** (`models/SmolLM2-135M_4bit_*/`)
+
 - **Options**:
   - `SmolLM2-135M_4bit_balanced_safe` (recommended)
   - `SmolLM2-135M_4bit_perfsafe` (fastest)
@@ -1196,6 +1292,7 @@ Deploy the complete medical triage system as an on-device iOS application with <
 - **Quantization**: 4-bit for optimal memory usage
 
 **4. Metadata** (`meta.json`)
+
 - RRF fusion weights (α=0.7, k=60)
 - Context limits (~6-7k chars)
 - Model configuration
@@ -1230,6 +1327,7 @@ iosDemo/TriageApp/
 #### User Interface
 
 **Main Screen** (`ContentView.swift`):
+
 ```swift
 VStack {
     // RAG toggle
@@ -1264,6 +1362,7 @@ VStack {
 #### Pipeline Flow
 
 **With RAG Enabled**:
+
 ```
 User Input (name, age, gender, symptoms)
     ↓
@@ -1298,6 +1397,7 @@ Display Results + Citations + Metrics
 ```
 
 **Without RAG** (Direct inference):
+
 ```
 User Input
     ↓
@@ -1318,6 +1418,7 @@ Display Results
 #### Prompt Templates
 
 **With RAG**:
+
 ```
 Context:
 {chunk1}
@@ -1330,6 +1431,7 @@ Provide triage decision, next steps, and reasoning:
 ```
 
 **Without RAG**:
+
 ```
 Patient query: {query}
 
@@ -1337,6 +1439,7 @@ Provide triage decision, next steps, and reasoning:
 ```
 
 **Output Schema** (enforced in prompt):
+
 ```
 Output exactly:
 Triage decision: {ED|GP|HOME}
@@ -1347,6 +1450,7 @@ Reasoning: <1–3 short sentences>
 #### Retrieval Implementation
 
 **RRF Fusion** (`RRF.swift`):
+
 ```swift
 static func fuse(dense: [(Int, Float)],
                  lex: [(Int, Float)],
@@ -1371,6 +1475,7 @@ static func fuse(dense: [(Int, Float)],
 #### Parsing & Safety
 
 **Triage Extraction** (`TriageParser.swift`):
+
 ```swift
 func extract(from text: String) -> (String, String, String) {
     func capture(_ label: String) -> String {
@@ -1394,12 +1499,14 @@ func extract(from text: String) -> (String, String, String) {
 #### Performance Optimization
 
 **Memory Management**:
+
 - **Model loading**: Memory-mapped weights (avoid heap allocation)
 - **FAISS queries**: Reuse preallocated result buffers
 - **SQLite**: WAL mode, memory-mapped files
 - **Token generation**: Stream tokens, no full sequence buffering
 
 **Speed Optimization**:
+
 - **Quantization**: 4-bit weights reduce compute
 - **MLX optimizations**: Metal GPU acceleration
 - **Batch size 1**: Single-query inference
@@ -1407,6 +1514,7 @@ func extract(from text: String) -> (String, String, String) {
 - **Max tokens**: Limited to 256 for triage
 
 **Expected Performance**:
+
 - **Latency**: <500ms with RAG, <200ms without
 - **Memory**: <350MB peak (model + indices + runtime)
 - **Storage**: ~200MB total app size
@@ -1414,6 +1522,7 @@ func extract(from text: String) -> (String, String, String) {
 #### Build & Deployment
 
 **Asset Preparation** (on Mac):
+
 ```bash
 cd "2. Model Training, Evaluation & Deployment/iosDemo"
 
@@ -1431,6 +1540,7 @@ python ../tools/export_mobile_rag_pack.py
 ```
 
 **Xcode Project Setup**:
+
 1. Add `chunks.sqlite`, `faiss.index`, `ids.bin` to Resources
 2. Add MLX model folder to Resources
 3. Link FAISS static library (compiled for iOS)
@@ -1438,6 +1548,7 @@ python ../tools/export_mobile_rag_pack.py
 5. Set deployment target: iOS 16.0+
 
 **Build Command**:
+
 ```bash
 cd "2. Model Training, Evaluation & Deployment/iosDemo/TriageApp"
 xcodebuild -scheme TriageApp -configuration Release
@@ -1446,6 +1557,7 @@ xcodebuild -scheme TriageApp -configuration Release
 #### Demo Flow
 
 **For Examiners**:
+
 1. **Launch app** on iPhone/iPad
 2. **Toggle RAG on**: Enable retrieval-augmented generation
 3. **Enter patient info**
@@ -1456,6 +1568,7 @@ xcodebuild -scheme TriageApp -configuration Release
 8. **Compare**: Notice lower confidence without medical context
 
 **Key Demo Points**:
+
 - **On-device**: No internet required (privacy-preserving)
 - **Fast**: Sub-second inference
 - **Compact**: <400MB total footprint
@@ -1465,6 +1578,7 @@ xcodebuild -scheme TriageApp -configuration Release
 #### Known Limitations & Future Work
 
 **Current Limitations**:
+
 1. **Demo corpus**: Subset of full medical database (~500 conditions)
 2. **English-only**: No te reo Māori support yet
 3. **Text-based**: No image/voice input
@@ -1472,11 +1586,13 @@ xcodebuild -scheme TriageApp -configuration Release
 5. **Fixed retrieval**: No adaptive retrieval strategies
 
 **Future Enhancements**:
+
 1. **Multimodal**: Add image recognition (rashes, injuries)
 2. **Voice interface**: Speech-to-text for accessibility
 3. **Multi-turn chat**: Follow-up questions and clarifications
 4. **Personalization**: Medical history integration
 5. **Updates**: Over-the-air model and corpus updates
+
 ---
 
 ## File Structure
@@ -1624,6 +1740,7 @@ hft/
 ### Python Environment
 
 **Core Libraries**:
+
 ```txt
 # ML & NLP
 torch>=2.0.0
@@ -1656,6 +1773,7 @@ seaborn>=0.12.0
 ```
 
 **Installation**:
+
 ```bash
 pip install -r requirements.txt
 
@@ -1669,11 +1787,13 @@ python -m spacy download en_core_web_sm
 ### iOS Dependencies
 
 **Swift Packages** (via SPM):
+
 - MLX-Swift (Apple's ML framework)
 - FAISS-iOS (compiled static library)
 - SQLite.swift (database wrapper)
 
 **System Requirements**:
+
 - iOS 16.0+
 - Xcode 15.0+
 - M-series Mac for MLX compilation
@@ -1685,6 +1805,7 @@ python -m spacy download en_core_web_sm
 ### Complete Pipeline Execution
 
 **1. Scrape Medical Data**
+
 ```bash
 # Scrape all sources
 python "1. KB and DS construction/webscrapers/nhs_scraper.py"
@@ -1693,6 +1814,7 @@ python "1. KB and DS construction/webscrapers/healthify_scraper.py"
 ```
 
 **2. Prepare Training Data**
+
 ```bash
 # Generate triage dialogues
 python "1. KB and DS construction/generate_triage_dialogues.py"
@@ -1703,6 +1825,7 @@ python "1. KB and DS construction/convert_to_mlx_format.py"
 ```
 
 **3. Create Chunked Documents**
+
 ```bash
 # Run all chunking strategies
 python "1. KB and DS construction/main_chunking_script_v4.py"
@@ -1711,6 +1834,7 @@ python "1. KB and DS construction/main_chunking_script_v4.py"
 ```
 
 **4. Build Vector Indices**
+
 ```bash
 # Build all FAISS indices
 python "1. KB and DS construction/main_build_script_index_only.py"
@@ -1718,6 +1842,7 @@ python "1. KB and DS construction/main_build_script_index_only.py"
 ```
 
 **5. Fine-Tune Models**
+
 ```bash
 # Train all safety-enhanced adapters
 cd "2. Model Training, Evaluation & Deployment/finetune"
@@ -1726,6 +1851,7 @@ python safety_enhanced_triage_finetune.py
 ```
 
 **6. Test Retrieval**
+
 ```bash
 # Run comprehensive retrieval evaluation
 cd "2. Model Training, Evaluation & Deployment/final_retrieval_testing"
@@ -1739,6 +1865,7 @@ python visualize_results.py results/
 ```
 
 **7. Evaluate Generation (Validation)**
+
 ```bash
 # Full validation evaluation (96 configs × 200 cases) with UNKNOWN tracking
 cd "2. Model Training, Evaluation & Deployment/evaluation_framework_final"
@@ -1752,6 +1879,7 @@ python individual_plots_unknown_tracking.py
 ```
 
 **7b. Final Testing (Test Set)**
+
 ```bash
 # Test top 5 configurations on full test dataset (1,975 cases)
 cd "2. Model Training, Evaluation & Deployment/evaluation_framework_final/testing_framework_final"
@@ -1762,6 +1890,7 @@ python comprehensive_triage_tester_llm_as_judge.py
 ```
 
 **8. Deploy to iOS**
+
 ```bash
 # Prepare assets
 cd "2. Model Training, Evaluation & Deployment/iosDemo"
@@ -1777,6 +1906,7 @@ open TriageApp/TriageApp.xcodeproj
 ### Quick Testing
 
 **Test Single Chunking Strategy**:
+
 ```bash
 python "1. KB and DS construction/main_chunking_script_v4.py"
 # Select: 1 (Fixed-length)
@@ -1784,6 +1914,7 @@ python "1. KB and DS construction/main_chunking_script_v4.py"
 ```
 
 **Test Single Model**:
+
 ```bash
 cd "2. Model Training, Evaluation & Deployment/evaluation_framework_final"
 python comprehensive_triage_evaluator_unknown_label.py --max-configs 4 --sample-size 50
@@ -1791,6 +1922,7 @@ python comprehensive_triage_evaluator_unknown_label.py --max-configs 4 --sample-
 ```
 
 **Quick Retrieval Test**:
+
 ```bash
 cd "2. Model Training, Evaluation & Deployment/final_retrieval_testing"
 python run_retrieval_test.py --quick
@@ -1802,16 +1934,19 @@ python run_retrieval_test.py --quick
 ## Citation & Attribution
 
 ### Data Sources
+
 - **NHS**: National Health Service (UK) - https://www.nhs.uk
 - **Mayo Clinic**: Mayo Foundation for Medical Education and Research - https://www.mayoclinic.org
 - **Healthify**: New Zealand health information - https://www.healthify.nz
 
 ### Models
+
 - **SmolLM2**: HuggingFace - https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct
 - **Gemma**: Google - https://huggingface.co/google/gemma-270m
 - **all-MiniLM-L6-v2**: Sentence-Transformers - https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
 
 ### Frameworks
+
 - **MLX**: Apple - https://github.com/ml-explore/mlx
 - **FAISS**: Meta AI - https://github.com/facebookresearch/faiss
 - **Anthropic Contextual Retrieval**: https://www.anthropic.com/news/contextual-retrieval
@@ -1823,6 +1958,7 @@ python run_retrieval_test.py --quick
 **⚠️ FOR RESEARCH AND DEMONSTRATION PURPOSES ONLY**
 
 This system is a research prototype and **NOT approved for clinical use**. It is designed to demonstrate:
+
 - On-device medical AI feasibility
 - RAG performance in medical domains
 - Safety-critical model fine-tuning techniques
